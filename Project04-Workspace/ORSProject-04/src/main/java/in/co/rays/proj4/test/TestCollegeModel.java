@@ -2,23 +2,27 @@ package in.co.rays.proj4.test;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import in.co.rays.proj4.bean.CollegeBean;
-import in.co.rays.proj4.bean.UserBean;
 import in.co.rays.proj4.model.CollegeModel;
 
 public class TestCollegeModel {
-	public static CollegeModel model=new CollegeModel();
+	public static CollegeModel model = new CollegeModel();
+
 	public static void main(String[] args) throws Exception {
 //		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
-		testFindByCollegeName();
+//		testFindByCollegeName();
+		testSearch();
 	}
+
 	public static void testAdd() {
-		CollegeBean bean=new CollegeBean();
-	
+		CollegeBean bean = new CollegeBean();
+
 		bean.setName("DAVV");
 		bean.setAddresss("Nalanda Campus");
 		bean.setCity("Indore");
@@ -31,11 +35,12 @@ public class TestCollegeModel {
 
 		model.add(bean);
 	}
+
 	public static void testUpdate() {
-		CollegeBean bean=new CollegeBean();
+		CollegeBean bean = new CollegeBean();
 		bean.setId(6);
 		bean.setName("Acroplois Institute");
-		bean.setAddresss("Manglia" );
+		bean.setAddresss("Manglia");
 		bean.setCity("Indore");
 		bean.setState("Madhya Pradesh");
 		bean.setPhoneNo("123456789");
@@ -43,10 +48,12 @@ public class TestCollegeModel {
 		bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 		model.update(bean);
 	}
+
 	public static void testDelete() throws Exception {
 		model.delete(2);
-		
+
 	}
+
 	public static void testFindByPk() {
 
 		CollegeBean bean = new CollegeBean();
@@ -59,7 +66,6 @@ public class TestCollegeModel {
 		System.out.println(bean.getState());
 		System.out.println(bean.getCity());
 		System.out.println(bean.getPhoneNo());
-	
 
 	}
 
@@ -75,8 +81,26 @@ public class TestCollegeModel {
 		System.out.println(bean.getState());
 		System.out.println(bean.getCity());
 		System.out.println(bean.getPhoneNo());
-	
 
+	}
+
+	public static void testSearch() throws Exception {
+		CollegeModel model = new CollegeModel();
+		CollegeBean bean = new CollegeBean();
+
+//		bean.setCollegeName("S");
+		List<CollegeBean> list = model.search(bean, 1, 5);
+		Iterator<CollegeBean> it = list.iterator();
+		while (it.hasNext()) {
+			bean = it.next();
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getAddresss());
+			System.out.println(bean.getState());
+			System.out.println(bean.getCity());
+			System.out.println(bean.getPhoneNo());
+			System.out.println("----------------");
+		}
 	}
 
 }

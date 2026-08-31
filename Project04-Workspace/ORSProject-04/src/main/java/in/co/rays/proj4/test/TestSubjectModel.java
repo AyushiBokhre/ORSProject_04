@@ -2,9 +2,9 @@ package in.co.rays.proj4.test;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
-import in.co.rays.proj4.bean.CollegeBean;
-import in.co.rays.proj4.bean.CourseBean;
 import in.co.rays.proj4.bean.SubjectBean;
 import in.co.rays.proj4.model.SubjectModel;
 
@@ -15,7 +15,8 @@ public class TestSubjectModel {
 //		testDelete();
 //		testUpdate();
 //		testFindByPk();
-		testFindBySubjectName();
+//		testFindBySubjectName();
+		testSearch();
 	}
 	public static void testAdd() {
 		SubjectBean bean=new SubjectBean();
@@ -73,6 +74,23 @@ public class TestSubjectModel {
 	
 	
 
+	}
+	
+	public static void testSearch() throws Exception {
+		SubjectModel model = new SubjectModel();
+		SubjectBean bean = new SubjectBean();
+		
+//		bean.setName("S");
+		List<SubjectBean> list = model.search(bean,0,0);
+		Iterator<SubjectBean> it = list.iterator();
+		while (it.hasNext()) {
+			bean = it.next();
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getDescription());
+			System.out.println(bean.getCourseId());
+			System.out.println("-----------------");
+		}
 	}
 }
 

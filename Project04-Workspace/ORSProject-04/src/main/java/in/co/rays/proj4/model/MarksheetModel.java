@@ -3,9 +3,7 @@ package in.co.rays.proj4.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import in.co.rays.proj4.bean.BaseBean;
 import in.co.rays.proj4.bean.MarksheetBean;
-import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DuplicateRecordException;
@@ -17,11 +15,14 @@ public class MarksheetModel extends BaseModel<MarksheetBean>{
 	public long add(MarksheetBean bean) throws ApplicationException, DuplicateRecordException {
 		
 			Connection conn = null;
-//			RoleBean existBean = findByName(bean.getName());
-//
-//			if (existBean != null) {
-//				throw new DuplicateRecordException("role name already exist");
-//			}
+			MarksheetBean existBean = findByRollNo(bean.getRollNo());
+
+			if (existBean != null) {
+				throw new DuplicateRecordException("Roll No already exist");
+			}
+			StudentModel smodel = new StudentModel();
+			StudentBean sbean = smodel.findByPK(bean.getStudentId());
+			bean.setName(sbean.getFirstName() + " " + sbean.getLastName());
 
 			try {
 
@@ -57,11 +58,14 @@ public class MarksheetModel extends BaseModel<MarksheetBean>{
 	@Override
 	public void update(MarksheetBean bean) throws ApplicationException, DuplicateRecordException {
 		Connection conn = null;
-//		RoleBean existBean = findByName(bean.getName());
-//
-//		if (existBean != null && existBean.getId() != bean.getId()) {
-//			throw new DuplicateRecordException("role name already exist");
-//		}
+		MarksheetBean existBean = findByRollNo(bean.getRollNo());
+
+		if (existBean != null) {
+			throw new DuplicateRecordException("Roll No already exist");
+		}
+		StudentModel smodel = new StudentModel();
+		StudentBean sbean = smodel.findByPK(bean.getStudentId());
+		bean.setName(sbean.getFirstName() + " " + sbean.getLastName());
 		try {
 
 			conn = JDBCDataSource.getConnection();
@@ -102,8 +106,33 @@ public class MarksheetModel extends BaseModel<MarksheetBean>{
 
 	@Override
 	public String getWhereClause(MarksheetBean bean) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer sql =new StringBuffer("");
+		if(bean!=null) {
+			if(bean.getId()>0) {
+				sql.append(" and id = " +bean.getId());
+			}
+			if(bean.getRollNo()!=null && bean.getRollNo().length()>0) {
+				sql.append(" and roll_no like '" +bean.getRollNo()+ "%'");
+			}
+			if(bean.getStudentId()>0) {
+				sql.append(" and student_id = " +bean.getStudentId()+ "%'");
+			}
+			if(bean.getName()!=null  && bean.getName().length()>0) {
+				sql.append(" and name like '" +bean.getName()+ "%'");
+			}
+			if(bean.getPhysics()>0 ){
+				sql.append(" and physics like '" +bean.getPhysics()+"%'");
+			}
+			if(bean.getChemistry()>0) {
+				sql.append(" and chemistry like '" +bean.getChemistry()+ "%'");
+			}
+			if(bean.getMaths()>0) {
+				sql.append(" and maths like '" +bean.getMaths()+ "%'");
+			}
+		}
+			
+		return sql.toString();
+	
 	}
 
 	@Override

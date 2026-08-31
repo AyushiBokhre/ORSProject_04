@@ -3,8 +3,9 @@ package in.co.rays.proj4.test;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
-import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.model.StudentModel;
 
@@ -14,8 +15,9 @@ public class TestStudentModel {
 //		testAdd();
 //		testDelete();
 //		testUpdate();
-		testFindByPk();
+//		testFindByPk();
 //		testFindByEmail();
+		testSearch();
 	}
 	public static void testAdd() throws Exception {
 		StudentBean bean=new StudentBean();
@@ -88,6 +90,26 @@ public class TestStudentModel {
 		System.out.println(bean.getMobileNo());
 		System.out.println(bean.getEmail());
 
+	}
+	public static void testSearch() throws Exception {
+		StudentModel model = new StudentModel();
+		StudentBean bean = new StudentBean();
+		
+//		bean.setName("S");
+		List<StudentBean> list = model.search(bean,0,0);
+		Iterator<StudentBean> it = list.iterator();
+		while (it.hasNext()) {
+			bean = it.next();
+			System.out.println(bean.getId());
+			System.out.println(bean.getCollegeId());
+			System.out.println(bean.getCollegeName());
+			System.out.println(bean.getFirstName());
+			System.out.println(bean.getLastName());
+			System.out.println(bean.getDateOfBirth());
+			System.out.println(bean.getMobileNo());
+			System.out.println(bean.getEmail());
+			System.out.println("-----------------");
+		}
 	}
 }
 

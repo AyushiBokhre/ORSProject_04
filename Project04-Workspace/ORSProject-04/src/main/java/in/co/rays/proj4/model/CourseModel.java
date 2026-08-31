@@ -4,21 +4,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import in.co.rays.proj4.bean.CourseBean;
-import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
-public class CourseModel extends BaseModel<CourseBean>{
+public class CourseModel extends BaseModel<CourseBean> {
 
 	@Override
 	public long add(CourseBean bean) throws ApplicationException, DuplicateRecordException {
 		Connection conn = null;
-//		RoleBean existBean = findByName(bean.getName());
-//
-//		if (existBean != null) {
-//			throw new DuplicateRecordException("role name already exist");
-//		}
+		CourseBean existBean = findByCourseName(bean.getName());
+
+		if (existBean != null) {
+			throw new DuplicateRecordException("College already exist");
+		}
 
 		try {
 
@@ -50,11 +49,11 @@ public class CourseModel extends BaseModel<CourseBean>{
 	@Override
 	public void update(CourseBean bean) throws ApplicationException, DuplicateRecordException {
 		Connection conn = null;
-//		RoleBean existBean = findByName(bean.getName());
-//
-//		if (existBean != null && existBean.getId() != bean.getId()) {
-//			throw new DuplicateRecordException("role name already exist");
-//		}
+		CourseBean existBean = findByCourseName(bean.getName());
+
+		if (existBean != null) {
+			throw new DuplicateRecordException("Course already exist");
+		}
 		try {
 
 			conn = JDBCDataSource.getConnection();
@@ -78,8 +77,8 @@ public class CourseModel extends BaseModel<CourseBean>{
 			JDBCDataSource.closeConnection(conn);
 		}
 
-
 	}
+
 	public CourseBean findByCourseName(String name) {
 
 		CourseBean bean = findByUniqueColumn("name", name);
@@ -90,8 +89,23 @@ public class CourseModel extends BaseModel<CourseBean>{
 
 	@Override
 	public String getWhereClause(CourseBean bean) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer sql = new StringBuffer("");
+		if (bean != null) {
+			if (bean.getId() > 0) {
+				sql.append(" and id = " + bean.getId());
+			}
+			if (bean.getName() != null) {
+				sql.append(" and name like '" + bean.getName() + "%'");
+			}
+			if (bean.getDescription() != null) {
+				sql.append(" and description like '" + bean.getDescription() + "%'");
+			}
+			if (bean.getDuration() != null) {
+				sql.append(" and duration like '" + bean.getDuration() + "%'");
+			}
+		}
+
+		return sql.toString();
 	}
 
 	@Override
@@ -103,7 +117,5 @@ public class CourseModel extends BaseModel<CourseBean>{
 	public CourseBean getBean() {
 		return new CourseBean();
 	}
-
-	
 
 }

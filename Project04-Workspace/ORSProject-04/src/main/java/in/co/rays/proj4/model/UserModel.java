@@ -3,8 +3,6 @@ package in.co.rays.proj4.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import in.co.rays.proj4.bean.BaseBean;
-import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.bean.UserBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DuplicateRecordException;
@@ -130,8 +128,29 @@ public class UserModel extends BaseModel<UserBean> {
 
 	@Override
 	public String getWhereClause(UserBean bean) {
-		
-		return null;
+		StringBuffer sql= new StringBuffer("");
+		if(bean!=null) {
+			if(bean.getId()>0) {
+				sql.append(" and id = " +bean.getId());
+			}
+			if(bean.getFirstName()!=null && bean.getFirstName().length()>0) {
+				sql.append(" and first_name like '" +bean.getFirstName()+ "%'");
+			}
+			if(bean.getLastName()!=null && bean.getLastName().length()>0 ){
+				sql.append(" and last_name like '" +bean.getLastName()+"%'");
+			}
+			if(bean.getLogin()!=null && bean.getLogin().length()>0) {
+				sql.append(" and login like '" +bean.getLogin()+ "%'");
+			}
+			if(bean.getPassword()!=null && bean.getPassword().length()>0 ){
+				sql.append(" and passwword like '" +bean.getPassword()+"%'");
+			}
+			if(bean.getDob()!=null && bean.getDob().getTime()>0) {
+				sql.append(" and date_of_birth like '" +bean.getDob()+ "%'");
+			}
+			
+		}
+		return sql.toString();
 	}
 
 	@Override

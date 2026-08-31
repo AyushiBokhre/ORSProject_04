@@ -3,7 +3,7 @@ package in.co.rays.proj4.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import in.co.rays.proj4.bean.RoleBean;
+import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DuplicateRecordException;
@@ -14,11 +14,18 @@ public class StudentModel extends BaseModel<StudentBean> {
 	@Override
 	public long add(StudentBean bean) throws ApplicationException, DuplicateRecordException {
 		Connection conn = null;
-//		RoleBean existBean = findByName(bean.getName());
-//
-//		if (existBean != null) {
-//			throw new DuplicateRecordException("role name already exist");
-//		}
+		StudentBean existBean = findByEmail(bean.getEmail());
+
+		if (existBean != null) {
+			throw new DuplicateRecordException("Email already exist");
+		}
+		
+		CollegeModel cmodel = new CollegeModel();
+		CollegeBean cbean = cmodel.findByPK(bean.getCollegeId());
+		if (cbean != null) {
+			bean.setCollegeName(cbean.getName());
+		}
+		
 		try {
 
 			conn = JDBCDataSource.getConnection();
@@ -53,11 +60,17 @@ public class StudentModel extends BaseModel<StudentBean> {
 	@Override
 	public void update(StudentBean bean) throws ApplicationException, DuplicateRecordException {
 		Connection conn = null;
-//		RoleBean existBean = findByName(bean.getName());
-//
-//		if (existBean != null && existBean.getId() != bean.getId()) {
-//			throw new DuplicateRecordException("role name already exist");
-//		}
+		StudentBean existBean = findByEmail(bean.getEmail());
+
+		if (existBean != null) {
+			throw new DuplicateRecordException("Email already exist");
+		}
+		
+		CollegeModel cmodel = new CollegeModel();
+		CollegeBean cbean = cmodel.findByPK(bean.getCollegeId());
+		if (cbean != null) {
+			bean.setCollegeName(cbean.getName());
+		}
 		try {
 
 			conn = JDBCDataSource.getConnection();
@@ -96,8 +109,36 @@ public class StudentModel extends BaseModel<StudentBean> {
 
 	@Override
 	public String getWhereClause(StudentBean bean) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer sql =new StringBuffer("");
+		if(bean!=null) {
+			if(bean.getId()>0) {
+				sql.append(" and id = " +bean.getId());
+			}
+			if(bean.getCollegeId()>0) {
+				sql.append(" and college_id = " +bean.getCollegeId());
+			}
+			if(bean.getCollegeName()!=null && bean.getCollegeName().length()>0) {
+				sql.append(" and colleg_name like '" +bean.getCollegeName()+ "%'");
+			}
+			if(bean.getFirstName()!=null && bean.getFirstName().length()>0 ){
+				sql.append(" and first_name like '" +bean.getFirstName()+"%'");
+			}
+			if(bean.getLastName()!=null && bean.getLastName().length()>0) {
+				sql.append(" and last_name like '" +bean.getLastName()+ "%'");
+			}
+			if(bean.getDateOfBirth()!=null && bean.getDateOfBirth().getTime()>0) {
+				sql.append(" and date_of_birth like '" +bean.getDateOfBirth()+ "%'");
+			}
+			if(bean.getEmail()!=null && bean.getEmail().length()>0) {
+				sql.append(" and email = " +bean.getEmail());
+			}
+			if(bean.getMobileNo()!=null && bean.getMobileNo().length()>0 ){
+				sql.append(" and mobile_no like '" +bean.getMobileNo()+"%'");
+			}
+			
+		}
+			
+		return sql.toString();
 	}
 
 	@Override

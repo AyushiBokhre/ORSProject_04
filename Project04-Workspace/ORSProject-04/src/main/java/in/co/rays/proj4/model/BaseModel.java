@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import in.co.rays.proj4.bean.BaseBean;
 import in.co.rays.proj4.exception.ApplicationException;
@@ -110,5 +112,42 @@ public abstract class BaseModel<T extends BaseBean> {
 			JDBCDataSource.closeConnection(conn);
 		}
 		return bean;
+	}
+	public List<T> search(T bean, int pageNo, int pageSize) throws SQLException {
+
+		Connection conn = null;
+		List<T> list = new ArrayList<T>();
+		StringBuffer sql = new StringBuffer("select * from "+getTable() +" where 1=1");
+
+		sql.append(getWhereClause(bean));
+		if (pageSize > 0) {
+			int index = (pageNo - 1) * pageSize;
+			sql.append(" limit " + index + ", " + pageSize);
+		}
+
+		conn = JDBCDataSource.getConnection();
+
+		System.out.println("sql search query => " + sql.toString());
+
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+
+		ResultSet rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			bean=this.getBean();
+			bean.setResultset(rs);
+			list.add(bean);
+		}
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			conn.close();
+		}
+
+		return list;
+
 	}
 }

@@ -2,11 +2,11 @@ package in.co.rays.proj4.test;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import in.co.rays.proj4.bean.CourseBean;
-import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.model.CourseModel;
-import in.co.rays.proj4.model.RoleModel;
 
 public class TestCourseModel {
 	public static CourseModel model = new CourseModel();
@@ -16,7 +16,8 @@ public class TestCourseModel {
 //		testDelete();
 //		testUpdate();
 //		testFindByPk();
-		testFindByCourseName();
+//		testFindByCourseName();
+		testSearch();
 	}
 
 	public static void testAdd() throws Exception {
@@ -74,5 +75,22 @@ public class TestCourseModel {
 		System.out.println(bean.getDuration());
 
 
+	}
+	
+	public static void testSearch() throws Exception {
+		CourseModel model = new CourseModel();
+		CourseBean bean = new CourseBean();
+		
+//		bean.setName("S");
+		List<CourseBean> list = model.search(bean, 1, 5);
+		Iterator<CourseBean> it = list.iterator();
+		while (it.hasNext()) {
+			bean = it.next();
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getDescription());
+			System.out.println(bean.getDuration());
+			System.out.println("----------------");
+		}
 	}
 }
