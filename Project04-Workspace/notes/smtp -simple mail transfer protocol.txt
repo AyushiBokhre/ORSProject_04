@@ -1,0 +1,50 @@
+								Project-04 notes
+
+
+Email message
+smtp -simple mail transfer protocol 
+It is used to send mail to the user if they want to change or forgot password 
+
+smtp's dependency is added in pom.xml (Jakarta.mail)
+
+three utility class:
+1. Emailbuilder class
+2. EmailMessage class
+3. EmailUitility class 
+
+In emailMessage, attributes and getter setter for email like to, from ,cc, bcc etc
+
+In emailbuilder, three mail methods are created one for registration, 2 for forgrt Password,and 3 for change pasword
+
+In emailutility, {smtp's predefined classes are used} sendMail() is created which use javaMail[smtp] predefined classes:
+Session
+Authenticator
+PasswordAuthentication
+Message
+MimeMessage--multipath internal mail extension
+transport- transport's send() is used to send mail 
+
+
+Data utility class
+DataUtility: is a class which is used for input formatting or parsing. it has constant attribute and static method
+method in data utility 
+getString(String str) for trim the input
+getStringDate(Object obj) convert into string
+
+DataValidator():check input data is valid or not its all method are boolean type
+isNull: true if value is null and false if value is null
+isNotNull()
+isInteger()
+isLong()
+isEmail()
+isDate()
+isName()
+isPassword()
+isPasswordLength()
+isPhone()
+
+ServletUtility: contains methods related to servlet
+
+
+
+

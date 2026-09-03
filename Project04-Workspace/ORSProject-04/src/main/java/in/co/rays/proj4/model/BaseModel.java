@@ -24,6 +24,7 @@ public abstract class BaseModel<T extends BaseBean> {
 	public abstract String getTable();
 
 	public abstract T getBean();
+
 	public Integer nextPK() throws DatabaseException {
 
 		Connection conn = null;
@@ -31,7 +32,7 @@ public abstract class BaseModel<T extends BaseBean> {
 
 		try {
 			conn = JDBCDataSource.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(id) FROM " + getTable());
+			PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(ID) FROM " + getTable());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				pk = rs.getInt(1);
@@ -39,7 +40,6 @@ public abstract class BaseModel<T extends BaseBean> {
 			rs.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DatabaseException("Exception : Exception in getting PK");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
@@ -47,25 +47,27 @@ public abstract class BaseModel<T extends BaseBean> {
 		return pk + 1;
 
 	}
-	
-	public void delete(int id) throws DatabaseException, Exception{
-		Connection conn=null;
+
+	public void delete(int id) throws DatabaseException {
+		Connection conn = null;
+
 		try {
-			conn=JDBCDataSource.getConnection();
+			conn = JDBCDataSource.getConnection();
 			conn.setAutoCommit(false);
-			PreparedStatement pstmt = conn.prepareStatement("delete from " + getTable() + " where id=? ");
+			PreparedStatement pstmt = conn.prepareStatement("delete from " + getTable() + " where id = ?");
 			pstmt.setInt(1, id);
-			
-			pstmt.executeUpdate();
+			int i = pstmt.executeUpdate();
+			System.out.println("record deleted: " + i);
 			conn.commit();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			JDBCDataSource.trnRollBack(conn);
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
+
 	}
-	
+
 	public T findByPK(long pk) throws ApplicationException {
 
 		T bean = null;
@@ -89,7 +91,7 @@ public abstract class BaseModel<T extends BaseBean> {
 		}
 		return bean;
 	}
-	
+
 	public T findByUniqueColumn(String column, String value) {
 
 		T bean = null;
@@ -113,41 +115,77 @@ public abstract class BaseModel<T extends BaseBean> {
 		}
 		return bean;
 	}
-	public List<T> search(T bean, int pageNo, int pageSize) throws SQLException {
 
+	// search record with filter(getWhereClause()) + pagination
+	public List<T> search(T bean, int pageNo, int pageSize) throws ApplicationException {
+
+		ArrayList<T> list = new ArrayList<T>();
 		Connection conn = null;
-		List<T> list = new ArrayList<T>();
-		StringBuffer sql = new StringBuffer("select * from "+getTable() +" where 1=1");
+		StringBuffer sql = new StringBuffer("select * from " + getTable() + " where 1=1");
 
-		sql.append(getWhereClause(bean));
+		// add search filter from child
+		sql.append(this.getWhereClause(bean));
+
 		if (pageSize > 0) {
-			int index = (pageNo - 1) * pageSize;
-			sql.append(" limit " + index + ", " + pageSize);
+			pageNo = (pageNo - 1) * pageSize; // <==== index formula
+			sql.append(" Limit " + pageNo + ", " + pageSize);
 		}
-
-		conn = JDBCDataSource.getConnection();
-
-		System.out.println("sql search query => " + sql.toString());
-
-		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-
-		ResultSet rs = pstmt.executeQuery();
-
-		while (rs.next()) {
-			bean=this.getBean();
-			bean.setResultset(rs);
-			list.add(bean);
-		}
-
+		System.out.println("sql===> " + sql.toString());
 		try {
-
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = getBean();
+				bean.setResultset(rs);
+				list.add(bean);
+			}
+			rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new ApplicationException("Exception : Exception in search(bean, pageNo, pageSize)");
 		} finally {
-			conn.close();
+			JDBCDataSource.closeConnection(conn);
 		}
 
 		return list;
+	}
 
+	// search record with pagination only, without filter(getWhereClause())
+	public List<T> list(int pageNo, int pageSize) throws ApplicationException {
+
+		ArrayList<T> list = new ArrayList<T>();
+		Connection conn = null;
+
+		StringBuffer sql = new StringBuffer("select * from " + getTable());
+
+		if (pageSize > 0) {
+			pageNo = (pageNo - 1) * pageSize;
+			sql.append(" limit " + pageNo + "," + pageSize);
+		}
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				T bean = getBean();
+				bean.setResultset(rs);
+				list.add(bean);
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ApplicationException("Exception : Exception in getting list of users");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+		return list;
+
+	}
+
+	// search all records without pagination without filter
+	public List<T> list() throws ApplicationException {
+		return list(0, 0);
 	}
 }
