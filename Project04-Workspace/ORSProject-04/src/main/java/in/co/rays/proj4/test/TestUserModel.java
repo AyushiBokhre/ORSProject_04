@@ -11,32 +11,32 @@ public class TestUserModel {
 	public static UserModel model = new UserModel();
 
 	public static void main(String[] args) throws Exception {
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByLogin();
 //		testAuthenticate();
-		testSearch();
+//		testSearch();
 	}
 
 	public static void testAdd() throws Exception {
 		UserBean bean = new UserBean();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-		bean.setFirstName("Shivani");
-		bean.setLastName("Gehlot");
-		bean.setLogin("shivani@gmail.com");
-		bean.setPassword("Shivani123");
+		bean.setFirstName("Meet");
+		bean.setLastName("Rambadia");
+		bean.setLogin("meet@gmail.com");
+		bean.setPassword("Meet123");
 		bean.setDob(sdf.parse("2004-08-25"));
 		bean.setMobileNo("9876543214");
 		bean.setRoleId(5);
-		bean.setUnsuccessfulLogin(0);
+		bean.setUnSuccessfulLogin(0);
 		bean.setGender("Female");
-		bean.setLastLogin("2026-08-20");
-		bean.setUserLock("No");
-		bean.setRegisteredIp("192.168.1.14");
-		bean.setLastLoginIp("192.168.1.19");
+//		bean.setLastLogin("2026-08-20");
+		bean.setLock("No");
+		bean.setRegisteredIP("192.168.1.14");
+//		bean.setLastLoginIp("192.168.1.19");
 
 		model.add(bean);
 
@@ -53,12 +53,12 @@ public class TestUserModel {
 		bean.setDob(sdf.parse("2003-03-10"));
 		bean.setMobileNo("9876543213");
 		bean.setRoleId(2);
-		bean.setUnsuccessfulLogin(0);
+		bean.setUnSuccessfulLogin(0);
 		bean.setGender("Male");
-		bean.setLastLogin("2026-08-21");
-		bean.setUserLock("No");
-		bean.setRegisteredIp("192.168.1.13");
-		bean.setLastLoginIp("192.168.1.18");
+//		bean.setLastLogin("2026-08-21");
+		bean.setLock("No");
+		bean.setRegisteredIP("192.168.1.13");
+//		bean.setLastLoginIp("192.168.1.18");
 
 		model.update(bean);
 

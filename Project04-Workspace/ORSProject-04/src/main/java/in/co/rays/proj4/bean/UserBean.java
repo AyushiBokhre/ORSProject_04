@@ -1,153 +1,148 @@
 package in.co.rays.proj4.bean;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class UserBean extends BaseBean {
-private String firstName;
-private String lastName;
-private String login;
-private String password;
-private Date dob;
-private String mobileNo;
-private long roleId;
-private int unsuccessfulLogin;
-private String gender;
-private String lastLogin;
-private String userLock;
-private String registeredIp;
-private String lastLoginIp;
 
+	public static final String ACTIVE = "Active";
+	public static final String INACTIVE = "Inactive";
+
+	private String firstName;
+	private String lastName;
+	private String login;
+	private String password;
+	private String confirmPassword;
+	private Date dob;
+	private String mobileNo;
+	private long roleId;
+	private int unSuccessfulLogin;
+	private String gender;
+	private Timestamp lastLogin;
+	private String lock = INACTIVE;
+	private String registeredIP;
+	private String lastLoginIP;
 
 	public String getFirstName() {
-	return firstName;
-}
+		return firstName;
+	}
 
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-public void setFirstName(String firstName) {
-	this.firstName = firstName;
-}
+	public String getLastName() {
+		return lastName;
+	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-public String getLastName() {
-	return lastName;
-}
+	public String getLogin() {
+		return login;
+	}
 
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-public void setLastName(String lastName) {
-	this.lastName = lastName;
-}
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-public String getLogin() {
-	return login;
-}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
 
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
-public void setLogin(String login) {
-	this.login = login;
-}
+	public Date getDob() {
+		return dob;
+	}
 
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 
-public String getPassword() {
-	return password;
-}
+	public String getMobileNo() {
+		return mobileNo;
+	}
 
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
 
-public void setPassword(String password) {
-	this.password = password;
-}
+	public long getRoleId() {
+		return roleId;
+	}
 
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
+	}
 
-public Date getDob() {
-	return dob;
-}
+	public int getUnSuccessfulLogin() {
+		return unSuccessfulLogin;
+	}
 
+	public void setUnSuccessfulLogin(int unSuccessfulLogin) {
+		this.unSuccessfulLogin = unSuccessfulLogin;
+	}
 
-public void setDob(Date dob) {
-	this.dob = dob;
-}
+	public String getGender() {
+		return gender;
+	}
 
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-public String getMobileNo() {
-	return mobileNo;
-}
+	public Timestamp getLastLogin() {
+		return lastLogin;
+	}
 
+	public void setLastLogin(Timestamp lastLogin) {
+		this.lastLogin = lastLogin;
+	}
 
-public void setMobileNo(String mobileNo) {
-	this.mobileNo = mobileNo;
-}
+	public String getLock() {
+		return lock;
+	}
 
+	public void setLock(String lock) {
+		this.lock = lock;
+	}
 
-public long getRoleId() {
-	return roleId;
-}
+	public String getRegisteredIP() {
+		return registeredIP;
+	}
 
+	public void setRegisteredIP(String registeredIP) {
+		this.registeredIP = registeredIP;
+	}
 
-public void setRoleId(long roleId) {
-	this.roleId = roleId;
-}
+	public String getLastLoginIP() {
+		return lastLoginIP;
+	}
 
+	public void setLastLoginIP(String lastLoginIP) {
+		this.lastLoginIP = lastLoginIP;
+	}
 
-public int getUnsuccessfulLogin() {
-	return unsuccessfulLogin;
-}
+	@Override
+	public String getValue() {
+		return null;
+	}
 
-
-public void setUnsuccessfulLogin(int unsuccessfulLogin) {
-	this.unsuccessfulLogin = unsuccessfulLogin;
-}
-
-
-public String getGender() {
-	return gender;
-}
-
-
-public void setGender(String gender) {
-	this.gender = gender;
-}
-
-
-public String getLastLogin() {
-	return lastLogin;
-}
-
-
-public void setLastLogin(String lastLogin) {
-	this.lastLogin = lastLogin;
-}
-
-
-public String getUserLock() {
-	return userLock;
-}
-
-
-public void setUserLock(String userLock) {
-	this.userLock = userLock;
-}
-
-
-public String getRegisteredIp() {
-	return registeredIp;
-}
-
-
-public void setRegisteredIp(String registeredIp) {
-	this.registeredIp = registeredIp;
-}
-
-
-public String getLastLoginIp() {
-	return lastLoginIp;
-}
-
-
-public void setLastLoginIp(String lastLoginIp) {
-	this.lastLoginIp = lastLoginIp;
-}
- @Override
+	@Override
 	public void setResultset(ResultSet rs) {
 		try {
 			super.setResultset(rs);
@@ -158,21 +153,15 @@ public void setLastLoginIp(String lastLoginIp) {
 			this.setDob(rs.getDate(6));
 			this.setMobileNo(rs.getString(7));
 			this.setRoleId(rs.getLong(8));
-			this.setUnsuccessfulLogin(rs.getInt(9));
+			this.setUnSuccessfulLogin(rs.getInt(9));
 			this.setGender(rs.getString(10));
-			this.setLastLogin(rs.getString(11));
-			this.setUserLock(rs.getString(12));
-			this.setRegisteredIp(rs.getString(13));
-			this.setLastLoginIp(rs.getString(14));
-		} catch (Exception e) {
+			this.setLastLogin(rs.getTimestamp(11));
+			this.setLock(rs.getString(12));
+			this.setRegisteredIP(rs.getString(13));
+			this.setLastLoginIP(rs.getString(14));
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	}
-
-	@Override
-	public String getValue() {
-		return null;
 	}
 
 }
