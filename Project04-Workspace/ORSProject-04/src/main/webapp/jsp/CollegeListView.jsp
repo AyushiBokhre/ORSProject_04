@@ -1,5 +1,5 @@
-<%@page import="in.co.rays.proj4.bean.RoleBean"%>
-<%@page import="in.co.rays.proj4.model.RoleModel"%>
+<%@page import="in.co.rays.proj4.bean.CollegeBean"%>
+<%@page import="in.co.rays.proj4.model.CollegeModel"%>
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
 <%@page import="in.co.rays.proj4.controller.BaseCtl"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
@@ -17,16 +17,16 @@
 	int pageNo = ServletUtility.getPageNo(request);
 	int pageSize = ServletUtility.getPageSize(request);
 	int index = ((pageNo - 1) * pageSize) + 1;
-	List<UserBean> list = ServletUtility.getList(request);
-	Iterator<UserBean> it = list.iterator();
+	List<CollegeBean> list = ServletUtility.getList(request);
+	Iterator<CollegeBean> it = list.iterator();
 	String _suc = ServletUtility.getSuccessMessage(request);
 	String _err = ServletUtility.getErrorMessage(request);
 	%>
 
-	<form action="<%=ORSView.USER_LIST_CTL%>" method="post">
+	<form action="<%=ORSView.COLLEGE_LIST_CTL%>" method="post">
 		<div align="center">
 
-			<h1>User List</h1>
+			<h1>College List</h1>
 
 			<h3 style="color: green"><%=_suc%></h3>
 			<h3 style="color: red"><%=_err%></h3>
@@ -36,10 +36,10 @@
 
 			<table>
 				<tr>
-					<td><input type="text" name="firstName" value=""
-						placeholder="search by firstName"></td>
-					<td><input type="text" name="lastName" value=""
-						placeholder="search by lastName"></td>
+					<td><input type="text" name="name" value=""
+						placeholder="search by Name"></td>
+					<td><input type="text" name="address" value=""
+						placeholder="search by address"></td>
 					<td><input type="submit" name="operation"
 						value="<%=BaseCtl.OP_SEARCH%>"></td>
 				</tr>
@@ -51,28 +51,27 @@
 					<th><input type="checkbox"
 						onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
 					<th>S.No</th>
-					<th>FirstName</th>
-					<th>LastName</th>
-					<th>Login</th>
-					<th>DOB</th>
-					<th>RoleName</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>State</th>
+					<th>City</th>
+					<th>Phone No</th>
 				</tr>
 
 				<%
 				while (it.hasNext()) {
-					UserBean bean = it.next();
-					RoleModel rmodel = new RoleModel();
-					RoleBean rbean = rmodel.findByPK(bean.getRoleId());
+					CollegeBean bean = it.next();
+					
 				%>
 				<tr align="center" style="background-color: lightgrey">
 					<td><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
 					<td><%=index++%></td>
-					<td><%=bean.getFirstName()%></td>
-					<td><%=bean.getLastName()%></td>
-					<td><%=bean.getLogin()%></td>
-					<td><%=bean.getDob()%></td>
-					<td><%=rbean.getName()%></td>
+					<td><%=bean.getName()%></td>
+					<td><%=bean.getAddresss()%></td>
+					<td><%=bean.getState()%></td>
+					<td><%=bean.getCity()%></td>
+					<td><%=bean.getPhoneNo()%></td>
 				</tr>
 				<%
 				}

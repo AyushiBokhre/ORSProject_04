@@ -38,20 +38,20 @@ public interface ORSView {
 
 	public String ERROR_CTL = "/ctl/MarksheetCtl";
 
-	public String MARKSHEET_CTL = APP_CONTEXT + "/ctl/MarksheetCtl";
-	public String MARKSHEET_LIST_CTL = APP_CONTEXT + "/ctl/MarksheetListCtl";
+	public String MARKSHEET_CTL = APP_CONTEXT + "/MarksheetCtl";
+	public String MARKSHEET_LIST_CTL = APP_CONTEXT + "/MarksheetListCtl";
 	public String USER_CTL = APP_CONTEXT + "/UserCtl";
 	public String USER_LIST_CTL = APP_CONTEXT + "/UserListCtl";
-	public String COLLEGE_CTL = APP_CONTEXT + "/ctl/CollegeCtl";
-	public String COLLEGE_LIST_CTL = APP_CONTEXT + "/ctl/CollegeListCtl";
-	public String STUDENT_CTL = APP_CONTEXT + "/ctl/StudentCtl";
-	public String STUDENT_LIST_CTL = APP_CONTEXT + "/ctl/StudentListCtl";
+	public String COLLEGE_CTL = APP_CONTEXT + "/CollegeCtl";
+	public String COLLEGE_LIST_CTL = APP_CONTEXT + "/CollegeListCtl";
+	public String STUDENT_CTL = APP_CONTEXT + "/StudentCtl";
+	public String STUDENT_LIST_CTL = APP_CONTEXT + "/StudentListCtl";
 	public String ROLE_CTL = APP_CONTEXT + "/RoleCtl";
 	public String ROLE_LIST_CTL = APP_CONTEXT + "/RoleListCtl";
-	public String COURSE_CTL = APP_CONTEXT + "/ctl/CourseCtl";
-	public String COURSE_LIST_CTL = APP_CONTEXT + "/ctl/CourseListCtl";
-	public String SUBJECT_CTL = APP_CONTEXT + "/ctl/SubjectCtl";
-	public String SUBJECT_LIST_CTL = APP_CONTEXT + "/ctl/SubjectListCtl";
+	public String COURSE_CTL = APP_CONTEXT + "/CourseCtl";
+	public String COURSE_LIST_CTL = APP_CONTEXT + "/CourseListCtl";
+	public String SUBJECT_CTL = APP_CONTEXT + "/SubjectCtl";
+	public String SUBJECT_LIST_CTL = APP_CONTEXT + "/SubjectListCtl";
 	public String USER_REGISTRATION_CTL = APP_CONTEXT + "/UserRegistrationCtl";
 	public String LOGIN_CTL = APP_CONTEXT + "/LoginCtl";
 	public String WELCOME_CTL = APP_CONTEXT + "/WelcomeCtl";

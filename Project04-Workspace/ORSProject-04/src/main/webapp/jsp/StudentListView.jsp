@@ -1,5 +1,6 @@
-<%@page import="in.co.rays.proj4.bean.RoleBean"%>
-<%@page import="in.co.rays.proj4.model.RoleModel"%>
+<%@page import="in.co.rays.proj4.bean.CollegeBean"%>
+<%@page import="in.co.rays.proj4.bean.StudentBean"%>
+<%@page import="in.co.rays.proj4.model.CollegeModel"%>
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
 <%@page import="in.co.rays.proj4.controller.BaseCtl"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
@@ -17,8 +18,8 @@
 	int pageNo = ServletUtility.getPageNo(request);
 	int pageSize = ServletUtility.getPageSize(request);
 	int index = ((pageNo - 1) * pageSize) + 1;
-	List<UserBean> list = ServletUtility.getList(request);
-	Iterator<UserBean> it = list.iterator();
+	List<StudentBean> list = ServletUtility.getList(request);
+	Iterator<StudentBean> it = list.iterator();
 	String _suc = ServletUtility.getSuccessMessage(request);
 	String _err = ServletUtility.getErrorMessage(request);
 	%>
@@ -26,7 +27,7 @@
 	<form action="<%=ORSView.USER_LIST_CTL%>" method="post">
 		<div align="center">
 
-			<h1>User List</h1>
+			<h1>Student List</h1>
 
 			<h3 style="color: green"><%=_suc%></h3>
 			<h3 style="color: red"><%=_err%></h3>
@@ -38,8 +39,8 @@
 				<tr>
 					<td><input type="text" name="firstName" value=""
 						placeholder="search by firstName"></td>
-					<td><input type="text" name="lastName" value=""
-						placeholder="search by lastName"></td>
+					<td><input type="text" name="collegeName" value=""
+						placeholder="search by collegeName"></td>
 					<td><input type="submit" name="operation"
 						value="<%=BaseCtl.OP_SEARCH%>"></td>
 				</tr>
@@ -53,16 +54,17 @@
 					<th>S.No</th>
 					<th>FirstName</th>
 					<th>LastName</th>
-					<th>Login</th>
+					<th>College Name</th>
+					<th>Email</th>
 					<th>DOB</th>
-					<th>RoleName</th>
+					<th>Mobile No</th>
 				</tr>
 
 				<%
 				while (it.hasNext()) {
-					UserBean bean = it.next();
-					RoleModel rmodel = new RoleModel();
-					RoleBean rbean = rmodel.findByPK(bean.getRoleId());
+					StudentBean bean = it.next();
+					CollegeModel cmodel = new CollegeModel();
+					CollegeBean cbean = cmodel.findByPK(bean.getCollegeId());
 				%>
 				<tr align="center" style="background-color: lightgrey">
 					<td><input type="checkbox" name="ids"
@@ -70,9 +72,10 @@
 					<td><%=index++%></td>
 					<td><%=bean.getFirstName()%></td>
 					<td><%=bean.getLastName()%></td>
-					<td><%=bean.getLogin()%></td>
-					<td><%=bean.getDob()%></td>
-					<td><%=rbean.getName()%></td>
+					<td><%=cbean.getName()%></td>
+					<td><%=bean.getEmail()%></td>
+					<td><%=bean.getDateOfBirth()%></td>
+					<td><%=bean.getMobileNo()%></td>
 				</tr>
 				<%
 				}

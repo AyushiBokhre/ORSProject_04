@@ -1,4 +1,5 @@
 <%@page import="in.co.rays.proj4.controller.UserRegistrationCtl"%>
+<%@page import="in.co.rays.proj4.controller.LoginCtl"%>
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
 <%@page import="in.co.rays.proj4.controller.BaseCtl"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
@@ -63,13 +64,11 @@
 
 				<tr>
 					<th>Gender<font color="red">*</font></th>
-					<td>
-					<select class='form-control' name='gender'>
+					<td><select class='form-control' name='gender'>
 							<option selected value=''>-------------Select------------</option>
 							<option value='female'>female</option>
 							<option value='male'>male</option>
-					</select>
-					</td>
+					</select></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("gender", request)%></td>
 				</tr>
 

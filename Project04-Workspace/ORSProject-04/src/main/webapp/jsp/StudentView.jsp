@@ -1,4 +1,4 @@
-<%@page import="in.co.rays.proj4.bean.RoleBean"%>
+<%@page import="in.co.rays.proj4.bean.CollegeBean"%>
 <%@page import="java.util.List"%>
 <%@page import="in.co.rays.proj4.controller.UserCtl"%>
 <%@page import="in.co.rays.proj4.controller.LoginCtl"%>
@@ -16,14 +16,14 @@
 	<%
 	String _suc = ServletUtility.getSuccessMessage(request);
 	String _err = ServletUtility.getErrorMessage(request);
-	List<RoleBean> roleList = (List) request.getAttribute("roleList");
+	List<CollegeBean> collegeList = (List) request.getAttribute("collegeList");
 	%>
 
-	<form action="<%=ORSView.USER_CTL%>" method="post">
+	<form action="<%=ORSView.STUDENT_CTL%>" method="post">
 
 		<div align="center">
 
-			<h1>Add User</h1>
+			<h1>Add Student</h1>
 
 			<h3 style="color: green"><%=_suc%></h3>
 			<h3 style="color: red"><%=_err%></h3>
@@ -45,50 +45,28 @@
 				</tr>
 
 				<tr>
-					<th>Login<font color="red">*</font></th>
-					<td><input type="text" name="login" value=""
+					<th>Email<font color="red">*</font></th>
+					<td><input type="email" name="email" value=""
 						placeholder="enter an emial"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("login", request)%></td>
+					<td style="color: red"><%=ServletUtility.getErrorMessage("email", request)%></td>
 				</tr>
 
 				<tr>
-					<th>Password<font color="red">*</font></th>
-					<td><input type="password" name="password" value=""
-						placeholder="enter an password"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("password", request)%></td>
-				</tr>
-
-				<tr>
-					<th>ConfirmPassword<font color="red">*</font></th>
-					<td><input type="password" name="confirmPassword" value=""
-						placeholder="re-enter your password"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("confirmPassword", request)%></td>
-				</tr>
-
-				<tr>
-					<th>Role<font color="red">*</font></th>
-					<td><select class='form-control' name='roleId'>
+					<th>College<font color="red">*</font></th>
+					<td><select class='form-control' name='collegeId'>
 							<option selected value=''>-------------Select------------</option>
 								<%
-							for (RoleBean rbean : roleList) {
+							for (CollegeBean cbean : collegeList) {
 							%>
-							<option value='<%=rbean.getKey()%>'><%=rbean.getValue()%></option>
+							<option value='<%=cbean.getKey()%>'><%=cbean.getValue()%></option>
 							<%
 							}
 							%>
 					</select></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("roleId", request)%></td>
+					<td style="color: red"><%=ServletUtility.getErrorMessage("collegeId", request)%></td>
 				</tr>
 
-				<tr>
-					<th>Gender<font color="red">*</font></th>
-					<td><select class='form-control' name='gender'>
-							<option selected value=''>-------------Select------------</option>
-							<option value='female'>female</option>
-							<option value='male'>male</option>
-					</select></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("gender", request)%></td>
-				</tr>
+				
 
 				<tr>
 					<th>DOB<font color="red">*</font></th>
@@ -105,7 +83,7 @@
 				<tr>
 					<th></th>
 					<td><input type="submit" name="operation"
-						value="<%=UserCtl.OP_SAVE%>"></td>
+						value="<%=BaseCtl.OP_SAVE%>"></td>
 				</tr>
 
 			</table>

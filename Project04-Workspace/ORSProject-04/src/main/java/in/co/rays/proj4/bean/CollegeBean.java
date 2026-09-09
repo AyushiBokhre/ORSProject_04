@@ -66,7 +66,7 @@ public void setResultset(ResultSet rs) {
 
 	@Override
 	public String getValue() {
-		return null;
+		return name;
 	}
 
 }

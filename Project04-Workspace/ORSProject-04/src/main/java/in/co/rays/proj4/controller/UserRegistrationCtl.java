@@ -69,7 +69,6 @@ public class UserRegistrationCtl extends BaseCtl<UserBean, UserModel> {
 
 		UserBean bean = new UserBean();
 
-		bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setRoleId(RoleBean.STUDENT);
 		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
 		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
