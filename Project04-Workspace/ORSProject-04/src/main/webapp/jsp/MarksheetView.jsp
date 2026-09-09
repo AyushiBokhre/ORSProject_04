@@ -1,7 +1,9 @@
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
 <%@page import="in.co.rays.proj4.controller.BaseCtl"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
-
+<%@page import="in.co.rays.proj4.bean.StudentBean"%>
+<%@page import="java.util.List"%>
+<%@page import="in.co.rays.proj4.util.HTMLUtility"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,7 @@
 	<%
 	String _suc = ServletUtility.getSuccessMessage(request);
 	String _err = ServletUtility.getErrorMessage(request);
+	List<StudentBean> studentList = (List) request.getAttribute("studentList");
 	%>
 
 	<form action="<%=ORSView.MARKSHEET_CTL%>" method="post">
@@ -33,9 +36,18 @@
 				</tr>
 				<tr>
 					<th>Name<font color="red">*</font></th>
-					<td><input type="text" name="name" value=""
-						placeholder="enter role name"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("name", request)%></td>
+					<%--<td><select class='form-control' name='studentId'>
+							<option selected value=''>-------------Select------------</option>
+								<%
+							for (StudentBean sbean : studentList) {
+							
+							<option value='<%=sbean.getKey()%>'><%=sbean.getValue()%></option>
+							<%
+							}
+							%>
+					</select></td>--%>
+					 <td><%=HTMLUtility.getList("studentId", "" ,studentList) %></td>
+					<td style="color: red"><%=ServletUtility.getErrorMessage("studentId", request)%></td>
 				</tr>
 
 				<tr>

@@ -1,5 +1,6 @@
 <%@page import="in.co.rays.proj4.bean.CollegeBean"%>
 <%@page import="java.util.List"%>
+<%@page import="in.co.rays.proj4.util.HTMLUtility"%>
 <%@page import="in.co.rays.proj4.controller.UserCtl"%>
 <%@page import="in.co.rays.proj4.controller.LoginCtl"%>
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
@@ -53,7 +54,7 @@
 
 				<tr>
 					<th>College<font color="red">*</font></th>
-					<td><select class='form-control' name='collegeId'>
+					<%-- <td><select class='form-control' name='collegeId'>
 							<option selected value=''>-------------Select------------</option>
 								<%
 							for (CollegeBean cbean : collegeList) {
@@ -62,7 +63,8 @@
 							<%
 							}
 							%>
-					</select></td>
+					</select></td>--%>
+					<td><%=HTMLUtility.getList("studentId", "" ,collegeList) %></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("collegeId", request)%></td>
 				</tr>
 

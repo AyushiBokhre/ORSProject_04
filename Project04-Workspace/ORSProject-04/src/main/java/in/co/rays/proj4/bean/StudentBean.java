@@ -89,7 +89,7 @@ public class StudentBean extends BaseBean {
 
 	@Override
 	public String getValue() {
-		return null;
+		return firstName+" "+ lastName;
 	}
 
 }
