@@ -64,7 +64,7 @@
 							}
 							%>
 					</select></td>--%>
-					<td><%=HTMLUtility.getList("studentId", "" ,collegeList) %></td>
+					<td><%=HTMLUtility.getList("collegeId", "" ,collegeList) %></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("collegeId", request)%></td>
 				</tr>
 

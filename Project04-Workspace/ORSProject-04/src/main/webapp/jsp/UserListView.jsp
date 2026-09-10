@@ -55,6 +55,8 @@
 					<th>LastName</th>
 					<th>Login</th>
 					<th>DOB</th>
+					<th>Gender</th>
+					<th>Mobile No.</th>
 					<th>RoleName</th>
 				</tr>
 
@@ -72,6 +74,8 @@
 					<td><%=bean.getLastName()%></td>
 					<td><%=bean.getLogin()%></td>
 					<td><%=bean.getDob()%></td>
+					<td><%=bean.getGender()%></td>
+					<td><%=bean.getMobileNo()%></td>
 					<td><%=rbean.getName()%></td>
 				</tr>
 				<%

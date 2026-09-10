@@ -65,8 +65,8 @@ public interface ORSView {
 
 	public String FACULTY_VIEW = PAGE_FOLDER + "/FacultyView.jsp";
 	public String FACULTY_LIST_VIEW = PAGE_FOLDER + "/FacultyListView.jsp";
-	public String FACULTY_CTL = APP_CONTEXT + "/ctl/FacultyCtl";
-	public String FACULTY_LIST_CTL = APP_CONTEXT + "/ctl/FacultyListCtl";
+	public String FACULTY_CTL = APP_CONTEXT + "/FacultyCtl";
+	public String FACULTY_LIST_CTL = APP_CONTEXT + "/FacultyListCtl";
 
 	public String STUDENT_REPORT_CTL = APP_CONTEXT + "/ctl/StudentReportCtl";
 	public String COLLEGE_REPORT_CTL = APP_CONTEXT + "/ctl/CollegeReportCtl";

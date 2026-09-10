@@ -105,7 +105,7 @@ public class SubjectModel extends BaseModel<SubjectBean>{
 				sql.append(" and description like '" +bean.getDescription()+"%'");
 			}
 			if(bean.getCourseId()>0) {
-				sql.append(" and course like '" +bean.getCourseId()+ "%'");
+				sql.append(" and course_id like '" +bean.getCourseId()+ "%'");
 			}
 		}
 			

@@ -1,20 +1,32 @@
 package in.co.rays.proj4.controller;
 
+import java.util.List;
+
 import in.co.rays.proj4.bean.CourseBean;
+import in.co.rays.proj4.bean.SubjectBean;
 import in.co.rays.proj4.model.CourseModel;
+import in.co.rays.proj4.model.SubjectModel;
 import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.DataValidator;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebServlet("/CourseCtl")
-public class CourseCtl extends BaseCtl<CourseBean, CourseModel>{
+@WebServlet("/SubjectCtl")
+public class SubjectCtl extends BaseCtl<SubjectBean, SubjectModel>{
 	@Override
-	protected CourseBean populateBean(HttpServletRequest request) {
-		CourseBean bean = new CourseBean();
+	protected void preload(HttpServletRequest request) {
+		CourseModel cmodel =new CourseModel();
+		List<CourseBean> courseList=cmodel.list();
+		request.setAttribute("courseList", courseList);
+		super.preload(request);
+	}
+
+	@Override
+	protected SubjectBean populateBean(HttpServletRequest request) {
+		SubjectBean bean = new SubjectBean();
 		bean.setName(DataUtility.getString(request.getParameter("name")));
 		bean.setDescription(DataUtility.getString(request.getParameter("description")));
-		bean.setDuration(DataUtility.getString(request.getParameter("duration")));
+		bean.setCourseId(DataUtility.getLong(request.getParameter("courseId")));
 
 		return bean;
 	}
@@ -31,20 +43,20 @@ public class CourseCtl extends BaseCtl<CourseBean, CourseModel>{
 		    pass = false;
 		} 
 		
-		if (DataValidator.isNull(request.getParameter("duration"))) {
-		    request.setAttribute("duration", "duration is required");
+		if (DataValidator.isNull(request.getParameter("courseId"))) {
+		    request.setAttribute("courseId", "course name is required");
 		    pass = false;
 		} 
 		return pass;
 	}
 	@Override
 	protected String getView() {
-		return ORSView.COURSE_VIEW;
+		return ORSView.SUBJECT_VIEW;
 	}
 
 	@Override
-	protected CourseModel getModel() {
-		return new CourseModel();
+	protected SubjectModel getModel() {
+		return new SubjectModel();
 	}
 
 }

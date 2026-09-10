@@ -23,7 +23,7 @@
 	String _err = ServletUtility.getErrorMessage(request);
 	%>
 
-	<form action="<%=ORSView.ROLE_LIST_CTL%>" method="post">
+	<form action="<%=ORSView.MARKSHEET_LIST_CTL%>" method="post">
 		<div align="center">
 
 			<h1>Marksheet List</h1>
@@ -36,10 +36,10 @@
 
 			<table>
 				<tr>
+					<td><input type="text" name="rollNo" value=""
+						placeholder="search by rollno"></td>
 					<td><input type="text" name="name" value=""
 						placeholder="search by name"></td>
-					<td><input type="text" name="rollNo" value=""
-						placeholder="search by roll no"></td>
 					<td><input type="submit" name="operation"
 						value="<%=BaseCtl.OP_SEARCH%>"></td>
 				</tr>

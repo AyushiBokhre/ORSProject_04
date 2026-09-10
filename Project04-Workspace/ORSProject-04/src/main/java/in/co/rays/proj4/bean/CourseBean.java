@@ -45,7 +45,7 @@ public class CourseBean extends BaseBean {
 
 	@Override
 	public String getValue() {
-		return null;
+		return name;
 	}
 
 }

@@ -124,7 +124,7 @@ public class FacultyModel extends BaseModel<FacultyBean>{
 				sql.append(" and college_id = " +bean.getCollegeId());
 			}
 			if(bean.getCollegeName()!=null && bean.getCollegeName().length()>0) {
-				sql.append(" and colleg_name like '" +bean.getCollegeName()+ "%'");
+				sql.append(" and college_name like '" +bean.getCollegeName()+ "%'");
 			}
 			if(bean.getFirstName()!=null && bean.getFirstName().length()>0 ){
 				sql.append(" and first_name like '" +bean.getFirstName()+"%'");
@@ -133,7 +133,7 @@ public class FacultyModel extends BaseModel<FacultyBean>{
 				sql.append(" and last_name like '" +bean.getLastName()+ "%'");
 			}
 			if(bean.getEmail()!=null && bean.getEmail().length()>0) {
-				sql.append(" and email = " +bean.getEmail());
+				sql.append(" and email like '" +bean.getEmail()+"%'");
 			}
 			if(bean.getMobileNo()!=null && bean.getMobileNo().length()>0 ){
 				sql.append(" and mobile_no like '" +bean.getMobileNo()+"%'");

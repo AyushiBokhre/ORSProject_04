@@ -114,9 +114,7 @@ public class MarksheetModel extends BaseModel<MarksheetBean>{
 			if(bean.getRollNo()!=null && bean.getRollNo().length()>0) {
 				sql.append(" and roll_no like '" +bean.getRollNo()+ "%'");
 			}
-			if(bean.getStudentId()>0) {
-				sql.append(" and student_id = " +bean.getStudentId()+ "%'");
-			}
+		
 			if(bean.getName()!=null  && bean.getName().length()>0) {
 				sql.append(" and name like '" +bean.getName()+ "%'");
 			}
