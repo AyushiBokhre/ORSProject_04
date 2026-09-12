@@ -52,19 +52,20 @@ public class CollegeModel extends BaseModel<CollegeBean> {
 
 	@Override
 	public void update(CollegeBean bean) throws ApplicationException, DuplicateRecordException {
-		Connection conn = null;
-		CollegeBean existBean = findByCollegeName(bean.getName());
+		 Connection conn = null;
 
-		if (existBean != null) {
-			throw new DuplicateRecordException("College Name already exist");
-		}
+		    CollegeBean existBean = findByCollegeName(bean.getName());
+
+		    if (existBean != null && existBean.getId() != bean.getId()) {
+		        throw new DuplicateRecordException("College Name already exist");
+		    }
 
 		try {
 
 			conn = JDBCDataSource.getConnection();
 			conn.setAutoCommit(false);
 			PreparedStatement pstmt = conn.prepareStatement("update " + getTable()
-					+ " set name=?, address=?,state=?,city=?,phone_no=?,modifid_by=?,modified_datetime=? where id=? ");
+					+ " set name=?, address=?,state=?,city=?,phone_no=?,modified_by=?,modified_datetime=? where id=? ");
 
 			pstmt.setString(1, bean.getName());
 			pstmt.setString(2, bean.getAddresss());
@@ -75,8 +76,9 @@ public class CollegeModel extends BaseModel<CollegeBean> {
 			pstmt.setTimestamp(7, bean.getModifiedDatetime());
 			pstmt.setLong(8, bean.getId());
 
-			pstmt.executeUpdate();
+			int i =pstmt.executeUpdate();
 			conn.commit();
+			System.out.println();
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -58,6 +58,7 @@
 					<th>Email</th>
 					<th>DOB</th>
 					<th>Mobile No</th>
+					<th>Edit</th>
 				</tr>
 
 				<%
@@ -76,6 +77,7 @@
 					<td><%=bean.getEmail()%></td>
 					<td><%=bean.getDateOfBirth()%></td>
 					<td><%=bean.getMobileNo()%></td>
+					<td><a href="<%=ORSView.STUDENT_CTL + "?id=" + bean.getId()%>">Edit</a></td>
 				</tr>
 				<%
 				}

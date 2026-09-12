@@ -60,6 +60,7 @@
 					<th>Address</th>
 					<th>Gender</th>
 					<th>DOB</th>
+					<th>Edit</th>
 				</tr>
 
 				<%
@@ -80,6 +81,7 @@
 					<td><%=bean.getAddress()%></td>
 					<td><%=bean.getGender()%></td>
 					<td><%=bean.getDob()%></td>
+					<td><a href="<%=ORSView.FACULTY_CTL + "?id=" + bean.getId()%>">Edit</a></td>
 				</tr>
 				<%
 				}

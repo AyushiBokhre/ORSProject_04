@@ -53,7 +53,7 @@ public class SubjectModel extends BaseModel<SubjectBean>{
 		Connection conn = null;
 		SubjectBean existBean = findByName(bean.getName());
 
-		if (existBean != null) {
+		if (existBean != null && existBean.getId() != bean.getId()) {
 			throw new DuplicateRecordException("Subject already exist");
 		}
 

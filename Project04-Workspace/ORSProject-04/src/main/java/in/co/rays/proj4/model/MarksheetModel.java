@@ -60,7 +60,7 @@ public class MarksheetModel extends BaseModel<MarksheetBean>{
 		Connection conn = null;
 		MarksheetBean existBean = findByRollNo(bean.getRollNo());
 
-		if (existBean != null) {
+		if (existBean != null && existBean.getId() != bean.getId()) {
 			throw new DuplicateRecordException("Roll No already exist");
 		}
 		StudentModel smodel = new StudentModel();

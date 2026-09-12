@@ -51,6 +51,7 @@
 					<th><input type="checkbox"
 						onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
 					<th>S.No</th>
+					<th>Photo</th>
 					<th>FirstName</th>
 					<th>LastName</th>
 					<th>Login</th>
@@ -58,6 +59,7 @@
 					<th>Gender</th>
 					<th>Mobile No.</th>
 					<th>RoleName</th>
+					<th>Edit</th>
 				</tr>
 
 				<%
@@ -70,6 +72,12 @@
 					<td><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
 					<td><%=index++%></td>
+					<td><img
+						src="<%=ORSView.UPLOAD_PHOTO_CTL%>?id=<%=bean.getId()%>"
+						onerror="this.style.display='none';" alt="User Photo" width="60"
+						height="60"
+						style="object-fit: cover; border-radius: 50%; border: 1px solid #ccc;">
+					</td>
 					<td><%=bean.getFirstName()%></td>
 					<td><%=bean.getLastName()%></td>
 					<td><%=bean.getLogin()%></td>
@@ -77,6 +85,7 @@
 					<td><%=bean.getGender()%></td>
 					<td><%=bean.getMobileNo()%></td>
 					<td><%=rbean.getName()%></td>
+					<td><a href="<%=ORSView.USER_CTL + "?id=" + bean.getId()%>">Edit</a></td>
 				</tr>
 				<%
 				}

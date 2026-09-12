@@ -82,7 +82,7 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 
 		long id = DataUtility.getLong(request.getParameter("id"));
 
-		if (id > 0 || op != null) {
+		if (id > 0 ) {
 			BaseBean bean = getModel().findByPK(id);
 			ServletUtility.setBean(bean, request);
 		}
@@ -98,6 +98,7 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 
 		B bean = populateBean(request);
 		M model = getModel();
+		
 
 		if (id > 0) {
 			model.update(bean);

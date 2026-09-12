@@ -65,7 +65,7 @@ public class FacultyModel extends BaseModel<FacultyBean>{
 		Connection conn = null;
 		FacultyBean existBean = findByEmail(bean.getEmail());
 
-		if (existBean != null) {
+		if (existBean != null && existBean.getId() != bean.getId()) {
 			throw new DuplicateRecordException("Faculty already exist");
 		}
 		

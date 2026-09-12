@@ -6,6 +6,7 @@
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
 <%@page import="in.co.rays.proj4.controller.BaseCtl"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
+<%@page import="in.co.rays.proj4.util.DataUtility"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +19,22 @@
 	String _suc = ServletUtility.getSuccessMessage(request);
 	String _err = ServletUtility.getErrorMessage(request);
 	List<CollegeBean> collegeList = (List) request.getAttribute("collegeList");
+	/* FacultyBean bean = (FacultyBean) request.getAttribute("bean"); */
 	%>
+
+	<jsp:useBean id="bean" class="in.co.rays.proj4.bean.FacultyBean"
+		scope="request"></jsp:useBean>
 
 	<form action="<%=ORSView.FACULTY_CTL%>" method="post">
 
+		<input type="hidden" name="id"
+			value="<%=DataUtility.getStringData(bean.getId())%>">
+	
 		<div align="center">
 
-			<h1>Add Faculty</h1>
+			<h1>
+				<%=bean != null && bean.getId() > 0 ? "Update Faculty" : "Add Faculty"%>
+			</h1>
 
 			<h3 style="color: green"><%=_suc%></h3>
 			<h3 style="color: red"><%=_err%></h3>
@@ -42,40 +52,40 @@
 							}
 							%>
 					</select></td>--%>
-					<td><%=HTMLUtility.getList("collegeId", "" ,collegeList) %></td>
+					<td><%=HTMLUtility.getList("collegeId",DataUtility.getStringData(bean.getCollegeId()) ,collegeList) %></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("collegeId", request)%></td>
 				</tr>
 			
 				<tr>
 					<th>FirstName<font color="red">*</font></th>
-					<td><input type="text" name="firstName" value=""
+					<td><input type="text" name="firstName"  value="<%=DataUtility.getStringData(bean.getFirstName())%>"
 						placeholder="enter your firstName"></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("firstName", request)%></td>
 				</tr>
 
 				<tr>
 					<th>LastName<font color="red">*</font></th>
-					<td><input type="text" name="lastName" value=""
+					<td><input type="text" name="lastName"  value="<%=DataUtility.getStringData(bean.getLastName())%>"
 						placeholder="enter your lastName"></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("lastName", request)%></td>
 				</tr>
 
 				<tr>
 					<th>Email<font color="red">*</font></th>
-					<td><input type="email" name="email" value=""
+					<td><input type="email" name="email" value="<%=DataUtility.getStringData(bean.getEmail())%>"
 						placeholder="enter an emial"></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("email", request)%></td>
 				</tr>
 
 				<tr>
 					<th>Mobile No<font color="red">*</font></th>
-					<td><input type="text" name="mobileNo" value="" placeholder="enter mobile no"></td>
+					<td><input type="text" name="mobileNo"  value="<%=DataUtility.getStringData(bean.getMobileNo())%>" placeholder="enter mobile no"></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("mobileNo", request)%></td>
 				</tr>
 				
 				<tr>
 					<th>Address<font color="red">*</font></th>
-					<td><input type="text" name="address" value="" placeholder="enter address"></td>
+					<td><input type="text" name="address" value="<%=DataUtility.getStringData(bean.getAddress())%>"  placeholder="enter address"></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("address", request)%></td>
 				</tr>
 				
@@ -91,14 +101,14 @@
 				
 				<tr>
 					<th>DOB<font color="red">*</font></th>
-					<td><input type="date" name="dob" value=""></td>
+					<td><input type="date" name="dob" value="<%=DataUtility.getStringData(bean.getDob())%>"></td>
 					<td style="color: red"><%=ServletUtility.getErrorMessage("dob", request)%></td>
 				</tr>
 				
 				<tr>
 					<th></th>
 					<td><input type="submit" name="operation"
-						value="<%=BaseCtl.OP_SAVE%>"></td>
+						value="<%=bean != null && bean.getId() > 0 ? "Update" : BaseCtl.OP_SAVE%>"></td>
 				</tr>
 
 			</table>

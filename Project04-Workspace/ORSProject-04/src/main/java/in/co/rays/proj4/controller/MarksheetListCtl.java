@@ -6,7 +6,7 @@ import in.co.rays.proj4.util.DataUtility;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebServlet("/MarksheetListCtl")
+@WebServlet("/ctl/MarksheetListCtl")
 public class MarksheetListCtl extends BaseListCtl<MarksheetBean, MarksheetModel> {
 	@Override
 	protected MarksheetBean populateBean(HttpServletRequest request) {

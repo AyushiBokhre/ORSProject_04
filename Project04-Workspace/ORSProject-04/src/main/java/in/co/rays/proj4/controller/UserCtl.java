@@ -11,7 +11,7 @@ import in.co.rays.proj4.util.DataValidator;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebServlet("/UserCtl")
+@WebServlet("/ctl/UserCtl")
 public class UserCtl extends BaseCtl<UserBean, UserModel> {
 	@Override
 	protected void preload(HttpServletRequest request) {
@@ -53,10 +53,11 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		if (DataValidator.isNull(request.getParameter("password"))) {
 		    request.setAttribute("password", "Password is required");
 		    pass = false;
-		} else if (!DataValidator.isPassword(request.getParameter("password"))) {
-		    request.setAttribute("password", "Password is not in valid format");
-		    pass = false;
-		}
+		} 
+//		else if (!DataValidator.isPassword(request.getParameter("password"))) {
+//		    request.setAttribute("password", "Password is not in valid format");
+//		    pass = false;
+//		}
 
 		if (DataValidator.isNull(request.getParameter("confirmPassword"))) {
 		    request.setAttribute("confirmPassword", "Confirm password is required");
@@ -102,7 +103,7 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 	protected UserBean populateBean(HttpServletRequest request) {
 
 		UserBean bean = new UserBean();
-
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setRoleId(DataUtility.getInt(request.getParameter("roleId")));
 		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
 		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
@@ -111,6 +112,7 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		bean.setConfirmPassword(DataUtility.getString(request.getParameter("confirmPassword")));
 		bean.setGender(DataUtility.getString(request.getParameter("gender")));
 		bean.setDob(DataUtility.getDate(request.getParameter("dob")));
+		bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
 
 		populateDTO(bean, request);
 

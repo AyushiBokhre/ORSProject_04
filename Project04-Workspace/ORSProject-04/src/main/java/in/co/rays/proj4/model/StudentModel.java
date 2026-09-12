@@ -62,7 +62,7 @@ public class StudentModel extends BaseModel<StudentBean> {
 		Connection conn = null;
 		StudentBean existBean = findByEmail(bean.getEmail());
 
-		if (existBean != null) {
+		if (existBean != null && existBean.getId() != bean.getId()) {
 			throw new DuplicateRecordException("Email already exist");
 		}
 		

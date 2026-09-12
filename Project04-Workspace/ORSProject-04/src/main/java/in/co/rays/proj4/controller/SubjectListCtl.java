@@ -6,7 +6,7 @@ import in.co.rays.proj4.util.DataUtility;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebServlet("/SubjectListCtl")
+@WebServlet("/ctl/SubjectListCtl")
 public class SubjectListCtl extends BaseListCtl<SubjectBean, SubjectModel> {
 	@Override
 	protected SubjectBean populateBean(HttpServletRequest request) {

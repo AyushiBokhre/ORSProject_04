@@ -46,5 +46,14 @@ isPhone()
 ServletUtility: contains methods related to servlet
 
 
+orsview interface: all path are defined 
+
+
+
+
+photo upload
+create variable for path of photo 
+
+
 
 

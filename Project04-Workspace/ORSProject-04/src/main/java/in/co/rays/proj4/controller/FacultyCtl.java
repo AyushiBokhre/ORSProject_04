@@ -12,7 +12,7 @@ import in.co.rays.proj4.util.DataValidator;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebServlet("/FacultyCtl")
+@WebServlet("/ctl/FacultyCtl")
 public class FacultyCtl extends BaseCtl<FacultyBean, FacultyModel>{
 	@Override
 	protected void preload(HttpServletRequest request) {
@@ -24,6 +24,7 @@ public class FacultyCtl extends BaseCtl<FacultyBean, FacultyModel>{
 	@Override
 	protected FacultyBean populateBean(HttpServletRequest request) {
 		FacultyBean bean=new FacultyBean();
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setCollegeId(DataUtility.getInt(request.getParameter("collegeId")));
 		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
 		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));

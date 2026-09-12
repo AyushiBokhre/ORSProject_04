@@ -51,7 +51,7 @@ public class CourseModel extends BaseModel<CourseBean> {
 		Connection conn = null;
 		CourseBean existBean = findByCourseName(bean.getName());
 
-		if (existBean != null) {
+		if (existBean != null && existBean.getId() != bean.getId() ) {
 			throw new DuplicateRecordException("Course already exist");
 		}
 		try {

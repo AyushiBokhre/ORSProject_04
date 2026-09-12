@@ -11,7 +11,7 @@ import in.co.rays.proj4.util.DataValidator;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebServlet("/SubjectCtl")
+@WebServlet("/ctl/SubjectCtl")
 public class SubjectCtl extends BaseCtl<SubjectBean, SubjectModel>{
 	@Override
 	protected void preload(HttpServletRequest request) {
@@ -24,6 +24,7 @@ public class SubjectCtl extends BaseCtl<SubjectBean, SubjectModel>{
 	@Override
 	protected SubjectBean populateBean(HttpServletRequest request) {
 		SubjectBean bean = new SubjectBean();
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setName(DataUtility.getString(request.getParameter("name")));
 		bean.setDescription(DataUtility.getString(request.getParameter("description")));
 		bean.setCourseId(DataUtility.getLong(request.getParameter("courseId")));

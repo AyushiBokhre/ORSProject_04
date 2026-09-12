@@ -1,0 +1,9 @@
+login(input validation)flow : common for all
+without any input
+click on signin button -> loginctl(post) 
+loginctl extend basectl service method of baseCtl 
+
+
+business validation:
+
+basectl me populate me ek method banai jiska kam ye h ki view k through jo data bhejege usko get krna or bean me  set krna 
