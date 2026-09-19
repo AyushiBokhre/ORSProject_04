@@ -15,7 +15,7 @@ public class CollegeCtl extends BaseCtl<CollegeBean, CollegeModel> {
 		CollegeBean bean = new CollegeBean();
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setName(DataUtility.getString(request.getParameter("name")));
-		bean.setAddresss(DataUtility.getString(request.getParameter("address")));
+		bean.setAddress(DataUtility.getString(request.getParameter("address")));
 		bean.setState(DataUtility.getString(request.getParameter("state")));
 		bean.setCity(DataUtility.getString(request.getParameter("city")));
 		bean.setPhoneNo(DataUtility.getString(request.getParameter("phoneNo")));

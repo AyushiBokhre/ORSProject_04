@@ -29,7 +29,7 @@ public class StudentCtl extends BaseCtl<StudentBean, StudentModel> {
 		bean.setCollegeId(DataUtility.getInt(request.getParameter("collegeId")));
 		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
 		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
-		bean.setEmail(DataUtility.getString(request.getParameter("login")));
+		bean.setEmail(DataUtility.getString(request.getParameter("email")));
 		bean.setDateOfBirth(DataUtility.getDate(request.getParameter("dob")));
 		bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
 

@@ -24,7 +24,7 @@ public class TestCollegeModel {
 		CollegeBean bean = new CollegeBean();
 
 		bean.setName("DAVV");
-		bean.setAddresss("Nalanda Campus");
+		bean.setAddress("Nalanda Campus");
 		bean.setCity("Indore");
 		bean.setState("Madhya Pradesh");
 		bean.setPhoneNo("5566778899");
@@ -40,7 +40,7 @@ public class TestCollegeModel {
 		CollegeBean bean = new CollegeBean();
 		bean.setId(6);
 		bean.setName("Acroplois Institute");
-		bean.setAddresss("Manglia");
+		bean.setAddress("Manglia");
 		bean.setCity("Indore");
 		bean.setState("Madhya Pradesh");
 		bean.setPhoneNo("123456789");
@@ -62,7 +62,7 @@ public class TestCollegeModel {
 
 		System.out.println(bean.getId());
 		System.out.println(bean.getName());
-		System.out.println(bean.getAddresss());
+		System.out.println(bean.getAddress());
 		System.out.println(bean.getState());
 		System.out.println(bean.getCity());
 		System.out.println(bean.getPhoneNo());
@@ -77,7 +77,7 @@ public class TestCollegeModel {
 
 		System.out.println(bean.getId());
 		System.out.println(bean.getName());
-		System.out.println(bean.getAddresss());
+		System.out.println(bean.getAddress());
 		System.out.println(bean.getState());
 		System.out.println(bean.getCity());
 		System.out.println(bean.getPhoneNo());
@@ -95,7 +95,7 @@ public class TestCollegeModel {
 			bean = it.next();
 			System.out.println(bean.getId());
 			System.out.println(bean.getName());
-			System.out.println(bean.getAddresss());
+			System.out.println(bean.getAddress());
 			System.out.println(bean.getState());
 			System.out.println(bean.getCity());
 			System.out.println(bean.getPhoneNo());

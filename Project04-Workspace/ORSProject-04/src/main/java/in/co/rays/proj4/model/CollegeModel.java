@@ -27,7 +27,7 @@ public class CollegeModel extends BaseModel<CollegeBean> {
 					.prepareStatement("insert into " + getTable() + " values(?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, nextPK());
 			pstmt.setString(2, bean.getName());
-			pstmt.setString(3, bean.getAddresss());
+			pstmt.setString(3, bean.getAddress());
 			pstmt.setString(4, bean.getState());
 			pstmt.setString(5, bean.getCity());
 			pstmt.setString(6, bean.getPhoneNo());
@@ -68,7 +68,7 @@ public class CollegeModel extends BaseModel<CollegeBean> {
 					+ " set name=?, address=?,state=?,city=?,phone_no=?,modified_by=?,modified_datetime=? where id=? ");
 
 			pstmt.setString(1, bean.getName());
-			pstmt.setString(2, bean.getAddresss());
+			pstmt.setString(2, bean.getAddress());
 			pstmt.setString(3, bean.getState());
 			pstmt.setString(4, bean.getCity());
 			pstmt.setString(5, bean.getPhoneNo());
@@ -107,8 +107,8 @@ public class CollegeModel extends BaseModel<CollegeBean> {
 			if(bean.getName()!=null && bean.getName().length()>0) {
 				sql.append(" and name like '" +bean.getName()+ "%'");
 			}
-			if(bean.getAddresss()!=null && bean.getAddresss().length()>0 ){
-				sql.append(" and address like '" +bean.getAddresss()+"%'");
+			if(bean.getAddress()!=null && bean.getAddress().length()>0 ){
+				sql.append(" and address like '" +bean.getAddress()+"%'");
 			}
 			if(bean.getState()!=null && bean.getState().length()>0) {
 				sql.append(" and state like '" +bean.getState()+ "%'");

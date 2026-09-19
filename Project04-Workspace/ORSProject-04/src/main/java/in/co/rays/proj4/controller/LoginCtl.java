@@ -36,10 +36,10 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 			pass = false;
 			request.setAttribute("password", "password is required");
 		}
-//		else if (!DataValidator.isPassword(request.getParameter("password"))) {
-//		    request.setAttribute("password", "Password is not in valid format");
-//		    pass = false;
-//		}
+		else if (!DataValidator.isPassword(request.getParameter("password"))) {
+		    request.setAttribute("password", "Password is not in valid format");
+		    pass = false;
+		}
 
 		return pass;
 	}

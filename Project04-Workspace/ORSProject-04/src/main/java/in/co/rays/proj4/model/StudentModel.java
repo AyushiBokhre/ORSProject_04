@@ -118,7 +118,7 @@ public class StudentModel extends BaseModel<StudentBean> {
 				sql.append(" and college_id = " +bean.getCollegeId());
 			}
 			if(bean.getCollegeName()!=null && bean.getCollegeName().length()>0) {
-				sql.append(" and colleg_name like '" +bean.getCollegeName()+ "%'");
+				sql.append(" and college_name like '" +bean.getCollegeName()+ "%'");
 			}
 			if(bean.getFirstName()!=null && bean.getFirstName().length()>0 ){
 				sql.append(" and first_name like '" +bean.getFirstName()+"%'");

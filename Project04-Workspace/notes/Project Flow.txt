@@ -1,59 +1,182 @@
-Input Validation flow :
+1.Input Validation flow :
 
 sigin button pr click kia
+
 request loginCtl pr gai or method post
+
 loginCtl me BaseCtl ko extends kia h isiliye BaseCtl ki service method run hogi 
-service method me humne ek condition laga k check kia h ki method post h ya nhi agr condition true hogi to validate method call hogi
+
+service method me ek condition laga k check kia h ki method post h ya nhi agr condition true hogi to validate method call hogi
+
 validate method child ne override ki h isiliye child(loginCtl) ki validate run hogi
+
 validate method me humne dataValidator ki isNull method me request.getParameter se login bheja
-agr login ki value null hogi to condition true or pass ki value false set ki
-or request.setAtrribute method me key value k form me error message set kiye
+
+agr login ki value null hogi to condition true or pass ki value false set ki or request.setAtrribute method me key value k form me error message set kiye
 same process password field k liye bhi ki
+
 validate method ki condition true hogi or servletUtility ki forward method se login view pr forward kia
-login view pr srvletutility.getErrorMessage se key request k form me error message get kia or expression tag me print kia
 
+login view pr servletutility.getErrorMessage se key request k form me error message get kia or expression tag me print kia
 
-Business Validation flow:
+------------------------------------------------------------------------------------------
+
+2. Business Validation flow(login):
+
 login password wrong fill kia or signin button pr click kia 
+
 request loginCtl pr gai or method post 
+
 loginCtl ki doPost Method run hogi 
-usme humne request.getparameter se operation ki value get ki or sting me hold ki
+
+usme request.getparameter se operation ki value get ki or sting me hold ki
+
 uske bad populateBean method ko call kia login view se data(login ,password) get krke bean me set krne k liye
+
 uske bad condition laga k .equals method se operation check kia operation signIn h to condition true hogi or model ki authenticate method ko call kia
-authenticate method me humne bean.getlogin or bean.getpassword se dono parameter pass kiye
-authenticate method me findBylogin method ko call kia h jisse humne check kia ki jo login user ne bheja h vo hamare database me h ya nhi agr hoga to findByLogin bean return karegi or nhi hoga to null return karegi 
-uske bad hum check karege ki agr bean null nhi h to hum .equals method se check karege ki jo password databse me store h vo or user ne jo bheja h vo same h ya nhi agr password match nhi hoga to condition false hui or else statement me humne servletUtility.setErrorMessage me message or request k form me error message set kiya or login view pr forward kia
+
+authenticate method me bean.getlogin or bean.getpassword se dono parameter pass kiye
+
+authenticate method me findBylogin method ko call kia h jisse check kia ki jo login user ne bheja h vo hamare database me h ya nhi agr hoga to findByLogin bean return karegi or nhi hoga to null return karegi 
+
+uske bad check karege ki agr bean null nhi h or equals method se check karege ki jo password databse me store h vo or user ne jo bheja h vo same h ya nhi agr password match nhi hoga to condition false hui or else statement me humne servletUtility.setErrorMessage me message or request k form me error message set kiya or login view pr forward kia
+
 login view pr srvletutility.getErrorMessage se key request k form me error message get kia or expression tag me print kia
 
+------------------------------------------------------------------------------------------
 
-Successful Login Flow:
+3. Successful Login Flow:
+
 login password fill kia or signin button pr click kia 
+
 request loginCtl pr gai or method post 
+
 loginCtl ki doPost Method run hogi 
-usme humne request.getparameter se operation ki value get ki or string me hold ki
+
+usme request.getparameter se operation ki value get ki or string me hold ki
+
 uske bad populateBean method ko call kia login view se data(login ,password) get krke bean me set krne k liye
+
 uske bad if condition me equals method se operation check kia operation signIn h to condition true hogi or model ki authenticate method ko call kia
+
 authenticate method me humne bean.getlogin or bean.getpassword se dono parameter pass kiye
+
 authenticate method me findBylogin method ko call kia h jisse humne check kia ki jo login user ne bheja h vo hamare database me h ya nhi agr hoga to findByLogin bean return karegi 
+
 uske bad if condition me check karege ki bean null nhi h  or  jo password databse me store h vo or user ne jo bheja h vo same h ya nhi agr password match hoga to condition true hui or authenticate method bean return karegi 
-uske bad check kia ki bean null nhi h to session ka object create kia or bean ko session ki setAttribute method me key value k form me set kia 
+
+uske bad check kia ki bean null nhi h to session ka object create kia or bean ko session ki setAttribute method me key value k form me set kia
+
 RoleModel ka obj create kia or roleModel ki findbyPk call ki or user k role ka data Rolebean k obj me store kia 
-if condition me check kia ki rolebean ka obj null nhI h to role name get krke session me rolename ko store kia
-or redirect method se welcome view pr forward kia
 
+if condition me check kia ki rolebean ka obj null nhI h to role name get krke session me rolename ko store kia or redirect method se welcome view pr forward kia
 
-Preload flow:
+------------------------------------------------------------------------------------------
+
+4.Dynamic Preload flow:
 
 add user pr click kia request userCtl pr gai userctl me baseCtl ko extend kia h isiliye Pehle service method run hogI service method me preload method ko call kia h
-preload method child ne override kia h to child ki preload method run hogi preload method me humne roleModel ka object create kia or uski list method ko call kia list method ne rolelist return ki  or rolelist ko list k obj me hold kia or request.setAttribute me key value k form me rolelist ko set kia
-userView pr request.getAttribute se rolelist ko get kia or htmlUtility ki getList method se display kia
 
-user list flow
+preload method child ne override kia h to child ki preload method run hogi preload method me roleModel ka object create kia or uski list method ko call kia 
+
+list method ne rolelist return ki  or rolelist ko list k obj me hold kia or request.setAttribute me key value k form me rolelist ko set kia
+
+userView pr request.getAttribute se rolelist ko get kia or htmlUtility ki getList method se dropdown display kia
+
+------------------------------------------------------------------------------------------
+
+5. user list flow
+
 userlist pr click kia request userListCtl pr gai method get chalegi 
-userListCtl me BaseListCtl ko extend kia h isiliye baseCtl ki doGet method run hogi do get method me humne model ki search meth\od ko call kia h\ usme 3 parameter pass kiye h bean ka obj page no page size pag\e no 1 h\ or pag\eSize 10
-query=select * from st_user where 1=1 limit 0,10
-search\ meth\od list return kareg\i us list ko humne list k object me h\old kia or 
-servletUtility ki getList se list ko g\etPag\eNo se pag\e no ko ,g\etPag\eSize se pag\e Size ko set kia or fir Forward meth\od se userList view pr forward kia
-userListView pr servletUtility ki getList se list, getPageNo se pageNo, getPageSize se PageSize teeno ko view pr get kia 
-or iterator ki help se list ko print kia 
+
+userListCtl me BaseListCtl ko extend kia h isiliye baseCtl ki doGet method run hogi
+
+doGet method me humne model ki search method ko call kia h usme 3 parameter pass kiye h bean ka obj page no page size page no 1 h or pageSize 10
+
+query=select * from st_user where 1=1 limit 0,10 execute hogi 
+
+search method list return karegi us list ko list k object me hold kia or servletUtility ki setList se list ko setPageNo se page no ko ,setPageSize se page Size ko set kia or fir Forward method se userList view pr forward kia
+
+userListView pr servletUtility ki getList se list, getPageNo se pageNo, getPageSize se PageSize teeno ko view pr get kia or iterator ki help se list ko print kia 
+
+------------------------------------------------------------------------------------------
+
+6. Successful user registration:
+
+data fill kia or signup button pr click kia 
+
+request userRegistrationCtl pr gai or method post 
+userRegistrationCtl ki doPost Method run hogi 
+usme humne request.getparameter se operation ki value get ki or string me hold ki
+uske bad populateBean method ko call kia view se data get krke bean me set krne k liye
+uske bad if condition me equals method se operation check kia operation signup h to condition true hogi or model ki add method ko call kia
+add method me humne bean ka object pass kiye
+add method me findBylogin method ko call kia h jisse humne check kia ki jo login user ne bheja h vo hamare database me h ya nhi agr hoga to findByLogin bean return karegi or usko existBean me hold kia
+uske bad if condition me check karege ki existbean null nhi h iska mtlb jo login id user ne view pr form me dali h vo already data base me exist krti he or agr existBean null hoga to condition false hogi or insert ki query run hogi or data database me add ho jayega or userRegistrationCtl pr servletUtility ki set SuccessMessage se message set kia (user is registered,login now) or servletUtility ki forward method se view pr forward kia
+ServletUtility ki getSuccessMessage se view pr message get kia or expression tag me print kia 
+
+------------------------------------------------------------------------------------------
+
+7. Business Validation flow:
+
+data fill kia(login duplicate h ) or signUp button pr click kia 
+request UserRegistrationCtl pr gai or method post 
+UserRegistrationCtl ki doPost Method run hogi 
+usme humne request.getparameter se operation ki value get ki or sting me hold ki
+uske bad populateBean method ko call kia login view se data(login ,password) get krke bean me set krne k liye
+uske bad condition laga k .equals method se operation check kia operation signUp h to condition true hogi or model ki add method ko call kia
+add method me humne bean ka obj pass kiye
+add method me findBylogin method ko call kia h jisse humne check kia ki jo login user ne bheja h vo hamare database me h ya nhi agr hoga to findByLogin bean return karegi or usko existBean me hold ki 
+uske bad hum check karege ki agr existbean null nhi h mtlb  jo login user ne dala h vo already exist krta h database me to condition true hogi or duplicate record found excepetion raise ki h  
+fir userRegistrationCtl me catch block me exception handle kia or error message set kia login already exist or view pr getErrorMessage se message get kia or expression tag me print kia 
+
+------------------------------------------------------------------------------------------
+
+8. Add User Flow:
+
+add user view pr data fill kia save button pr click kia 
+request userCtl pr jayegi method post challegi
+userCtl me BaseCtl ko extend kia h isiliye base ctl ki service method run hogi service method me if condition me method check karege method post h to validate method run hogi sari fields check karege or pass ki value true return hogi to condition false hogi
+baseCtl ki doPost() chlegi usme populateBean() method call hogi view se data get karke bean me set karegi 
+fir getModel() se model ka object return hoga
+if me codition check karege id ki value 0 se badi h ya nhi yha humne id nhi set ki isiliye id ki value 0 hogi condition false hogi else me model ki add method run hogi or insert query run hogi data database me hoga or servletUtility ki setSucessMessage se message set kia "record is successfully saved"
+or ServletUtility ki forward method se view pr forword kardene or ServletUtility ki getSuccessMessage() se get karege or expression tag me print karege  
+
+------------------------------------------------------------------------------------------
+
+9. update:
+
+userListView pr ek edit ka column banaya usme anchor tag se edit ki link banai h or queryString me id append ki h or bean.getId() se id get ki h
+request UserCtl pr jayegi link pr click kia to method get rahegi
+userCtl ne BaseCtl ko extends kia to baseCtl ki doGet() method run hogi 
+request.getParameter se id get kia or usko long type k variable me hold kia
+if me condition check ki id>0 he to condition true hui model ki findByPk() method run hogi findByPk user ka data lake bean k object me hold karegi or servletUtility ki setBean method se bean ko set karege or ServletUtility ki forward method se UserView pr forword kardene 
+userView pr jsp:useBean tag se bean ko get kia jisme teen attribute h id="bean",class="path of userBean class" and scope="request"
+iske bad id ki ek hidden field banai h jisme DataUtility ki getStringData()method me id get ki or usko value me store kia isi trh DataUtility ki getStringData() method se bean ka sare data fill kara hua aaya user ko jo data update krna h vo chnge karega or update button pr click karega
+request userctl pr jayegi method post rahegi BaseCtl ki doPost() run hogi 
+doPost() me request.getParameter() se id get ki or populateBean() call ki userdata ko bean me set kia 
+getModel() method se userModel ka object() create kia  if me condition check ki id>0 condition true hogi model ki update method run hogi or update ki query execute hogi or data database me update hoga or servletUtility ki setSuccessMessage se message "record Updated Successfully" set Kia
+or ServletUtility ki forward method se view pr forword kardene or ServletUtility ki getSuccessMessage() se get karege or expression tag me print karege  
+
+------------------------------------------------------------------------------------------
+
+10. delete:
+delete k  liye UserListView pr checkbox banaye  
+checkbox banane k liye input me type check box dia h name=ids or value me bean.getId() se id get ki checkbox me ek sath multiple checkbox select kr skte h
+or delete button banaya jisme name operation dia or value me delete dia 
+checkbox pr select krke delete button pr click krege to request userListCtl pr jayegi userListCtl ne BaseListCtl ko extend kia to BaseListCtl ki dopost() chalegi
+request.getParameter se operation get kia or string me hold kia populate bean method chali checkbox select kiye to id aayegi isiliye populateBean() method me request.getParameter se id bean me set hogi 
+getModel() se model ka object create hoga
+if me condition check karege ki operation delete h ya nhi operation delete hoga to request.parameterValue() se  ids get karege  request.parameteValue() multiple values ko get kia isiliye or sting k array me hold karege 
+uske bad if me check karege ki ids null na ho or ids ki length >0 ho to for each loof se ids me se ek ek id ko iterate karege or model ki delete method me DataUtility ki getInt() method se integer me convert krke pass karege 
+delete method me delete ki query execute hogi or database se record delete hoga or userListCtl pr ServletUtility ki setSuccessMessage se message "record deleted Successfully" set Kia or userlist search hoke ServletUtility ki forward method se view pr forword kardenge or ServletUtility ki getSuccessMessage() se get karege or expression tag me print karege  
+
+------------------------------------------------------------------------------------------
+
+image upload:
+
+------------------------------------------------------------------------------------------
+
+Internationalization:
+
 

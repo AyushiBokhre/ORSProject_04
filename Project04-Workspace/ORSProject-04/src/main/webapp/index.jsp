@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
 <html>
 <head>

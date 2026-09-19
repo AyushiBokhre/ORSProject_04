@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class CollegeBean extends BaseBean {
 	private String name;
-	private String addresss;
+	private String address;
 	private String state;
 	private String city;
 	private String phoneNo;
@@ -18,12 +18,12 @@ public class CollegeBean extends BaseBean {
 		this.name = name;
 	}
 
-	public String getAddresss() {
-		return addresss;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAddresss(String addresss) {
-		this.addresss = addresss;
+	public void setAddress(String addresss) {
+		this.address = addresss;
 	}
 
 	public String getState() {
@@ -55,7 +55,7 @@ public void setResultset(ResultSet rs) {
 	super.setResultset(rs);
 	try {
 		this.setName(rs.getString(2));
-		this.setAddresss(rs.getString(3));
+		this.setAddress(rs.getString(3));
 		this.setState(rs.getString(4));
 		this.setCity(rs.getString(5));
 		this.setPhoneNo(rs.getString(6));

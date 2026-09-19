@@ -7,102 +7,378 @@
 <%@page import="in.co.rays.proj4.controller.BaseCtl"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
 <%@page import="in.co.rays.proj4.util.DataUtility"%>
+
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student</title>
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    rel="stylesheet">
+
 </head>
-<body>
-	<%@ include file="Header.jsp"%>
-	<%
-	String _suc = ServletUtility.getSuccessMessage(request);
-	String _err = ServletUtility.getErrorMessage(request);
-	List<CollegeBean> collegeList = (List) request.getAttribute("collegeList");
-	/* StudentBean bean = (StudentBean) request.getAttribute("bean"); */
-	%>
 
-	<jsp:useBean id="bean" class="in.co.rays.proj4.bean.StudentBean"
-		scope="request"></jsp:useBean>
+<body class="bg-light">
 
-	<form action="<%=ORSView.STUDENT_CTL%>" method="post">
+    <%@include file="Header.jsp"%>
 
-		<input type="hidden" name="id"
-			value="<%=DataUtility.getStringData(bean.getId())%>">
-	
-		<div align="center">
+    <%
+    String _suc = ServletUtility.getSuccessMessage(request);
+    String _err = ServletUtility.getErrorMessage(request);
 
-			<h1>
-				<%=bean != null && bean.getId() > 0 ? "Update Student" : "Add Student"%>
-			</h1>
+    List<CollegeBean> collegeList =
+            (List) request.getAttribute("collegeList");
+    %>
 
-			<h3 style="color: green"><%=_suc%></h3>
-			<h3 style="color: red"><%=_err%></h3>
+    <jsp:useBean id="bean"
+        class="in.co.rays.proj4.bean.StudentBean"
+        scope="request">
+    </jsp:useBean>
 
-			<table>
 
-				<tr>
-					<th>FirstName<font color="red">*</font></th>
-					<td><input type="text" name="firstName"  value="<%=DataUtility.getStringData(bean.getFirstName())%>"
-						placeholder="enter your firstName"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("firstName", request)%></td>
-				</tr>
+    <form action="<%=ORSView.STUDENT_CTL%>" method="post">
 
-				<tr>
-					<th>LastName<font color="red">*</font></th>
-					<td><input type="text" name="lastName"  value="<%=DataUtility.getStringData(bean.getLastName())%>"
-						placeholder="enter your lastName"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("lastName", request)%></td>
-				</tr>
+        <div class="container py-4">
 
-				<tr>
-					<th>Email<font color="red">*</font></th>
-					<td><input type="email" name="email"  value="<%=DataUtility.getStringData(bean.getEmail())%>"
-						placeholder="enter an emial"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("email", request)%></td>
-				</tr>
+            <div class="card border-0 shadow-lg rounded-4 mx-auto"
+                style="max-width: 850px;">
 
-				<tr>
-					<th>College<font color="red">*</font></th>
-					<%-- <td><select class='form-control' name='collegeId'>
-							<option selected value=''>-------------Select------------</option>
-								<%
-							for (CollegeBean cbean : collegeList) {
-							%>
-							<option value='<%=cbean.getKey()%>'><%=cbean.getValue()%></option>
-							<%
-							}
-							%>
-					</select></td>--%>
-					<td><%=HTMLUtility.getList("collegeId", DataUtility.getStringData(bean.getCollegeId()) ,collegeList) %></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("collegeId", request)%></td>
-				</tr>
+                <div class="card-body p-4">
 
-				
 
-				<tr>
-					<th>DOB<font color="red">*</font></th>
-					<td><input type="date" name="dob"  value="<%=DataUtility.getStringData(bean.getDateOfBirth())%>"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("dob", request)%></td>
-				</tr>
-				
-				<tr>
-					<th>Mobile No<font color="red">*</font></th>
-					<td><input type="text" name="mobileNo"  value="<%=DataUtility.getStringData(bean.getMobileNo())%>"></td>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("mobileNo", request)%></td>
-				</tr>
+                    <!-- Heading -->
 
-				<tr>
-					<th></th>
-					<td><input type="submit" name="operation"
-						value="<%=bean != null && bean.getId() > 0 ? "Update" : BaseCtl.OP_SAVE%>"></td>
-				</tr>
+                    <div class="text-center mb-4">
 
-			</table>
+                        <div class="mb-2">
 
-		</div>
+                            <i class="bi bi-mortarboard-fill text-primary"
+                                style="font-size: 42px;"></i>
 
-	</form>
-	<%@ include file="Footer.jsp"%>
+                        </div>
+
+                        <h3 class="fw-bold text-dark mb-0">
+
+                            <%=bean != null && bean.getId() > 0
+                                    ? "Update Student"
+                                    : "Add Student"%>
+
+                        </h3>
+
+                    </div>
+
+
+                    <!-- Success Message -->
+
+                    <%
+                    if (_suc != null && !_suc.trim().isEmpty()) {
+                    %>
+
+                    <div class="alert alert-success text-center py-2">
+
+                        <i class="bi bi-check-circle me-1"></i>
+
+                        <%=_suc%>
+
+                    </div>
+
+                    <%
+                    }
+                    %>
+
+
+                    <!-- Error Message -->
+
+                    <%
+                    if (_err != null && !_err.trim().isEmpty()) {
+                    %>
+
+                    <div class="alert alert-danger text-center py-2">
+
+                        <i class="bi bi-exclamation-circle me-1"></i>
+
+                        <%=_err%>
+
+                    </div>
+
+                    <%
+                    }
+                    %>
+
+
+                    <!-- Student Form -->
+
+                    <input
+                        type="hidden"
+                        name="id"
+                        value="<%=DataUtility.getStringData(bean.getId())%>">
+
+
+                    <div class="bg-light rounded-4 p-3">
+
+                        <div class="row g-3">
+
+
+                            <!-- First Name -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-semibold">
+
+                                    First Name
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text bg-white">
+
+                                        <i class="bi bi-person text-primary"></i>
+
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        name="firstName"
+                                        class="form-control"
+                                        value="<%=DataUtility.getStringData(bean.getFirstName())%>"
+                                        placeholder="Enter first name">
+
+                                </div>
+
+                                <div class="text-danger small mt-1">
+
+                                    <%=ServletUtility.getErrorMessage("firstName", request)%>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Last Name -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-semibold">
+
+                                    Last Name
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text bg-white">
+
+                                        <i class="bi bi-person text-primary"></i>
+
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        class="form-control"
+                                        value="<%=DataUtility.getStringData(bean.getLastName())%>"
+                                        placeholder="Enter last name">
+
+                                </div>
+
+                                <div class="text-danger small mt-1">
+
+                                    <%=ServletUtility.getErrorMessage("lastName", request)%>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Email -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-semibold">
+
+                                    Email
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text bg-white">
+
+                                        <i class="bi bi-envelope text-primary"></i>
+
+                                    </span>
+
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        class="form-control"
+										value="<%=DataUtility.getStringData(bean.getEmail())%>"
+                                        placeholder="Enter email">
+
+                                </div>
+
+                                <div class="text-danger small mt-1">
+
+                                    <%=ServletUtility.getErrorMessage("email", request)%>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- College -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-semibold">
+
+                                    College
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text bg-white">
+
+                                        <i class="bi bi-building text-primary"></i>
+
+                                    </span>
+
+                                    <%=HTMLUtility.getList(
+                                            "collegeId",
+                                            DataUtility.getStringData(bean.getCollegeId()),
+                                            collegeList)%>
+
+                                </div>
+
+                                <div class="text-danger small mt-1">
+
+                                    <%=ServletUtility.getErrorMessage("collegeId", request)%>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DOB -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-semibold">
+
+                                    Date of Birth
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text bg-white">
+
+                                        <i class="bi bi-calendar-event text-primary"></i>
+
+                                    </span>
+
+                                    <input
+                                        type="date"
+                                        name="dob"
+                                        class="form-control"
+                                        value="<%=DataUtility.getStringData(bean.getDateOfBirth())%>">
+
+                                </div>
+
+                                <div class="text-danger small mt-1">
+
+                                    <%=ServletUtility.getErrorMessage("dob", request)%>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Mobile Number -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-semibold">
+
+                                    Mobile No
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text bg-white">
+
+                                        <i class="bi bi-telephone text-primary"></i>
+
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        name="mobileNo"
+                                        class="form-control"
+                                        value="<%=DataUtility.getStringData(bean.getMobileNo())%>"
+                                        placeholder="Enter mobile number">
+
+                                </div>
+
+                                <div class="text-danger small mt-1">
+
+                                    <%=ServletUtility.getErrorMessage("mobileNo", request)%>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Save Button -->
+
+                            <div class="col-12 text-center mt-3">
+
+                                <input
+                                    type="submit"
+                                    name="operation"
+                                    value="<%=bean != null && bean.getId() > 0
+                                            ? "Update"
+                                            : BaseCtl.OP_SAVE%>"
+                                    class="btn btn-primary btn-sm px-4">
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <%@include file="Footer.jsp"%>
+
 </body>
+
 </html>

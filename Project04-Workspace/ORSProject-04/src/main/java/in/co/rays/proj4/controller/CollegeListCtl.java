@@ -12,7 +12,7 @@ public class CollegeListCtl extends BaseListCtl<CollegeBean, CollegeModel> {
 protected CollegeBean populateBean(HttpServletRequest request) {
 	CollegeBean bean=new CollegeBean();
 	bean.setName(DataUtility.getString(request.getParameter("name")));
-	bean.setAddresss(DataUtility.getString(request.getParameter("address")));
+	bean.setAddress(DataUtility.getString(request.getParameter("address")));
 	return bean;
 }
 	@Override

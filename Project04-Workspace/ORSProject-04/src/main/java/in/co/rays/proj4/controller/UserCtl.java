@@ -54,10 +54,10 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		    request.setAttribute("password", "Password is required");
 		    pass = false;
 		} 
-//		else if (!DataValidator.isPassword(request.getParameter("password"))) {
-//		    request.setAttribute("password", "Password is not in valid format");
-//		    pass = false;
-//		}
+		else if (!DataValidator.isPassword(request.getParameter("password"))) {
+		    request.setAttribute("password", "Password is not in valid format");
+		    pass = false;
+		}
 
 		if (DataValidator.isNull(request.getParameter("confirmPassword"))) {
 		    request.setAttribute("confirmPassword", "Confirm password is required");
@@ -78,14 +78,14 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		    request.setAttribute("dob", "Date of birth is required");
 		    pass = false;
 		}
-
-		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
-		    request.setAttribute("mobileNo", "Mobile number is required");
-		    pass = false;
-		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
-		    request.setAttribute("mobileNo", "Mobile number is not in valid format");
-		    pass = false;
-		}
+//
+//		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
+//		    request.setAttribute("mobileNo", "Mobile number is required");
+//		    pass = false;
+//		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
+//		    request.setAttribute("mobileNo", "Mobile number is not in valid format");
+//		    pass = false;
+//		}
 
 		if (!DataValidator.isNull(request.getParameter("password"))
 		        && !DataValidator.isNull(request.getParameter("confirmPassword"))

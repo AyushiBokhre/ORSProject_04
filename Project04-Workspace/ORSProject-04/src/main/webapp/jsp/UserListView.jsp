@@ -1,3 +1,4 @@
+<%@page import="in.co.rays.proj4.bean.UserBean"%>
 <%@page import="in.co.rays.proj4.bean.RoleBean"%>
 <%@page import="in.co.rays.proj4.model.RoleModel"%>
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
@@ -5,106 +6,322 @@
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
+
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>User List</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+	rel="stylesheet">
+
 </head>
-<body>
-	<%@ include file="Header.jsp"%>
+
+<body class="bg-light">
+
+	<%@include file="Header.jsp"%>
+
 	<%
 	int pageNo = ServletUtility.getPageNo(request);
+
 	int pageSize = ServletUtility.getPageSize(request);
+
 	int index = ((pageNo - 1) * pageSize) + 1;
+
 	List<UserBean> list = ServletUtility.getList(request);
+
 	Iterator<UserBean> it = list.iterator();
+
 	String _suc = ServletUtility.getSuccessMessage(request);
+
 	String _err = ServletUtility.getErrorMessage(request);
 	%>
 
+
 	<form action="<%=ORSView.USER_LIST_CTL%>" method="post">
-		<div align="center">
 
-			<h1>User List</h1>
+		<div class="container py-4">
 
-			<h3 style="color: green"><%=_suc%></h3>
-			<h3 style="color: red"><%=_err%></h3>
+			<div class="card border-0 shadow-lg rounded-4">
 
-			<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
-				type="hidden" name="pageSize" value="<%=pageSize%>">
+				<div class="card-body p-4">
 
-			<table>
-				<tr>
-					<td><input type="text" name="firstName" value=""
-						placeholder="search by firstName"></td>
-					<td><input type="text" name="lastName" value=""
-						placeholder="search by lastName"></td>
-					<td><input type="submit" name="operation"
-						value="<%=BaseCtl.OP_SEARCH%>"></td>
-				</tr>
-			</table>
 
-			<table border="1px" width="100%">
+					<!-- Heading -->
 
-				<tr style="background-color: skyblue">
-					<th><input type="checkbox"
-						onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-					<th>S.No</th>
-					<th>Photo</th>
-					<th>FirstName</th>
-					<th>LastName</th>
-					<th>Login</th>
-					<th>DOB</th>
-					<th>Gender</th>
-					<th>Mobile No.</th>
-					<th>RoleName</th>
-					<th>Edit</th>
-				</tr>
+					<div class="text-center mb-4">
 
-				<%
-				while (it.hasNext()) {
-					UserBean bean = it.next();
-					RoleModel rmodel = new RoleModel();
-					RoleBean rbean = rmodel.findByPK(bean.getRoleId());
-				%>
-				<tr align="center" style="background-color: lightgrey">
-					<td><input type="checkbox" name="ids"
-						value="<%=bean.getId()%>"></td>
-					<td><%=index++%></td>
-					<td><img
-						src="<%=ORSView.UPLOAD_PHOTO_CTL%>?id=<%=bean.getId()%>"
-						onerror="this.style.display='none';" alt="User Photo" width="60"
-						height="60"
-						style="object-fit: cover; border-radius: 50%; border: 1px solid #ccc;">
-					</td>
-					<td><%=bean.getFirstName()%></td>
-					<td><%=bean.getLastName()%></td>
-					<td><%=bean.getLogin()%></td>
-					<td><%=bean.getDob()%></td>
-					<td><%=bean.getGender()%></td>
-					<td><%=bean.getMobileNo()%></td>
-					<td><%=rbean.getName()%></td>
-					<td><a href="<%=ORSView.USER_CTL + "?id=" + bean.getId()%>">Edit</a></td>
-				</tr>
-				<%
-				}
-				%>
-			</table>
+						<div class="mb-2">
+
+							<i class="bi bi-people-fill text-primary"
+								style="font-size: 42px;"></i>
+
+						</div>
+
+						<h3 class="fw-bold text-dark mb-0">User List</h3>
+
+					</div>
+
+					<!-- PDF Button - Top Right -->
+					
+					<div class="position-absolute top-0 end-0 mt-2 me-3">
+					
+						<a href="<%=ORSView.USER_REPORT_CTL%>?type=pdf"
+							class="btn btn-outline-danger btn-sm px-3">
+							
+							 <i class="bi bi-file-earmark-pdf me-1"></i> PDF
+							 
+						</a>
+						
+					</div>
+					
+					
+					<!-- Success Message -->
+
+					<%
+					if (_suc != null && !_suc.trim().isEmpty()) {
+					%>
+
+					<div class="alert alert-success text-center py-2">
+
+						<i class="bi bi-check-circle me-1"></i>
+
+						<%=_suc%>
+
+					</div>
+
+					<%
+					}
+					%>
+
+
+					<!-- Error Message -->
+
+					<%
+					if (_err != null && !_err.trim().isEmpty()) {
+					%>
+
+					<div class="alert alert-danger text-center py-2">
+
+						<i class="bi bi-exclamation-circle me-1"></i>
+
+						<%=_err%>
+
+					</div>
+
+					<%
+					}
+					%>
+
+
+					<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
+						type="hidden" name="pageSize" value="<%=pageSize%>">
+
+
+					<!-- Search Section -->
+
+					<div class="bg-light rounded-4 p-3 mb-4">
+
+						<div class="row g-3 align-items-center">
+
+							<div class="col-md-5">
+
+								<div class="input-group">
+
+									<span class="input-group-text bg-white border-end-0"> <i
+										class="bi bi-person text-primary"></i>
+
+									</span> <input type="text" name="firstName" value=""
+										class="form-control border-start-0"
+										placeholder="Search by Name">
+
+								</div>
+
+							</div>
+
+
+							<div class="col-md-5">
+
+								<div class="input-group">
+
+									<span class="input-group-text bg-white border-end-0"> <i
+										class="bi bi-person text-primary"></i>
+
+									</span> <input type="text" name="login" value=""
+										class="form-control border-start-0"
+										placeholder="Search by login">
+
+								</div>
+
+							</div>
+
+
+							<div class="col-md-2">
+
+								<input type="submit" name="operation"
+									class="btn btn-primary btn-sm px-3"
+									value="<%=BaseCtl.OP_SEARCH%>">
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<!-- User Table -->
+
+					<div class="table-responsive">
+
+						<table
+							class="table table-bordered table-hover align-middle text-center mb-0">
+
+							<thead class="table-primary">
+
+								<tr>
+
+									<th><input type="checkbox" class="form-check-input"
+										onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)">
+
+									</th>
+
+									<th>S.No</th>
+
+									<th>Photo</th>
+
+									<th>FirstName</th>
+
+									<th>LastName</th>
+
+									<th>Login</th>
+
+									<th>DOB</th>
+
+									<th>Gender</th>
+
+									<th>RoleName</th>
+
+									<th>Edit</th>
+
+								</tr>
+
+							</thead>
+
+
+							<tbody>
+
+								<%
+								while (it.hasNext()) {
+
+									UserBean bean = it.next();
+
+									RoleModel rmodel = new RoleModel();
+
+									RoleBean rbean = rmodel.findByPK(bean.getRoleId());
+								%>
+
+
+								<tr>
+
+									<td><input type="checkbox" class="form-check-input"
+										name="ids" value="<%=bean.getId()%>"></td>
+
+
+									<td><%=index++%></td>
+
+
+									<td><img
+										src="<%=ORSView.UPLOAD_PHOTO_CTL%>?id=<%=bean.getId()%>"
+										onerror="this.style.display='none';" alt="User Photo"
+										width="50" height="50" class="rounded-circle border"
+										style="object-fit: cover;"></td>
+
+
+									<td><%=bean.getFirstName()%></td>
+
+
+									<td><%=bean.getLastName()%></td>
+
+
+									<td><%=bean.getLogin()%></td>
+
+
+									<td><%=bean.getDob()%></td>
+
+
+									<td><%=bean.getGender()%></td>
+
+
+
+									<td><%=rbean.getName()%></td>
+
+
+									<td><a
+										href="<%=ORSView.USER_CTL + "?id=" + bean.getId()%>"
+										class="btn btn-sm btn-outline-primary"> <i
+											class="bi bi-pencil-square me-1"></i> Edit
+
+									</a></td>
+
+								</tr>
+
+
+								<%
+								}
+								%>
+
+							</tbody>
+
+						</table>
+
+					</div>
+
+
+					<!-- Pagination / Actions -->
+
+					<div class="border-top mt-4 pt-3 pb-5"">
+
+						<div
+							class="d-flex justify-content-center align-items-center gap-2">
+
+							<input type="submit" name="operation"
+								class="btn btn-primary btn-sm px-3"
+								<%=pageNo == 1 ? "disabled" : ""%>
+								value="<%=BaseCtl.OP_PREVIOUS%>"> <input type="submit"
+								name="operation" class="btn btn-danger btn-sm px-3"
+								value="<%=BaseCtl.OP_DELETE%>"> <input type="submit"
+								name="operation" class="btn btn-primary btn-sm px-3"
+								<%=list.size() < 10 ? "disabled" : ""%>
+								value="<%=BaseCtl.OP_NEXT%>">
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+
 		</div>
 
-		<table width="100%">
-			<tr>
-				<td><input type="submit" name="operation"
-					<%=pageNo == 1 ? "disabled" : ""%> value="<%=BaseCtl.OP_PREVIOUS%>"></td>
-				<td align="center"><input type="submit" name="operation"
-					value="<%=BaseCtl.OP_DELETE%>"></td>
-				<td align="right"><input type="submit" name="operation"
-					<%=list.size() < 10 ? "disabled" : ""%>
-					value="<%=BaseCtl.OP_NEXT%>"></td>
-			</tr>
-		</table>
 	</form>
-	<%@ include file="Footer.jsp"%>
+
+
+	<%@include file="Footer.jsp"%>
+
 </body>
+
 </html>
