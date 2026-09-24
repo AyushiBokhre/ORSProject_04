@@ -1,46 +1,38 @@
-<%@page import="in.co.rays.proj4.util.DataUtility"%>
-<%@page import="in.co.rays.proj4.controller.LoginCtl"%>
-<%@page import="in.co.rays.proj4.util.ServletUtility"%>
-<%@page import="in.co.rays.proj4.controller.ORSView"%>
-
+<%@ page import="in.co.rays.proj4.util.DataUtility"%>
+<%@ page import="in.co.rays.proj4.controller.LoginCtl"%>
+<%@ page import="in.co.rays.proj4.util.ServletUtility"%>
+<%@ page import="in.co.rays.proj4.controller.ORSView"%>
+<%@ page import="in.co.rays.proj4.util.MessageSource" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Login - ORS</title>
-
-<!-- Bootstrap 5 -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Bootstrap Icons -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-	rel="stylesheet">
+<title>Login-ORS</title>
 
 </head>
 
 <!-- Light Background -->
+
 <body class="bg-light">
 
 	<%@ include file="Header.jsp"%>
 
 	<%
+
 	String _suc = ServletUtility.getSuccessMessage(request);
+
 	String _err = ServletUtility.getErrorMessage(request);
-	%>
 	
-	<jsp:useBean id="bean"
-		class="in.co.rays.proj4.bean.UserBean"
+
+	%>
+
+	<jsp:useBean id="bean" class="in.co.rays.proj4.bean.UserBean"
 		scope="request">
+
 	</jsp:useBean>
 
 	<form action="<%=ORSView.LOGIN_CTL%>" method="post">
@@ -52,66 +44,101 @@
 				<div class="col-lg-5 col-md-7 col-sm-10">
 
 					<!-- Login Card -->
+
 					<div class="card shadow-lg border-0 rounded-4">
 
 						<div class="card-body p-4">
 
 							<!-- ORS Icon -->
+
 							<div class="text-center mb-3">
 
 								<i
-									class="bi bi-mortarboard-fill
-									text-primary display-4"></i>
+									class="bi bi-mortarboard-fill text-primary display-4"></i>
 
 							</div>
 
 							<!-- Heading -->
-							<h3 class="text-center fw-bold text-primary mb-1">Welcome
-								Back!</h3>
 
-							<p class="text-center text-muted mb-4">Login to your ORS
-								account</p>
+							<h3 class="text-center fw-bold text-primary mb-1">
+								<%=ms.get("login.welcome")%>
+							</h3>
+
+							<p class="text-center text-muted mb-4">
+								<%=ms.get("login.description")%>
+							</p>
 
 
 							<!-- Success Message -->
+
 							<%
+
 							if (_suc != null && !_suc.isEmpty()) {
+
 							%>
 
-							<div class="alert alert-success">
+							<div
+								class="alert alert-success alert-dismissible fade show d-flex align-items-center">
 
 								<i class="bi bi-check-circle-fill"></i>
+
 								<%=_suc%>
+
+								<button type="button" class="btn-close"
+									data-bs-dismiss="alert"
+									aria-label="<%=ms.get("common.close")%>"></button>
 
 							</div>
 
 							<%
+
 							}
+
 							%>
 
 
 							<!-- Error Message -->
+
 							<%
+
 							if (_err != null && !_err.isEmpty()) {
+
 							%>
 
-							<div class="alert alert-danger">
+							<div
+								class="alert alert-danger alert-dismissible fade show d-flex align-items-center"
+								role="alert">
 
-								<i class="bi bi-exclamation-triangle-fill"></i>
-								<%=_err%>
+								<i class="bi bi-x-circle-fill me-2"></i>
+
+								<div>
+
+									<%=_err%>
+
+								</div>
+
+								<button type="button" class="btn-close"
+									data-bs-dismiss="alert"
+									aria-label="<%=ms.get("common.close")%>"></button>
 
 							</div>
 
 							<%
+
 							}
+
 							%>
 
 
 							<!-- Login -->
+
 							<div class="mb-3">
 
-								<label class="form-label fw-bold"> <i
-									class="bi bi-person-fill text-primary"></i> <%=ms.get("login.userid")%>
+								<label class="form-label fw-bold">
+
+									<i class="bi bi-person-fill text-primary"></i>
+
+									<%=ms.get("login.userid")%>
 
 									<span class="text-danger">*</span>
 
@@ -119,10 +146,16 @@
 
 								<div class="input-group">
 
-									<span class="input-group-text bg-light"> <i
-										class="bi bi-person"></i>
-									</span> <input type="text" name="login" class="form-control" value="<%=DataUtility.getStringData(bean.getLogin())%>"
-										placeholder="Enter your login">
+									<span class="input-group-text bg-light">
+
+										<i class="bi bi-person"></i>
+
+									</span>
+
+									<input type="text" name="login"
+										class="form-control"
+										value="<%=DataUtility.getStringData(bean.getLogin())%>"
+										placeholder="<%=ms.get("login.userid.placeholder")%>">
 
 								</div>
 
@@ -136,10 +169,14 @@
 
 
 							<!-- Password -->
+
 							<div class="mb-3">
 
-								<label class="form-label fw-bold"> <i
-									class="bi bi-lock-fill text-primary"></i> <%=ms.get("login.password")%>
+								<label class="form-label fw-bold">
+
+									<i class="bi bi-lock-fill text-primary"></i>
+
+									<%=ms.get("login.password")%>
 
 									<span class="text-danger">*</span>
 
@@ -147,12 +184,19 @@
 
 								<div class="input-group">
 
-									<span class="input-group-text bg-light"> <i
-										class="bi bi-lock"></i>
-									</span> <input type="password" name="password"  value="<%=DataUtility.getStringData(bean.getPassword())%>"
-										class="form-control" placeholder="Enter your password">
+									<span class="input-group-text bg-light">
 
-									<button type="button" class="btn btn-outline-secondary"
+										<i class="bi bi-lock"></i>
+
+									</span>
+
+									<input type="password" name="password"
+										value="<%=DataUtility.getStringData(bean.getPassword())%>"
+										class="form-control"
+										placeholder="<%=ms.get("login.password.placeholder")%>">
+
+									<button type="button"
+										class="btn btn-outline-secondary"
 										onclick="togglePassword()">
 
 										<i class="bi bi-eye" id="eyeIcon"></i>
@@ -171,23 +215,32 @@
 
 
 							<!-- Login Button -->
+
 							<div class="d-grid mt-4">
 
 								<button type="submit" name="operation"
-									value="<%=LoginCtl.OP_SIGN_IN%>" class="btn btn-primary btn-lg">
+									value="<%=LoginCtl.OP_SIGN_IN%>"
+									class="btn btn-primary btn-lg">
 
-									<i class="bi bi-box-arrow-in-right"></i> &nbsp; Login
+									<i class="bi bi-box-arrow-in-right"></i> &nbsp;
+
+									<%=ms.get("login.button")%>
 
 								</button>
 
 							</div>
 
+
 							<!-- Forgot Password Link -->
+
 							<div class="text-center mt-3">
 
 								<a href="<%=ORSView.FORGET_PASSWORD_CTL%>"
 									class="text-decoration-none text-primary">
-									<i class="bi bi-key-fill"></i> Forgot Password?
+
+									<i class="bi bi-key-fill"></i>
+
+									<%=ms.get("login.forgot")%>
 
 								</a>
 
@@ -211,30 +264,37 @@
 
 
 	<!-- Password Show / Hide -->
+
 	<script>
-		function togglePassword() {
 
-			var password = document.getElementById("password");
-			var eyeIcon = document.getElementById("eyeIcon");
+	function togglePassword() {
 
-			if (password.type === "password") {
+		var password = document.getElementById("password");
 
-				password.type = "text";
+		var eyeIcon = document.getElementById("eyeIcon");
 
-				eyeIcon.classList.remove("bi-eye");
-				eyeIcon.classList.add("bi-eye-slash");
+		if (password.type === "password") {
 
-			} else {
+			password.type = "text";
 
-				password.type = "password";
+			eyeIcon.classList.remove("bi-eye");
 
-				eyeIcon.classList.remove("bi-eye-slash");
-				eyeIcon.classList.add("bi-eye");
+			eyeIcon.classList.add("bi-eye-slash");
 
-			}
+		} else {
+
+			password.type = "password";
+
+			eyeIcon.classList.remove("bi-eye-slash");
+
+			eyeIcon.classList.add("bi-eye");
 
 		}
+
+	}
+
 	</script>
 
 </body>
+
 </html>

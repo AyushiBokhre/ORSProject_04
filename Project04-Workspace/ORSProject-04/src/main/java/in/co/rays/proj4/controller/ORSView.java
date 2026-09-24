@@ -26,8 +26,12 @@ public interface ORSView {
 	public String COURSE_LIST_VIEW = PAGE_FOLDER + "/CourseListView.jsp";
 	public String SUBJECT_VIEW = PAGE_FOLDER + "/SubjectView.jsp";
 	public String SUBJECT_LIST_VIEW = PAGE_FOLDER + "/SubjectListView.jsp";
+	public String FACULTY_VIEW = PAGE_FOLDER + "/FacultyView.jsp";
+	public String FACULTY_LIST_VIEW = PAGE_FOLDER + "/FacultyListView.jsp";
 	public String TIMETABLE_VIEW = PAGE_FOLDER + "/TimeTableView.jsp";
 	public String TIMETABLE_LIST_VIEW = PAGE_FOLDER + "/TimeTableListView.jsp";
+	public String VOTER_VIEW = PAGE_FOLDER + "/VoterView.jsp";
+	public String VOTER_LIST_VIEW = PAGE_FOLDER + "/VoterListView.jsp";
 	public String USER_REGISTRATION_VIEW = PAGE_FOLDER + "/UserRegistrationView.jsp";
 	public String LOGIN_VIEW = PAGE_FOLDER + "/LoginView.jsp";
 	public String WELCOME_VIEW = PAGE_FOLDER + "/Welcome.jsp";
@@ -37,6 +41,11 @@ public interface ORSView {
 	public String MARKSHEET_MERIT_LIST_VIEW = PAGE_FOLDER + "/MarksheetMeritListView.jsp";
 	public String PRODUCT_VIEW = PAGE_FOLDER + "/ProductView.jsp";
 	public String PRODUCT_LIST_VIEW = PAGE_FOLDER + "/ProductListView.jsp";
+	public String FOOD_ORDER_VIEW = PAGE_FOLDER + "/FoodOrderView.jsp";
+	public String FOOD_ORDER_LIST_VIEW = PAGE_FOLDER + "/FoodOrderListView.jsp";
+	public String SMART_PARKING_VIEW = PAGE_FOLDER + "/SmartParkingView.jsp";
+	public String SMART_PARKING_LIST_VIEW = PAGE_FOLDER + "/SmartParkingListView.jsp";
+
 
 	public String ERROR_CTL = "/ctl/MarksheetCtl";
 
@@ -56,6 +65,8 @@ public interface ORSView {
 	public String SUBJECT_LIST_CTL = APP_CONTEXT + "/ctl/SubjectListCtl";
 	public String TIMETABLE_CTL = APP_CONTEXT + "/ctl/TimeTableCtl";
 	public String TIMETABLE_LIST_CTL = APP_CONTEXT + "/ctl/TimeTableListCtl";
+	public String VOTER_CTL = APP_CONTEXT + "/ctl/VoterCtl";
+	public String VOTER_LIST_CTL = APP_CONTEXT + "/ctl/VoterListCtl";
 	public String USER_REGISTRATION_CTL = APP_CONTEXT + "/UserRegistrationCtl";
 	public String LOGIN_CTL = APP_CONTEXT + "/LoginCtl";
 	public String WELCOME_CTL = APP_CONTEXT + "/WelcomeCtl";
@@ -67,10 +78,14 @@ public interface ORSView {
 	public String MARKSHEET_MERIT_LIST_CTL = APP_CONTEXT + "/ctl/MarksheetMeritListCtl";
 	public String UPLOAD_PHOTO_CTL = APP_CONTEXT + "/ctl/uploadphoto";
 
-	public String FACULTY_VIEW = PAGE_FOLDER + "/FacultyView.jsp";
-	public String FACULTY_LIST_VIEW = PAGE_FOLDER + "/FacultyListView.jsp";
 	public String FACULTY_CTL = APP_CONTEXT + "/ctl/FacultyCtl";
 	public String FACULTY_LIST_CTL = APP_CONTEXT + "/ctl/FacultyListCtl";
+	public String PRODUCT_CTL = APP_CONTEXT + "/ctl/ProductCtl";
+	public String PRODUCT_LIST_CTL = APP_CONTEXT + "/ctl/ProductListCtl";
+	public String FOOD_ORDER_CTL = APP_CONTEXT + "/ctl/FoodOrderCtl";
+	public String FOOD_ORDER_LIST_CTL = APP_CONTEXT + "/ctl/FoodOrderListCtl";
+	public String SMART_PARKING_CTL = APP_CONTEXT + "/ctl/SmartParkingCtl";
+	public String SMART_PARKING_LIST_CTL = APP_CONTEXT + "/ctl/SmartParkingListCtl";
 
 	public String STUDENT_REPORT_CTL = APP_CONTEXT + "/ctl/StudentReportCtl";
 	public String COLLEGE_REPORT_CTL = APP_CONTEXT + "/ctl/CollegeReportCtl";
@@ -80,9 +95,10 @@ public interface ORSView {
 	public String SUBJECT_REPORT_CTL = APP_CONTEXT + "/ctl/SubjectReportCtl";
 	public String MARKSHEET_REPORT_CTL = APP_CONTEXT + "/ctl/MarksheetReportCtl";
 	public String FACULTY_REPORT_CTL = APP_CONTEXT + "/ctl/FacultyReportCtl";
-	public String PRODUCT_CTL = APP_CONTEXT + "/ctl/ProductCtl";
-	public String PRODUCT_LIST_CTL = APP_CONTEXT + "/ctl/ProductListCtl";
-
+	public String TIMETABLE_REPORT_CTL = APP_CONTEXT + "/ctl/TimetableReportCtl";
+	public String SMART_PARKING_REPORT_CTL = APP_CONTEXT + "/ctl/ParkingListReportCtl";
+	
+	
 	public String COURSE_REPORT_VIEW = "/reports/CourseListReport.jrxml";
 	public String STUDENT_REPORT_VIEW = "/reports/StudentListReport.jrxml";
 	public String COLLEGE_REPORT_VIEW = "/reports/CollegeListReport.jrxml";
@@ -91,5 +107,6 @@ public interface ORSView {
 	public String SUBJECT_REPORT_VIEW = "/reports/SubjectListReport.jrxml";
 	public String MARKSHEET_REPORT_VIEW = "/reports/MarksheetListReport.jrxml";
 	public String FACULTY_REPORT_VIEW = "/reports/FacultyListReport.jrxml";
+	public String SMART_PARKING_REPORT_VIEW = "/reports/ParkingListReport.jrxml";
 
 }

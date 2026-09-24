@@ -1,39 +1,30 @@
-<%@page import="in.co.rays.proj4.util.MessageSource"%>
-<%@page import="in.co.rays.proj4.controller.LoginCtl"%>
-<%@page import="in.co.rays.proj4.util.ServletUtility"%>
-<%@page import="in.co.rays.proj4.controller.ORSView"%>
-<%@page import="in.co.rays.proj4.controller.BaseCtl"%>
-<%@page language="java" contentType="text/html; charset=UTF-8"
+<%@ page import="in.co.rays.proj4.util.MessageSource" %>
+<%@ page import="in.co.rays.proj4.util.ServletUtility" %>
+<%@ page import="in.co.rays.proj4.controller.ORSView" %>
+<%@ page import="in.co.rays.proj4.controller.BaseCtl" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+
 <html>
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Forget Password - ORS</title>
-
-<!-- Bootstrap 5 -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Bootstrap Icons -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-	rel="stylesheet">
 
 </head>
 
 <body class="bg-light">
 
-	<%@include file="Header.jsp"%>
+	<%@ include file="Header.jsp"%>
 
 	<%
+
 		String _suc = ServletUtility.getSuccessMessage(request);
 		String _err = ServletUtility.getErrorMessage(request);
+
 	%>
 
 	<form action="<%=ORSView.FORGET_PASSWORD_CTL%>" method="post">
@@ -45,11 +36,13 @@
 				<div class="col-lg-5 col-md-7 col-sm-10">
 
 					<!-- Forget Password Card -->
+
 					<div class="card shadow-lg border-0 rounded-4">
 
 						<div class="card-body p-4">
 
 							<!-- Icon -->
+
 							<div class="text-center mb-3">
 
 								<i class="bi bi-key-fill text-primary display-4"></i>
@@ -57,22 +50,26 @@
 							</div>
 
 							<!-- Heading -->
+
 							<h3 class="text-center fw-bold text-primary mb-1">
 
-								Forgot Password?
+								<%=ms.get("forgetPassword.heading")%>
 
 							</h3>
 
 							<p class="text-center text-muted mb-4">
 
-								Enter your login ID to reset your password
+								<%=ms.get("forgetPassword.description")%>
 
 							</p>
 
 
 							<!-- Success Message -->
+
 							<%
+
 								if (_suc != null && !_suc.isEmpty()) {
+
 							%>
 
 							<div class="alert alert-success">
@@ -84,13 +81,18 @@
 							</div>
 
 							<%
+
 								}
+
 							%>
 
 
 							<!-- Error Message -->
+
 							<%
+
 								if (_err != null && !_err.isEmpty()) {
+
 							%>
 
 							<div class="alert alert-danger">
@@ -102,18 +104,21 @@
 							</div>
 
 							<%
+
 								}
+
 							%>
 
 
 							<!-- Login ID -->
+
 							<div class="mb-3">
 
 								<label class="form-label fw-bold">
 
 									<i class="bi bi-person-fill text-primary"></i>
 
-									Login ID
+									<%=ms.get("forgetPassword.loginId")%>
 
 									<span class="text-danger">*</span>
 
@@ -128,15 +133,10 @@
 									</span>
 
 									<input
-
 										type="text"
-
 										name="login"
-
 										class="form-control"
-
-										placeholder="Enter your login ID"
-
+										placeholder="<%=ms.get("forgetPassword.loginId.placeholder")%>"
 										value="<%=ServletUtility.getParameter("login", request)%>">
 
 								</div>
@@ -151,21 +151,18 @@
 
 
 							<!-- Submit Button -->
+
 							<div class="d-grid mt-4">
 
 								<button
-
 									type="submit"
-
 									name="operation"
-
 									value="<%=BaseCtl.OP_GO%>"
-
 									class="btn btn-primary btn-lg">
 
 									<i class="bi bi-send-fill"></i>
 
-									&nbsp; Reset Password
+									&nbsp; <%=ms.get("forgetPassword.resetButton")%>
 
 								</button>
 
@@ -173,17 +170,16 @@
 
 
 							<!-- Back to Login -->
+
 							<div class="text-center mt-3">
 
 								<a
-
 									href="<%=ORSView.LOGIN_CTL%>"
-
 									class="text-decoration-none">
 
 									<i class="bi bi-arrow-left"></i>
 
-									Back to Login
+									<%=ms.get("forgetPassword.backToLogin")%>
 
 								</a>
 
@@ -202,7 +198,8 @@
 	</form>
 
 
-<%@include file="Footer.jsp"%>
+	<%@ include file="Footer.jsp"%>
 
 </body>
+
 </html>

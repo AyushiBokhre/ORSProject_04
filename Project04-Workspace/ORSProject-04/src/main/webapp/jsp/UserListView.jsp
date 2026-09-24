@@ -1,11 +1,12 @@
-<%@page import="in.co.rays.proj4.bean.UserBean"%>
-<%@page import="in.co.rays.proj4.bean.RoleBean"%>
-<%@page import="in.co.rays.proj4.model.RoleModel"%>
-<%@page import="in.co.rays.proj4.util.ServletUtility"%>
-<%@page import="in.co.rays.proj4.controller.BaseCtl"%>
-<%@page import="in.co.rays.proj4.controller.ORSView"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.List"%>
+<%@ page import="in.co.rays.proj4.bean.UserBean"%>
+<%@ page import="in.co.rays.proj4.bean.RoleBean"%>
+<%@ page import="in.co.rays.proj4.model.RoleModel"%>
+<%@ page import="in.co.rays.proj4.util.ServletUtility"%>
+<%@ page import="in.co.rays.proj4.util.MessageSource"%>
+<%@ page import="in.co.rays.proj4.controller.BaseCtl"%>
+<%@ page import="in.co.rays.proj4.controller.ORSView"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 
@@ -13,27 +14,16 @@
 
 <head>
 
-<meta charset="ISO-8859-1">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>User List</title>
-
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-	rel="stylesheet">
 
 </head>
 
 <body class="bg-light">
 
-	<%@include file="Header.jsp"%>
+	<%@ include file="Header.jsp"%>
 
 	<%
+
 	int pageNo = ServletUtility.getPageNo(request);
 
 	int pageSize = ServletUtility.getPageSize(request);
@@ -47,6 +37,7 @@
 	String _suc = ServletUtility.getSuccessMessage(request);
 
 	String _err = ServletUtility.getErrorMessage(request);
+
 	%>
 
 
@@ -70,28 +61,48 @@
 
 						</div>
 
-						<h3 class="fw-bold text-dark mb-0">User List</h3>
+						<h3 class="fw-bold text-dark mb-0">
+
+							<%=ms.get("user.list")%>
+
+						</h3>
 
 					</div>
+
 
 					<!-- PDF Button - Top Right -->
-					
+
 					<div class="position-absolute top-0 end-0 mt-2 me-3">
-					
-						<a href="<%=ORSView.USER_REPORT_CTL%>?type=pdf"
+
+						<a href="<%=ORSView.USER_REPORT_CTL%>"
+							target="_blank"
 							class="btn btn-outline-danger btn-sm px-3">
-							
-							 <i class="bi bi-file-earmark-pdf me-1"></i> PDF
-							 
+
+							<i class="bi bi-file-earmark-pdf me-1"></i>
+
+							<%=ms.get("download.pdf")%>
+
 						</a>
-						
+
+						<a href="<%=ORSView.USER_REPORT_CTL%>?type=doc"
+							target="_blank"
+							class="btn btn-outline-primary btn-sm px-3">
+
+							<i class="bi bi-file-earmark-word me-1"></i>
+
+							<%=ms.get("download.doc")%>
+
+						</a>
+
 					</div>
-					
-					
+
+
 					<!-- Success Message -->
 
 					<%
+
 					if (_suc != null && !_suc.trim().isEmpty()) {
+
 					%>
 
 					<div class="alert alert-success text-center py-2">
@@ -103,14 +114,18 @@
 					</div>
 
 					<%
+
 					}
+
 					%>
 
 
 					<!-- Error Message -->
 
 					<%
+
 					if (_err != null && !_err.trim().isEmpty()) {
+
 					%>
 
 					<div class="alert alert-danger text-center py-2">
@@ -122,12 +137,15 @@
 					</div>
 
 					<%
+
 					}
+
 					%>
 
 
-					<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
-						type="hidden" name="pageSize" value="<%=pageSize%>">
+					<input type="hidden" name="pageNo" value="<%=pageNo%>">
+
+					<input type="hidden" name="pageSize" value="<%=pageSize%>">
 
 
 					<!-- Search Section -->
@@ -140,12 +158,17 @@
 
 								<div class="input-group">
 
-									<span class="input-group-text bg-white border-end-0"> <i
-										class="bi bi-person text-primary"></i>
+									<span class="input-group-text bg-white border-end-0">
 
-									</span> <input type="text" name="firstName" value=""
+										<i class="bi bi-person text-primary"></i>
+
+									</span>
+
+									<input type="text"
+										name="firstName"
+										value=""
 										class="form-control border-start-0"
-										placeholder="Search by Name">
+										placeholder="<%=ms.get("search.name")%>">
 
 								</div>
 
@@ -156,12 +179,17 @@
 
 								<div class="input-group">
 
-									<span class="input-group-text bg-white border-end-0"> <i
-										class="bi bi-person text-primary"></i>
+									<span class="input-group-text bg-white border-end-0">
 
-									</span> <input type="text" name="login" value=""
+										<i class="bi bi-person text-primary"></i>
+
+									</span>
+
+									<input type="text"
+										name="login"
+										value=""
 										class="form-control border-start-0"
-										placeholder="Search by login">
+										placeholder="<%=ms.get("search.login")%>">
 
 								</div>
 
@@ -170,7 +198,8 @@
 
 							<div class="col-md-2">
 
-								<input type="submit" name="operation"
+								<input type="submit"
+									name="operation"
 									class="btn btn-primary btn-sm px-3"
 									value="<%=BaseCtl.OP_SEARCH%>">
 
@@ -192,28 +221,50 @@
 
 								<tr>
 
-									<th><input type="checkbox" class="form-check-input"
-										onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)">
+									<th>
+
+										<input type="checkbox"
+											class="form-check-input"
+											id="selectAll"
+											onclick="document.querySelectorAll('input[name=ids]').forEach(c => c.checked = this.checked)">
 
 									</th>
 
-									<th>S.No</th>
+									<th>
+										<%=ms.get("sno")%>
+									</th>
 
-									<th>Photo</th>
+									<th>
+										<%=ms.get("photo")%>
+									</th>
 
-									<th>FirstName</th>
+									<th>
+										<%=ms.get("first.name")%>
+									</th>
 
-									<th>LastName</th>
+									<th>
+										<%=ms.get("last.name")%>
+									</th>
 
-									<th>Login</th>
+									<th>
+										<%=ms.get("login")%>
+									</th>
 
-									<th>DOB</th>
+									<th>
+										<%=ms.get("dob")%>
+									</th>
 
-									<th>Gender</th>
+									<th>
+										<%=ms.get("gender")%>
+									</th>
 
-									<th>RoleName</th>
+									<th>
+										<%=ms.get("role.name")%>
+									</th>
 
-									<th>Edit</th>
+									<th>
+										<%=ms.get("edit")%>
+									</th>
 
 								</tr>
 
@@ -223,6 +274,7 @@
 							<tbody>
 
 								<%
+
 								while (it.hasNext()) {
 
 									UserBean bean = it.next();
@@ -230,56 +282,93 @@
 									RoleModel rmodel = new RoleModel();
 
 									RoleBean rbean = rmodel.findByPK(bean.getRoleId());
+
 								%>
 
 
 								<tr>
 
-									<td><input type="checkbox" class="form-check-input"
-										name="ids" value="<%=bean.getId()%>"></td>
+									<td>
+
+										<input type="checkbox"
+											class="form-check-input"
+											name="ids"
+											value="<%=bean.getId()%>"
+											onclick="document.getElementById('selectAll').checked = document.querySelectorAll('input[name=ids]:checked').length === document.querySelectorAll('input[name=ids]').length">
+
+									</td>
 
 
-									<td><%=index++%></td>
+									<td>
+										<%=index++%>
+									</td>
 
 
-									<td><img
-										src="<%=ORSView.UPLOAD_PHOTO_CTL%>?id=<%=bean.getId()%>"
-										onerror="this.style.display='none';" alt="User Photo"
-										width="50" height="50" class="rounded-circle border"
-										style="object-fit: cover;"></td>
+									<td>
+
+										<img
+											src="<%=ORSView.UPLOAD_PHOTO_CTL%>?id=<%=bean.getId()%>"
+											onerror="this.style.display='none';"
+											alt="<%=ms.get("user.photo")%>"
+											width="50"
+											height="50"
+											class="rounded-circle border"
+											style="object-fit: cover;">
+
+									</td>
 
 
-									<td><%=bean.getFirstName()%></td>
+									<td>
+										<%=bean.getFirstName()%>
+									</td>
 
 
-									<td><%=bean.getLastName()%></td>
+									<td>
+										<%=bean.getLastName()%>
+									</td>
 
 
-									<td><%=bean.getLogin()%></td>
+									<td>
+										<%=bean.getLogin()%>
+									</td>
 
 
-									<td><%=bean.getDob()%></td>
+									<td>
+										<%=bean.getDob()%>
+									</td>
 
 
-									<td><%=bean.getGender()%></td>
+									<td>
+										<%=bean.getGender()%>
+									</td>
 
 
+									<td>
+										<%=rbean.getName()%>
+									</td>
 
-									<td><%=rbean.getName()%></td>
 
+									<td>
 
-									<td><a
-										href="<%=ORSView.USER_CTL + "?id=" + bean.getId()%>"
-										class="btn btn-sm btn-outline-primary"> <i
-											class="bi bi-pencil-square me-1"></i> Edit
+										<a
+											href="<%=ORSView.USER_CTL + "?id=" + bean.getId()%>"
+											class="btn btn-sm btn-outline-primary">
 
-									</a></td>
+											<i class="bi bi-pencil-square me-1"></i>
+
+											<%=ms.get("edit")%>
+
+										</a>
+
+									</td>
 
 								</tr>
 
 
 								<%
+
 								}
+
 								%>
 
 							</tbody>
@@ -291,18 +380,25 @@
 
 					<!-- Pagination / Actions -->
 
-					<div class="border-top mt-4 pt-3 pb-5"">
+					<div class="border-top mt-4 pt-3 pb-5">
 
 						<div
 							class="d-flex justify-content-center align-items-center gap-2">
 
-							<input type="submit" name="operation"
+							<input type="submit"
+								name="operation"
 								class="btn btn-primary btn-sm px-3"
 								<%=pageNo == 1 ? "disabled" : ""%>
-								value="<%=BaseCtl.OP_PREVIOUS%>"> <input type="submit"
-								name="operation" class="btn btn-danger btn-sm px-3"
-								value="<%=BaseCtl.OP_DELETE%>"> <input type="submit"
-								name="operation" class="btn btn-primary btn-sm px-3"
+								value="<%=BaseCtl.OP_PREVIOUS%>">
+
+							<input type="submit"
+								name="operation"
+								class="btn btn-danger btn-sm px-3"
+								value="<%=BaseCtl.OP_DELETE%>">
+
+							<input type="submit"
+								name="operation"
+								class="btn btn-primary btn-sm px-3"
 								<%=list.size() < 10 ? "disabled" : ""%>
 								value="<%=BaseCtl.OP_NEXT%>">
 
@@ -320,7 +416,7 @@
 	</form>
 
 
-	<%@include file="Footer.jsp"%>
+	<%@ include file="Footer.jsp"%>
 
 </body>
 

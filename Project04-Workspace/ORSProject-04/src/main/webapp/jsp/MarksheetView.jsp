@@ -11,19 +11,7 @@
 
 <head>
 
-<meta charset="ISO-8859-1">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Marksheet</title>
-
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet">
-
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    rel="stylesheet">
 
 </head>
 

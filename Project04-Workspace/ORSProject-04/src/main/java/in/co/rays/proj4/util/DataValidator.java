@@ -43,6 +43,32 @@ public class DataValidator {
 			return false;
 		}
 	}
+	
+	public static boolean isBoolean(String val) {
+		if (isNotNull(val)) {
+			try {
+				boolean i = Boolean.parseBoolean(val);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean isDouble(String val) {
+		if (isNotNull(val)) {
+			try {
+				double i = Double.parseDouble(val);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 
 	public static boolean isEmail(String val) {
 

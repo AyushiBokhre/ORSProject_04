@@ -16,19 +16,7 @@
 
 <head>
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>TimeTable List</title>
-
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-	rel="stylesheet">
 
 </head>
 
@@ -67,17 +55,23 @@
 
 					</div>
 
-					<!-- PDF Button - Top Right -->
+					  <!-- PDF Button - Top Right 
 
 					<div class="position-absolute top-0 end-0 mt-2 me-3">
 
-						<a href="<%=ORSView.USER_REPORT_CTL%>?type=pdf"
+						<a href="<%=ORSView.TIMETABLE_REPORT_CTL%>?type=pdf" target="_blank"
 							class="btn btn-outline-danger btn-sm px-3"> <i
-							class="bi bi-file-earmark-pdf me-1"></i> PDF
-
+							class="bi bi-file-earmark-pdf me-1"></i> Download PDF
+						</a>
+						
+						<a href="<%=ORSView.TIMETABLE_REPORT_CTL%>?type=doc" target="_blank"
+							class="btn btn-outline-primary btn-sm px-3"> <i
+							class="bi bi-file-earmark-word me-1"></i> Download DOC
 						</a>
 
-					</div>
+					</div>-->
+
+					
 
 
 

@@ -35,6 +35,21 @@ public class DataUtility {
 			return 0;
 		}
 	}
+	public static double getDouble(String val) {
+		if (DataValidator.isDouble(val)) {
+			return Double.parseDouble(val);
+		} else {
+			return 0;
+		}
+	}
+	
+	public static boolean getBoolean(String val) {
+		if (DataValidator.isBoolean(val)) {
+			return Boolean.parseBoolean(val);
+		} else {
+			return false;
+		}
+	}
 
 	public static long getLong(String val) {
 		if (DataValidator.isLong(val)) {
