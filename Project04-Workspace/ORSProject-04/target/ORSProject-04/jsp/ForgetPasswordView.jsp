@@ -1,0 +1,205 @@
+<%@ page import="in.co.rays.proj4.util.MessageSource" %>
+<%@ page import="in.co.rays.proj4.util.ServletUtility" %>
+<%@ page import="in.co.rays.proj4.controller.ORSView" %>
+<%@ page import="in.co.rays.proj4.controller.BaseCtl" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Forget Password - ORS</title>
+
+</head>
+
+<body class="bg-light">
+
+	<%@ include file="Header.jsp"%>
+
+	<%
+
+		String _suc = ServletUtility.getSuccessMessage(request);
+		String _err = ServletUtility.getErrorMessage(request);
+
+	%>
+
+	<form action="<%=ORSView.FORGET_PASSWORD_CTL%>" method="post">
+
+		<div class="container py-5">
+
+			<div class="row justify-content-center">
+
+				<div class="col-lg-5 col-md-7 col-sm-10">
+
+					<!-- Forget Password Card -->
+
+					<div class="card shadow-lg border-0 rounded-4">
+
+						<div class="card-body p-4">
+
+							<!-- Icon -->
+
+							<div class="text-center mb-3">
+
+								<i class="bi bi-key-fill text-primary display-4"></i>
+
+							</div>
+
+							<!-- Heading -->
+
+							<h3 class="text-center fw-bold text-primary mb-1">
+
+								<%=ms.get("forgetPassword.heading")%>
+
+							</h3>
+
+							<p class="text-center text-muted mb-4">
+
+								<%=ms.get("forgetPassword.description")%>
+
+							</p>
+
+
+							<!-- Success Message -->
+
+							<%
+
+								if (_suc != null && !_suc.isEmpty()) {
+
+							%>
+
+							<div class="alert alert-success">
+
+								<i class="bi bi-check-circle-fill"></i>
+
+								<%=_suc%>
+
+							</div>
+
+							<%
+
+								}
+
+							%>
+
+
+							<!-- Error Message -->
+
+							<%
+
+								if (_err != null && !_err.isEmpty()) {
+
+							%>
+
+							<div class="alert alert-danger">
+
+								<i class="bi bi-exclamation-triangle-fill"></i>
+
+								<%=_err%>
+
+							</div>
+
+							<%
+
+								}
+
+							%>
+
+
+							<!-- Login ID -->
+
+							<div class="mb-3">
+
+								<label class="form-label fw-bold">
+
+									<i class="bi bi-person-fill text-primary"></i>
+
+									<%=ms.get("forgetPassword.loginId")%>
+
+									<span class="text-danger">*</span>
+
+								</label>
+
+								<div class="input-group">
+
+									<span class="input-group-text bg-light">
+
+										<i class="bi bi-person"></i>
+
+									</span>
+
+									<input
+										type="text"
+										name="login"
+										class="form-control"
+										placeholder="<%=ms.get("forgetPassword.loginId.placeholder")%>"
+										value="<%=ServletUtility.getParameter("login", request)%>">
+
+								</div>
+
+								<div class="text-danger small mt-1">
+
+									<%=ServletUtility.getErrorMessage("login", request)%>
+
+								</div>
+
+							</div>
+
+
+							<!-- Submit Button -->
+
+							<div class="d-grid mt-4">
+
+								<button
+									type="submit"
+									name="operation"
+									value="<%=BaseCtl.OP_GO%>"
+									class="btn btn-primary btn-lg">
+
+									<i class="bi bi-send-fill"></i>
+
+									&nbsp; <%=ms.get("forgetPassword.resetButton")%>
+
+								</button>
+
+							</div>
+
+
+							<!-- Back to Login -->
+
+							<div class="text-center mt-3">
+
+								<a
+									href="<%=ORSView.LOGIN_CTL%>"
+									class="text-decoration-none">
+
+									<i class="bi bi-arrow-left"></i>
+
+									<%=ms.get("forgetPassword.backToLogin")%>
+
+								</a>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</form>
+
+
+	<%@ include file="Footer.jsp"%>
+
+</body>
+
+</html>

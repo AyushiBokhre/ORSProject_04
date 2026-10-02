@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2 -->
+
+<jasperReport
+	xmlns="http://jasperreports.sourceforge.net/jasperreports"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+	name="ParkingListReport"
+	pageWidth="595"
+	pageHeight="842"
+	columnWidth="555"
+	leftMargin="20"
+	rightMargin="20"
+	topMargin="20"
+	bottomMargin="20"
+	uuid="735bd47d-d532-44cf-b572-66d7c1429d24">
+
+	<field name="id" class="java.lang.Long"/>
+	<field name="vehicleNumber" class="java.lang.String"/>
+	<field name="vehicleType" class="java.lang.String"/>
+	<field name="entryTime" class="java.lang.String"/>
+	<field name="occupied" class="java.lang.Boolean"/>
+	<title>
+		<band height="55">
+			<rectangle>
+				<reportElement
+					x="0"
+					y="0"
+					width="555"
+					height="46"
+					forecolor="#1565C0"
+					backcolor="#1565C0"
+					uuid="5334eff9-b7e8-45b0-9d4b-e5e410c29a71"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+
+			<staticText>
+				<reportElement
+					x="0"
+					y="4"
+					width="555"
+					height="38"
+					forecolor="#FFFFFF"
+					uuid="1093d2ab-f3bf-4cd6-a613-b9c3c7d58c79"/>
+				<textElement
+					textAlignment="Center"
+					verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parking List Report]]></text>
+			</staticText>
+		</band>
+	</title>
+
+	<pageHeader>
+		<band height="18">
+
+			<staticText>
+				<reportElement
+					x="0"
+					y="0"
+					width="277"
+					height="18"
+					forecolor="#666666"
+					uuid="1d9c70e0-96c1-4207-a3f7-8873300d2c1c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Online Result System]]></text>
+			</staticText>
+
+			<textField pattern="dd-MM-yyyy HH:mm">
+				<reportElement
+					x="277"
+					y="0"
+					width="278"
+					height="18"
+					forecolor="#666666"
+					uuid="cdbf1620-190c-4c7c-a691-69662b1a647d"/>
+				<textElement
+					textAlignment="Right"
+					verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+
+		</band>
+	</pageHeader>
+
+	<columnHeader>
+		<band height="26">
+
+			<rectangle>
+				<reportElement
+					x="0"
+					y="0"
+					width="555"
+					height="26"
+					forecolor="#0D2137"
+					backcolor="#0D2137"
+					uuid="5a72aeab-63dd-406b-bfb2-a2f48aff1bf4"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+
+			<!-- # -->
+			<staticText>
+				<reportElement
+					x="0"
+					y="0"
+					width="25"
+					height="26"
+					forecolor="#FFFFFF"
+					uuid="5a9414f6-e19a-464f-94c3-3a3b24760b6a"/>
+				<textElement
+					textAlignment="Center"
+					verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+
+			<!-- ID -->
+			<staticText>
+				<reportElement
+					x="25"
+					y="0"
+					width="40"
+					height="26"
+					forecolor="#FFFFFF"
+					uuid="64f09312-3a61-4e77-a1e5-c86e5841b15d"/>
+				<textElement
+					textAlignment="Center"
+					verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+
+			<!-- Vehicle Number -->
+			<staticText>
+				<reportElement
+					x="65"
+					y="0"
+					width="150"
+					height="26"
+					forecolor="#FFFFFF"
+					uuid="b6057db7-2529-45e3-9f47-aceb88e1fc2b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehicle Number]]></text>
+			</staticText>
+
+			<!-- Vehicle Type -->
+			<staticText>
+				<reportElement
+					x="215"
+					y="0"
+					width="100"
+					height="26"
+					forecolor="#FFFFFF"
+					uuid="81a28a12-097f-4939-88c1-91a1e2999612"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehicle Type]]></text>
+			</staticText>
+
+			<!-- Entry Time -->
+			<staticText>
+				<reportElement
+					x="315"
+					y="0"
+					width="150"
+					height="26"
+					forecolor="#FFFFFF"
+					uuid="680d09ea-152a-4948-bfdc-d80d867c185a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entry Time]]></text>
+			</staticText>
+
+			<!-- Occupied -->
+			<staticText>
+				<reportElement
+					x="465"
+					y="0"
+					width="90"
+					height="26"
+					forecolor="#FFFFFF"
+					uuid="1521a042-c2f8-473d-aa27-5a3fbc98e72a"/>
+				<textElement
+					textAlignment="Center"
+					verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Occupied]]></text>
+			</staticText>
+
+		</band>
+	</columnHeader>
+
+	<detail>
+		<band height="22">
+
+			<rectangle>
+				<reportElement
+					x="0"
+					y="0"
+					width="555"
+					height="22"
+					backcolor="#EEF2F7"
+					uuid="f2c18cbb-21e8-4c47-8635-4353508818cc">
+
+					<printWhenExpression><![CDATA[
+						$V{REPORT_COUNT} % 2 == 0
+					]]></printWhenExpression>
+
+				</reportElement>
+
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+
+			<!-- Serial Number -->
+			<textField>
+				<reportElement
+					x="0"
+					y="0"
+					width="25"
+					height="22"
+					forecolor="#888888"
+					uuid="5a46f262-bf83-4ebb-a22b-e0d75bdf989d"/>
+				<textElement
+					textAlignment="Center"
+					verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+
+			<!-- ID -->
+			<textField>
+				<reportElement
+					x="25"
+					y="0"
+					width="40"
+					height="22"
+					forecolor="#888888"
+					uuid="2a6d2986-c91d-40c8-9d10-8235d7d1209d"/>
+				<textElement
+					textAlignment="Center"
+					verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+
+			<!-- Vehicle Number -->
+			<textField isBlankWhenNull="true">
+				<reportElement
+					x="65"
+					y="0"
+					width="150"
+					height="22"
+					uuid="59b79fa6-1a5b-43a8-a2ef-aaf133ad5c13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNumber}]]></textFieldExpression>
+			</textField>
+
+			<!-- Vehicle Type -->
+			<textField isBlankWhenNull="true">
+				<reportElement
+					x="215"
+					y="0"
+					width="100"
+					height="22"
+					uuid="128cd803-c6b0-4c17-9c56-2a31cfb7668e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleType}]]></textFieldExpression>
+			</textField>
+
+			<!-- Entry Time -->
+			<textField isBlankWhenNull="true">
+				<reportElement
+					x="315"
+					y="0"
+					width="150"
+					height="22"
+					uuid="8a7bc1f5-d30c-4b04-bde0-5eb39fbbc07f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entryTime}]]></textFieldExpression>
+			</textField>
+
+			<!-- Occupied -->
+			<textField isBlankWhenNull="true">
+				<reportElement
+					x="465"
+					y="0"
+					width="90"
+					height="22"
+					forecolor="#555555"
+					uuid="900ecf83-85c9-485a-98e2-c0be11a09824"/>
+				<textElement
+					textAlignment="Center"
+					verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{occupied}]]></textFieldExpression>
+			</textField>
+
+		</band>
+	</detail>
+
+	<pageFooter>
+		<band height="20">
+
+			<line>
+				<reportElement
+					x="0"
+					y="0"
+					width="555"
+					height="1"
+					forecolor="#CCCCCC"
+					uuid="79fd5c0a-8a38-4f7d-afb9-33f45460a834"/>
+			</line>
+
+			<staticText>
+				<reportElement
+					x="0"
+					y="3"
+					width="277"
+					height="16"
+					forecolor="#888888"
+					uuid="64481b47-8a3f-405e-a597-29519a05e4e0"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Online Result System - Parking List Report]]></text>
+			</staticText>
+
+			<textField>
+				<reportElement
+					x="277"
+					y="3"
+					width="278"
+					height="16"
+					forecolor="#888888"
+					uuid="d328ccb5-0d9f-4709-9185-73c17658458e"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+
+		</band>
+	</pageFooter>
+
+	<summary>
+		<band height="30">
+
+			<line>
+				<reportElement
+					x="0"
+					y="4"
+					width="555"
+					height="1"
+					forecolor="#CCCCCC"
+					uuid="33314bf8-de04-491a-a89f-80a550882874"/>
+			</line>
+
+			<textField>
+				<reportElement
+					x="0"
+					y="10"
+					width="300"
+					height="18"
+					forecolor="#1565C0"
+					uuid="d67e1947-1323-41d3-8855-da48c1df74dd"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[
+					"Total Parking Records: " + $V{REPORT_COUNT}
+				]]></textFieldExpression>
+			</textField>
+
+		</band>
+	</summary>
+
+</jasperReport>
