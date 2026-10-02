@@ -45,6 +45,10 @@ public interface ORSView {
 	public String FOOD_ORDER_LIST_VIEW = PAGE_FOLDER + "/FoodOrderListView.jsp";
 	public String SMART_PARKING_VIEW = PAGE_FOLDER + "/SmartParkingView.jsp";
 	public String SMART_PARKING_LIST_VIEW = PAGE_FOLDER + "/SmartParkingListView.jsp";
+	public String GYM_MEMBER_VIEW = PAGE_FOLDER + "/GymMemberView.jsp";
+	public String GYM_MEMBER_LIST_VIEW = PAGE_FOLDER + "/GymMemberListView.jsp";
+	public String HOSPITAL_VIEW = PAGE_FOLDER + "/HospitalView.jsp";
+	public String HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
 
 
 	public String ERROR_CTL = "/ctl/MarksheetCtl";
@@ -86,6 +90,10 @@ public interface ORSView {
 	public String FOOD_ORDER_LIST_CTL = APP_CONTEXT + "/ctl/FoodOrderListCtl";
 	public String SMART_PARKING_CTL = APP_CONTEXT + "/ctl/SmartParkingCtl";
 	public String SMART_PARKING_LIST_CTL = APP_CONTEXT + "/ctl/SmartParkingListCtl";
+	public String GYM_MEMBER_CTL = APP_CONTEXT + "/ctl/GymMemberCtl";
+	public String GYM_MEMBER_LIST_CTL = APP_CONTEXT + "/ctl/GymMemberListCtl";
+	public String HOSPITAL_CTL = APP_CONTEXT + "/ctl/HospitalCtl";
+	public String HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
 
 	public String STUDENT_REPORT_CTL = APP_CONTEXT + "/ctl/StudentReportCtl";
 	public String COLLEGE_REPORT_CTL = APP_CONTEXT + "/ctl/CollegeReportCtl";
@@ -97,6 +105,7 @@ public interface ORSView {
 	public String FACULTY_REPORT_CTL = APP_CONTEXT + "/ctl/FacultyReportCtl";
 	public String TIMETABLE_REPORT_CTL = APP_CONTEXT + "/ctl/TimetableReportCtl";
 	public String SMART_PARKING_REPORT_CTL = APP_CONTEXT + "/ctl/ParkingListReportCtl";
+	public String HOSPITAL_REPORT_CTL = APP_CONTEXT + "/ctl/HospitalReportCtl";
 	
 	
 	public String COURSE_REPORT_VIEW = "/reports/CourseListReport.jrxml";
@@ -108,5 +117,6 @@ public interface ORSView {
 	public String MARKSHEET_REPORT_VIEW = "/reports/MarksheetListReport.jrxml";
 	public String FACULTY_REPORT_VIEW = "/reports/FacultyListReport.jrxml";
 	public String SMART_PARKING_REPORT_VIEW = "/reports/ParkingListReport.jrxml";
+	public String HOSPITAL_REPORT_VIEW = "/reports/HospitalListReport.jrxml";
 
 }

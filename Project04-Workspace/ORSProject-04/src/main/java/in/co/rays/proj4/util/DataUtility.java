@@ -7,7 +7,7 @@ import java.util.Date;
 // DataUtility class format data into correct format or into another format
 public class DataUtility {
 
-	public static final String APP_DATE_FORMAT = "yyyy-MM-dd";
+	public static final String APP_DATE_FORMAT = "MM/dd/yyyy";
 	public static final String APP_TIME_FORMAT = "MM/dd/yyyy HH:mm:ss";
 	private static final SimpleDateFormat formatter = new SimpleDateFormat(APP_DATE_FORMAT);
 	private static final SimpleDateFormat timeFormatter = new SimpleDateFormat(APP_TIME_FORMAT);
@@ -35,6 +35,7 @@ public class DataUtility {
 			return 0;
 		}
 	}
+
 	public static double getDouble(String val) {
 		if (DataValidator.isDouble(val)) {
 			return Double.parseDouble(val);
@@ -42,7 +43,7 @@ public class DataUtility {
 			return 0;
 		}
 	}
-	
+
 	public static boolean getBoolean(String val) {
 		if (DataValidator.isBoolean(val)) {
 			return Boolean.parseBoolean(val);

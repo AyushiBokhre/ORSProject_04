@@ -14,11 +14,25 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/**
+ * UserRegistrationCtl handles the registration of new users.
+ * It validates registration data, populates the UserBean,
+ * registers the user, and forwards the request to the registration view.
+ *
+ * @author Aayushi
+ * @version 1.0
+ */
 @WebServlet("/UserRegistrationCtl")
 public class UserRegistrationCtl extends BaseCtl<UserBean, UserModel> {
 
 	public static final String OP_SIGN_UP = "SignUp";
 
+	/**
+	 * Validates the user registration request parameters.
+	 *
+	 * @param request HTTP servlet request
+	 * @return true if all registration fields are valid, otherwise false
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -64,6 +78,12 @@ public class UserRegistrationCtl extends BaseCtl<UserBean, UserModel> {
 		return pass;
 	}
 
+	/**
+	 * Populates the UserBean with registration data received from the request.
+	 *
+	 * @param request HTTP servlet request
+	 * @return populated UserBean object
+	 */
 	@Override
 	protected UserBean populateBean(HttpServletRequest request) {
 
@@ -83,6 +103,14 @@ public class UserRegistrationCtl extends BaseCtl<UserBean, UserModel> {
 		return bean;
 	}
 
+	/**
+	 * Handles POST requests for user registration.
+	 *
+	 * @param request HTTP servlet request
+	 * @param response HTTP servlet response
+	 * @throws ServletException if a servlet-related error occurs
+	 * @throws IOException if an input or output error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -105,11 +133,21 @@ public class UserRegistrationCtl extends BaseCtl<UserBean, UserModel> {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Returns the view for user registration.
+	 *
+	 * @return user registration view
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.USER_REGISTRATION_VIEW;
 	}
 
+	/**
+	 * Returns the UserModel instance used by this controller.
+	 *
+	 * @return UserModel object
+	 */
 	@Override
 	protected UserModel getModel() {
 		return new UserModel();

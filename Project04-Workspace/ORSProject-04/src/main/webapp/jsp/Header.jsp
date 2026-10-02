@@ -5,7 +5,6 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -24,6 +23,24 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
 	rel="stylesheet">
 
+<!-- jQuery UI -->
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#udatee").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			yearRange : '1980:2020',
+		});
+	});
+</script>
+
 <title>ORS Project</title>
 
 </head>
@@ -31,13 +48,12 @@
 <body>
 
 	<%
-	UserBean userBean = (UserBean) session.getAttribute("user");
-	String roleName = (String) session.getAttribute("role");
-	MessageSource ms = MessageSource.getInstance();
-	boolean isLogin = userBean != null;
-	String locale = ms.getLanguage();
+		UserBean userBean = (UserBean) session.getAttribute("user");
+		String roleName = (String) session.getAttribute("role");
+		MessageSource ms = MessageSource.getInstance();
+		boolean isLogin = userBean != null;
+		String locale = ms.getLanguage();
 	%>
-
 
 	<!-- ================= NAVBAR ================= -->
 
@@ -47,11 +63,9 @@
 
 			<!-- ================= LOGO ================= -->
 
-			<a class="navbar-brand" href="<%=ORSView.WELCOME_CTL%>">
-
-				<img src="<%=ORSView.APP_CONTEXT%>/img/customLogo.jpg"
-					width="175" height="50" alt="ORS Logo" class="rounded">
-
+			<a class="navbar-brand" href="<%=ORSView.WELCOME_CTL%>"> <img
+				src="<%=ORSView.APP_CONTEXT%>/img/customLogo.jpg" width="175"
+				height="50" alt="ORS Logo" class="rounded">
 			</a>
 
 
@@ -72,7 +86,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 
 				<%
-				if (isLogin) {
+					if (isLogin) {
 				%>
 
 
@@ -249,7 +263,8 @@
 							id="marksheetDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
 
-							<i class="bi bi-file-earmark-text"></i> Marksheet
+							<i class="bi bi-file-earmark-text"></i>
+							Marksheet
 
 						</a>
 
@@ -329,7 +344,8 @@
 							id="subjectDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
 
-							<i class="bi bi-journal-bookmark"></i> Subject
+							<i class="bi bi-journal-bookmark"></i>
+							Subject
 
 						</a>
 
@@ -369,7 +385,8 @@
 							id="facultyDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
 
-							<i class="bi bi-person-workspace"></i> Faculty
+							<i class="bi bi-person-workspace"></i>
+							Faculty
 
 						</a>
 
@@ -476,6 +493,46 @@
 								</a>
 							</li>
 
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.GYM_MEMBER_CTL%>">
+
+									<i class="bi bi-plus-circle me-2"></i>
+									Add Gym Member
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.GYM_MEMBER_LIST_CTL%>">
+
+									<i class="bi bi-list-ul me-2"></i>
+									Gym Member List
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.HOSPITAL_CTL%>">
+
+									<i class="bi bi-plus-circle me-2"></i>
+									Add Patient
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.HOSPITAL_LIST_CTL%>">
+
+									<i class="bi bi-list-ul me-2"></i>
+									Patient List
+
+								</a>
+							</li>
+
 						</ul>
 
 					</li>
@@ -483,13 +540,15 @@
 
 					<!-- ================= TIMETABLE ================= -->
 
+					<%--
 					<li class="nav-item dropdown">
 
 						<a class="nav-link dropdown-toggle" href="#"
 							id="timetableDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
 
-							<i class="bi bi-calendar3"></i> TimeTable
+							<i class="bi bi-calendar3"></i>
+							TimeTable
 
 						</a>
 
@@ -519,6 +578,7 @@
 						</ul>
 
 					</li>
+					--%>
 
 				</ul>
 
@@ -532,8 +592,7 @@
 
 					<form class="m-0">
 
-						<select name="lang"
-							onchange="this.form.submit()"
+						<select name="lang" onchange="this.form.submit()"
 							class="form-select form-select-sm">
 
 							<option value="en"
@@ -571,17 +630,16 @@
 							data-bs-toggle="dropdown" aria-expanded="false">
 
 							<i class="bi bi-person-circle me-1"></i>
-
 							Hi, <%=userBean.getFirstName()%>
 
 							<%
-							if (roleName != null && !roleName.isEmpty()) {
+								if (roleName != null && !roleName.isEmpty()) {
 							%>
 
 							(<%=roleName%>)
 
 							<%
-							}
+								}
 							%>
 
 						</a>
@@ -591,7 +649,6 @@
 							aria-labelledby="profileDropdown">
 
 							<li>
-
 								<a class="dropdown-item"
 									href="<%=ORSView.MY_PROFILE_CTL + "?id=" + userBean.getId()%>">
 
@@ -599,11 +656,9 @@
 									My Profile
 
 								</a>
-
 							</li>
 
 							<li>
-
 								<a class="dropdown-item"
 									href="<%=ORSView.CHANGE_PASSWORD_CTL%>">
 
@@ -611,7 +666,6 @@
 									Change Password
 
 								</a>
-
 							</li>
 
 						</ul>
@@ -633,7 +687,7 @@
 
 
 				<%
-				} else {
+					} else {
 				%>
 
 
@@ -690,7 +744,7 @@
 
 
 				<%
-				}
+					}
 				%>
 
 			</div>
@@ -709,3 +763,4 @@
 </body>
 
 </html>
+

@@ -42,7 +42,7 @@ import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
  * @param <B> the bean type whose instances populate the report data source;
  *            must extend {@link BaseBean}
  *
- * @author Rays EdTech
+ * @author Aayushi
  * @version 1.0
  */
 public abstract class BaseReportCtl<B extends BaseBean> extends HttpServlet {
@@ -53,7 +53,7 @@ public abstract class BaseReportCtl<B extends BaseBean> extends HttpServlet {
     public static final String PDF = "pdf";
 
     /** Output format constant for Word (OOXML .docx) reports. */
-    public static final String DOC = "doc";
+    public static final String DOC= "doc";
 
     /**
      * Returns the classpath-relative path to the JRXML report template.

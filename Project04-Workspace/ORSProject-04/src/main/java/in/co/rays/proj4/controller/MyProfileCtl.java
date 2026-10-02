@@ -7,9 +7,23 @@ import in.co.rays.proj4.util.DataValidator;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
+/**
+ * MyProfileCtl handles the user's profile information.
+ * It validates profile data, populates the UserBean,
+ * and provides the model and view required for the profile page.
+ *
+ * @author Aayushi
+ * @version 1.0
+ */
 @WebServlet("/ctl/MyProfileCtl")
 public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 
+	/**
+	 * Validates the user profile information received from the request.
+	 *
+	 * @param request HTTP servlet request
+	 * @return true if all profile fields are valid, otherwise false
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -46,6 +60,12 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 		return pass;
 	}
 
+	/**
+	 * Populates the UserBean with profile information received from the request.
+	 *
+	 * @param request HTTP servlet request
+	 * @return populated UserBean object
+	 */
 	@Override
 	protected UserBean populateBean(HttpServletRequest request) {
 
@@ -66,14 +86,25 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 		return bean;
 	}
 
+	/**
+	 * Returns the view for the user's profile page.
+	 *
+	 * @return profile view
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.MY_PROFILE_VIEW;
 	}
 
+	/**
+	 * Returns the UserModel instance used by this controller.
+	 *
+	 * @return UserModel object
+	 */
 	@Override
 	protected UserModel getModel() {
 		return new UserModel();
 	}
 
 }
+

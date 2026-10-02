@@ -63,8 +63,7 @@
 					<%=_err%>
 
 					<button type="button" class="close" data-bs-dismiss="alert">
-						×
-					</button>
+						×</button>
 
 				</div>
 
@@ -88,8 +87,7 @@
 							<div class="mb-3">
 								<img src="<%=ORSView.UPLOAD_PHOTO_CTL%>?id=<%=bean.getId()%>"
 									onerror="this.style.display='none';"
-									alt="<%=ms.get("user.photo")%>"
-									width="80" height="80"
+									alt="<%=ms.get("user.photo")%>" width="80" height="80"
 									class="rounded-circle border shadow-sm"
 									style="object-fit: cover;">
 							</div>
@@ -116,14 +114,13 @@
 
 							<!-- First Name -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("first.name")%> <span class="text-danger">*</span>
+								<label class="form-label fw-semibold"> <%=ms.get("first.name")%>
+									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-person text-primary"></i>
-									</span>
-									<input type="text" name="firstName" class="form-control"
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-person text-primary"></i>
+									</span> <input type="text" name="firstName" class="form-control"
 										value="<%=DataUtility.getStringData(bean.getFirstName())%>"
 										placeholder="<%=ms.get("enter.first.name")%>">
 								</div>
@@ -134,14 +131,13 @@
 
 							<!-- Last Name -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("last.name")%> <span class="text-danger">*</span>
+								<label class="form-label fw-semibold"> <%=ms.get("last.name")%>
+									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-person text-primary"></i>
-									</span>
-									<input type="text" name="lastName" class="form-control"
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-person text-primary"></i>
+									</span> <input type="text" name="lastName" class="form-control"
 										value="<%=DataUtility.getStringData(bean.getLastName())%>"
 										placeholder="<%=ms.get("enter.last.name")%>">
 								</div>
@@ -152,14 +148,13 @@
 
 							<!-- Login -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("login")%> <span class="text-danger">*</span>
+								<label class="form-label fw-semibold"> <%=ms.get("login")%>
+									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-envelope text-primary"></i>
-									</span>
-									<input type="text" name="login" class="form-control"
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-envelope text-primary"></i>
+									</span> <input type="text" name="login" class="form-control"
 										value="<%=DataUtility.getStringData(bean.getLogin())%>"
 										placeholder="<%=ms.get("enter.email")%>">
 								</div>
@@ -170,15 +165,14 @@
 
 							<!-- Role -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("role")%> <span class="text-danger">*</span>
+								<label class="form-label fw-semibold"> <%=ms.get("role")%>
+									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-person-badge text-primary"></i>
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-person-badge text-primary"></i>
 									</span>
-									<%=HTMLUtility.getList("roleId",
-											DataUtility.getStringData(bean.getRoleId()), roleList)%>
+									<%=HTMLUtility.getList("roleId", DataUtility.getStringData(bean.getRoleId()), roleList)%>
 								</div>
 								<div class="text-danger small mt-1">
 									<%=ServletUtility.getErrorMessage("roleId", request)%>
@@ -187,14 +181,13 @@
 
 							<!-- Password -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("password")%> <span class="text-danger">*</span>
+								<label class="form-label fw-semibold"> <%=ms.get("password")%>
+									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-lock text-primary"></i>
-									</span>
-									<input type="password" name="password" class="form-control"
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-lock text-primary"></i>
+									</span> <input type="password" name="password" class="form-control"
 										value="<%=DataUtility.getStringData(bean.getPassword())%>"
 										placeholder="<%=ms.get("enter.password")%>">
 								</div>
@@ -205,15 +198,13 @@
 
 							<!-- Confirm Password -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("confirm.password")%>
+								<label class="form-label fw-semibold"> <%=ms.get("confirm.password")%>
 									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-lock-fill text-primary"></i>
-									</span>
-									<input type="password" name="confirmPassword"
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-lock-fill text-primary"></i>
+									</span> <input type="password" name="confirmPassword"
 										class="form-control"
 										value="<%=DataUtility.getStringData(bean.getPassword())%>"
 										placeholder="<%=ms.get("reenter.password")%>">
@@ -225,15 +216,14 @@
 
 							<!-- Gender -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("gender")%> <span class="text-danger">*</span>
+								<label class="form-label fw-semibold"> <%=ms.get("gender")%>
+									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-gender-ambiguous text-primary"></i>
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-gender-ambiguous text-primary"></i>
 									</span>
-									<%=HTMLUtility.getList("gender",
-											DataUtility.getStringData(bean.getGender()), map)%>
+									<%=HTMLUtility.getList("gender", DataUtility.getStringData(bean.getGender()), map)%>
 								</div>
 								<div class="text-danger small mt-1">
 									<%=ServletUtility.getErrorMessage("gender", request)%>
@@ -242,15 +232,14 @@
 
 							<!-- DOB -->
 							<div class="col-md-6">
-								<label class="form-label fw-semibold">
-									<%=ms.get("dob")%> <span class="text-danger">*</span>
+								<label class="form-label fw-semibold"> <%=ms.get("dob")%>
+									<span class="text-danger">*</span>
 								</label>
 								<div class="input-group">
-									<span class="input-group-text bg-white">
-										<i class="bi bi-calendar-date text-primary"></i>
-									</span>
-									<input type="date" name="dob" class="form-control"
-										value="<%=DataUtility.getStringData(bean.getDob())%>">
+									<span class="input-group-text bg-white"> <i
+										class="bi bi-calendar-date text-primary"></i>
+									</span> <input type="text" name="dob" id="udatee" class="form-control"
+										value="<%=DataUtility.getDateString(bean.getDob())%>">
 								</div>
 								<div class="text-danger small mt-1">
 									<%=ServletUtility.getErrorMessage("dob", request)%>
