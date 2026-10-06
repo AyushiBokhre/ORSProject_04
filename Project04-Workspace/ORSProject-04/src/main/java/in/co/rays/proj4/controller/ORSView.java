@@ -49,6 +49,8 @@ public interface ORSView {
 	public String GYM_MEMBER_LIST_VIEW = PAGE_FOLDER + "/GymMemberListView.jsp";
 	public String HOSPITAL_VIEW = PAGE_FOLDER + "/HospitalView.jsp";
 	public String HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
+	public String MOVIE_VIEW = PAGE_FOLDER + "/MovieView.jsp";
+	public String MOVIE_LIST_VIEW = PAGE_FOLDER + "/MovieListView.jsp";
 
 
 	public String ERROR_CTL = "/ctl/MarksheetCtl";
@@ -94,6 +96,8 @@ public interface ORSView {
 	public String GYM_MEMBER_LIST_CTL = APP_CONTEXT + "/ctl/GymMemberListCtl";
 	public String HOSPITAL_CTL = APP_CONTEXT + "/ctl/HospitalCtl";
 	public String HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
+	public String MOVIE_CTL = APP_CONTEXT + "/ctl/MovieCtl";
+	public String MOVIE_LIST_CTL = APP_CONTEXT + "/ctl/MovieListCtl";
 
 	public String STUDENT_REPORT_CTL = APP_CONTEXT + "/ctl/StudentReportCtl";
 	public String COLLEGE_REPORT_CTL = APP_CONTEXT + "/ctl/CollegeReportCtl";

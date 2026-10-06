@@ -2,6 +2,9 @@ package in.co.rays.proj4.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import in.co.rays.proj4.bean.MarksheetBean;
 import in.co.rays.proj4.bean.StudentBean;
@@ -131,6 +134,47 @@ public class MarksheetModel extends BaseModel<MarksheetBean>{
 			
 		return sql.toString();
 	
+	}
+	public List<MarksheetBean> getMeritList() throws ApplicationException {
+
+	    List<MarksheetBean> list = new ArrayList<MarksheetBean>();
+
+	    String sql = "SELECT * FROM " + getTable()
+	            + " ORDER BY (physics + chemistry + maths) DESC LIMIT 0, 10";
+
+	    try {
+
+	        Connection conn = JDBCDataSource.getConnection();
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+	        ResultSet rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+
+	            MarksheetBean bean = new MarksheetBean();
+
+	            bean.setId(rs.getLong(1));
+	            bean.setRollNo(rs.getString(2));
+	            bean.setStudentId(rs.getLong(3));
+	            bean.setName(rs.getString(4));
+	            bean.setPhysics(rs.getInt(5));
+	            bean.setChemistry(rs.getInt(6));
+	            bean.setMaths(rs.getInt(7));
+
+	            list.add(bean);
+	        }
+
+	        rs.close();
+	        pstmt.close();
+	        conn.close();
+
+	    } catch (Exception e) {
+
+	        e.printStackTrace();
+	        throw new ApplicationException("Exception in getting merit list");
+	    }
+
+	    return list;
 	}
 
 	@Override

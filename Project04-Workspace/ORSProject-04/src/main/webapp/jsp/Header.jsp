@@ -290,6 +290,26 @@
 
 								</a>
 							</li>
+							
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.GET_MARKSHEET_CTL%>">
+
+									<i class="bi bi-card-text"></i></i>
+									Get Marksheet
+
+								</a>
+							</li>
+							
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>">
+
+									<i class="bi bi-card-text"></i>
+									Merit Marksheet
+
+								</a>
+							</li>
 
 						</ul>
 
@@ -529,6 +549,26 @@
 
 									<i class="bi bi-list-ul me-2"></i>
 									Patient List
+
+								</a>
+							</li>
+							
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.MOVIE_CTL%>">
+
+									<i class="bi bi-plus-circle me-2"></i>
+									Add Movie
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.MOVIE_LIST_CTL%>">
+
+									<i class="bi bi-list-ul me-2"></i>
+									Movie List
 
 								</a>
 							</li>
