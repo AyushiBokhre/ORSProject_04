@@ -51,6 +51,12 @@ public interface ORSView {
 	public String HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
 	public String MOVIE_VIEW = PAGE_FOLDER + "/MovieView.jsp";
 	public String MOVIE_LIST_VIEW = PAGE_FOLDER + "/MovieListView.jsp";
+	public String RESTAURANT_VIEW = PAGE_FOLDER + "/RestaurantView.jsp";
+	public String RESTAURANT_LIST_VIEW = PAGE_FOLDER + "/RestaurantListView.jsp";
+	public String EXAM_VIEW = PAGE_FOLDER + "/ExamView.jsp";
+	public String EXAM_LIST_VIEW = PAGE_FOLDER + "/ExamListView.jsp";
+	public String EVENT_VIEW = PAGE_FOLDER + "/EventView.jsp";
+	public String EVENT_LIST_VIEW = PAGE_FOLDER + "/EventListView.jsp";
 
 
 	public String ERROR_CTL = "/ctl/MarksheetCtl";
@@ -98,7 +104,13 @@ public interface ORSView {
 	public String HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
 	public String MOVIE_CTL = APP_CONTEXT + "/ctl/MovieCtl";
 	public String MOVIE_LIST_CTL = APP_CONTEXT + "/ctl/MovieListCtl";
-
+	public String RESTAURANT_CTL = APP_CONTEXT + "/ctl/RestaurantCtl";
+	public String RESTAURANT_LIST_CTL = APP_CONTEXT + "/ctl/RestaurantListCtl";
+	public String EXAM_CTL = APP_CONTEXT + "/ctl/ExamCtl";
+	public String EXAM_LIST_CTL = APP_CONTEXT + "/ctl/ExamListCtl";
+	public String EVENT_CTL = APP_CONTEXT + "/ctl/EventCtl";
+	public String EVENT_LIST_CTL = APP_CONTEXT + "/ctl/EventListCtl";
+	
 	public String STUDENT_REPORT_CTL = APP_CONTEXT + "/ctl/StudentReportCtl";
 	public String COLLEGE_REPORT_CTL = APP_CONTEXT + "/ctl/CollegeReportCtl";
 	public String USER_REPORT_CTL = APP_CONTEXT + "/ctl/UserReportCtl";
@@ -110,7 +122,9 @@ public interface ORSView {
 	public String TIMETABLE_REPORT_CTL = APP_CONTEXT + "/ctl/TimetableReportCtl";
 	public String SMART_PARKING_REPORT_CTL = APP_CONTEXT + "/ctl/ParkingListReportCtl";
 	public String HOSPITAL_REPORT_CTL = APP_CONTEXT + "/ctl/HospitalReportCtl";
-	
+	public String EXAM_REPORT_CTL = APP_CONTEXT + "/ctl/ExamReportCtl";
+	public String EVENT_REPORT_CTL = APP_CONTEXT + "/ctl/EventReportCtl";
+
 	
 	public String COURSE_REPORT_VIEW = "/reports/CourseListReport.jrxml";
 	public String STUDENT_REPORT_VIEW = "/reports/StudentListReport.jrxml";
@@ -122,5 +136,6 @@ public interface ORSView {
 	public String FACULTY_REPORT_VIEW = "/reports/FacultyListReport.jrxml";
 	public String SMART_PARKING_REPORT_VIEW = "/reports/ParkingListReport.jrxml";
 	public String HOSPITAL_REPORT_VIEW = "/reports/HospitalListReport.jrxml";
+	public String EXAM_REPORT_VIEW = "/reports/ExamListReport.jrxml";
 
 }

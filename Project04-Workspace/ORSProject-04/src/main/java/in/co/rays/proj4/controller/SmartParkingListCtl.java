@@ -1,7 +1,6 @@
 package in.co.rays.proj4.controller;
 
 import in.co.rays.proj4.bean.SmartParkingBean;
-import in.co.rays.proj4.bean.VoterBean;
 import in.co.rays.proj4.model.SmartParkingModel;
 import in.co.rays.proj4.util.DataUtility;
 import jakarta.servlet.annotation.WebServlet;

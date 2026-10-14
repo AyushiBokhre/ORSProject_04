@@ -279,10 +279,9 @@ public abstract class BaseModel<T extends BaseBean> {
 
 			log.error("Exception in findByUniqueColumn for column: " + column, e);
 
-			e.printStackTrace();
+			throw new ApplicationException("Exception : Exception in getting User by emailId");
 
-			System.out.println(
-					"Exception: in findByUniqueColumn, " + column + " " + e.getMessage());
+//			System.out.println("Exception: in findByUniqueColumn, " + column + " " + e.getMessage());
 
 		} finally {
 

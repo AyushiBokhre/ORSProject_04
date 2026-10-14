@@ -1,15 +1,10 @@
 package in.co.rays.proj4.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import in.co.rays.proj4.bean.BaseBean;
-import in.co.rays.proj4.bean.MarksheetBean;
-import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.bean.TimeTableBean;
-import in.co.rays.proj4.bean.UserBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;

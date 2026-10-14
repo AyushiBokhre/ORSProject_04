@@ -4,7 +4,6 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.UserBean;
 import in.co.rays.proj4.model.UserModel;
-
 import jakarta.servlet.annotation.WebServlet;
 
 /**

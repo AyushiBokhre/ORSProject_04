@@ -3,12 +3,9 @@ package in.co.rays.proj4.controller;
 import java.util.List;
 
 import in.co.rays.proj4.bean.CourseBean;
-import in.co.rays.proj4.bean.MarksheetBean;
-import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.bean.SubjectBean;
 import in.co.rays.proj4.bean.TimeTableBean;
 import in.co.rays.proj4.model.CourseModel;
-import in.co.rays.proj4.model.StudentModel;
 import in.co.rays.proj4.model.SubjectModel;
 import in.co.rays.proj4.model.TimeTableModel;
 import in.co.rays.proj4.util.DataUtility;

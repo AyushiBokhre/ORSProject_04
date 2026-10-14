@@ -4,7 +4,6 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.model.RoleModel;
-
 import jakarta.servlet.annotation.WebServlet;
 
 /**

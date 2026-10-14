@@ -2,7 +2,6 @@ package in.co.rays.proj4.bean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class TimeTableBean extends BaseBean {

@@ -4,7 +4,6 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.model.StudentModel;
-
 import jakarta.servlet.annotation.WebServlet;
 
 /**

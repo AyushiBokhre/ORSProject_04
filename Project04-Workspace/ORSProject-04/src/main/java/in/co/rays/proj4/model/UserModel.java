@@ -40,7 +40,7 @@ public class UserModel extends BaseModel<UserBean> {
 			conn.setAutoCommit(false);
 
 			PreparedStatement pstmt = conn
-					.prepareStatement("INSERT INTO ST_USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+					.prepareStatement("INSERT INTO "+getTable() +" VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 			pstmt.setInt(1, nextPK());
 			pstmt.setString(2, bean.getFirstName());

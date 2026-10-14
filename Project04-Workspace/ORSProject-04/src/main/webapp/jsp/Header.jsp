@@ -572,11 +572,93 @@
 
 								</a>
 							</li>
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.MOVIE_CTL%>">
+
+									<i class="bi bi-plus-circle me-2"></i>
+									Add Movie
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.MOVIE_LIST_CTL%>">
+
+									<i class="bi bi-list-ul me-2"></i>
+									Movie List
+
+								</a>
+							</li>
+							
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.RESTAURANT_CTL%>">
+
+									<i class="bi bi-plus-circle me-2"></i>
+									Add Restaurant
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.RESTAURANT_LIST_CTL%>">
+
+									<i class="bi bi-list-ul me-2"></i>
+									Restaurant List
+
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.EXAM_CTL%>">
+
+									<i class="bi bi-plus-circle me-2"></i>
+									Add Exam
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.EXAM_LIST_CTL%>">
+
+									<i class="bi bi-list-ul me-2"></i>
+									Exam List
+
+								</a>
+							</li>
+							
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.EVENT_CTL%>">
+
+									<i class="bi bi-plus-circle me-2"></i>
+									Add Event
+
+								</a>
+							</li>
+
+							<li>
+								<a class="dropdown-item"
+									href="<%=ORSView.EVENT_LIST_CTL%>">
+
+									<i class="bi bi-list-ul me-2"></i>
+									Event List
+
+								</a>
+							</li>
 
 						</ul>
 
 					</li>
+							
 
+					
+						
+					
 
 					<!-- ================= TIMETABLE ================= -->
 

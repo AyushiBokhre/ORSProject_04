@@ -1,7 +1,6 @@
 package in.co.rays.proj4.controller;
 
 import in.co.rays.proj4.bean.FoodOrderBean;
-import in.co.rays.proj4.bean.VoterBean;
 import in.co.rays.proj4.model.FoodOrderModel;
 import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.DataValidator;

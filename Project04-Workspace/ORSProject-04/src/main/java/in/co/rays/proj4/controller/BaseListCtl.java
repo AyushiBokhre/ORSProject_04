@@ -1,7 +1,6 @@
 package in.co.rays.proj4.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import in.co.rays.proj4.bean.BaseBean;

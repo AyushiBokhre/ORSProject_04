@@ -3,7 +3,6 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.model.CollegeModel;
-
 import jakarta.servlet.annotation.WebServlet;
 
 /**

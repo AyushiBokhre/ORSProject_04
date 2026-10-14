@@ -1,9 +1,11 @@
 package in.co.rays.proj4.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import in.co.rays.proj4.bean.BaseBean;
 import in.co.rays.proj4.bean.UserBean;
+import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.model.BaseModel;
 import in.co.rays.proj4.util.DataUtility;
@@ -204,6 +206,15 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 
 			ServletUtility.setErrorMessage(e.getMessage(), request);
 			ServletUtility.forward(getView(), request, response);
+		} catch (ApplicationException e) {
+		e.printStackTrace();
+		System.out.println(e.getMessage() + " ============== database is down ===================");
+		ServletUtility.setPageNo(1, request);
+		ServletUtility.setPageSize(10, request);
+		ServletUtility.setList(new ArrayList<BaseBean>(), request);
+		request.setAttribute("nextList", new ArrayList<BaseBean>());
+		ServletUtility.setErrorMessage("database service is down", request);
+		ServletUtility.forward(getView(), request, response);
 		}
 	}
 

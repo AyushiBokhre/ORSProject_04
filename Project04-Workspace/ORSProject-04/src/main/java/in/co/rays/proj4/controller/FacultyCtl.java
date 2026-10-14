@@ -4,7 +4,6 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.bean.FacultyBean;
-import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.model.CollegeModel;
 import in.co.rays.proj4.model.FacultyModel;
 import in.co.rays.proj4.util.DataUtility;

@@ -2,6 +2,7 @@ package in.co.rays.proj4.controller;
 
 import java.util.List;
 
+import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.bean.HospitalBean;
 import in.co.rays.proj4.model.HospitalModel;
 import jakarta.servlet.annotation.WebServlet;

@@ -1,5 +1,4 @@
 package in.co.rays.proj4.controller;
-import in.co.rays.proj4.bean.BaseBean;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -8,7 +7,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-
+import in.co.rays.proj4.bean.BaseBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
