@@ -40,7 +40,7 @@
 	    map.put("4", "Books");
 
 	%>
-
+	
 
 	<form action="<%=ORSView.PRODUCT_LIST_CTL%>" method="post">
 
@@ -62,7 +62,7 @@
 
 						</div>
 
-						<h3 class="fw-bold text-dark mb-0">\Product List</h3>
+						<h3 class="fw-bold text-dark mb-0">Product List</h3>
 
 					</div>
 
@@ -162,8 +162,7 @@
 
                                         <i class="bi bi-building text-primary"></i>
 
-                                    </span><%=HTMLUtility.getList("category", DataUtility.getStringData(bean.getCategory()), map)%>
-
+                                    </span><%=HTMLUtility.getList("category", null, map)%>
                                 </div> 
 
                             </div> 
