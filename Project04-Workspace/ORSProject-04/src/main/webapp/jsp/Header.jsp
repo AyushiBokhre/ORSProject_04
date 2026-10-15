@@ -48,11 +48,11 @@
 <body>
 
 	<%
-		UserBean userBean = (UserBean) session.getAttribute("user");
-		String roleName = (String) session.getAttribute("role");
-		MessageSource ms = MessageSource.getInstance();
-		boolean isLogin = userBean != null;
-		String locale = ms.getLanguage();
+	UserBean userBean = (UserBean) session.getAttribute("user");
+	String roleName = (String) session.getAttribute("role");
+	MessageSource ms = MessageSource.getInstance();
+	boolean isLogin = userBean != null;
+	String locale = ms.getLanguage();
 	%>
 
 	<!-- ================= NAVBAR ================= -->
@@ -86,7 +86,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 
 				<%
-					if (isLogin) {
+				if (isLogin) {
 				%>
 
 
@@ -97,568 +97,389 @@
 
 					<!-- ================= ROLE ================= -->
 
-					<li class="nav-item dropdown">
-
-						<a class="nav-link dropdown-toggle" href="#"
-							id="roleDropdown" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="roleDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
 							<i class="bi bi-person-badge"></i> Role
 
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="roleDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.ROLE_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.ROLE_CTL%>">
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Role
+									<i class="bi bi-plus-circle me-2"></i> Add Role
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.ROLE_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.ROLE_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Role List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Role List
+							</a></li>
 
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= USER ================= -->
 
-					<li class="nav-item dropdown">
-
-						<a class="nav-link dropdown-toggle" href="#"
-							id="userDropdown" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="userDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
 							<i class="bi bi-people"></i> User
 
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="userDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.USER_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.USER_CTL%>">
 
-									<i class="bi bi-person-plus me-2"></i>
-									Add User
+									<i class="bi bi-person-plus me-2"></i> Add User
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.USER_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.USER_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> User List
 
-									<i class="bi bi-list-ul me-2"></i>
-									User List
+							</a></li>
 
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= COLLEGE ================= -->
 
-					<li class="nav-item dropdown">
-
-						<a class="nav-link dropdown-toggle" href="#"
-							id="collegeDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="collegeDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
 							<i class="bi bi-building"></i> College
 
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="collegeDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.COLLEGE_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.COLLEGE_CTL%>">
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add College
+									<i class="bi bi-plus-circle me-2"></i> Add College
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.COLLEGE_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.COLLEGE_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> College List
 
-									<i class="bi bi-list-ul me-2"></i>
-									College List
+							</a></li>
 
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= STUDENT ================= -->
 
-					<li class="nav-item dropdown">
-
-						<a class="nav-link dropdown-toggle" href="#"
-							id="studentDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="studentDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
 							<i class="bi bi-mortarboard"></i> Student
 
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="studentDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.STUDENT_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.STUDENT_CTL%>">
 
-									<i class="bi bi-person-plus me-2"></i>
-									Add Student
+									<i class="bi bi-person-plus me-2"></i> Add Student
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.STUDENT_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.STUDENT_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Student List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Student List
+							</a></li>
 
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= MARKSHEET ================= -->
 
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="marksheetDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-						<a class="nav-link dropdown-toggle" href="#"
-							id="marksheetDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-file-earmark-text"></i> Marksheet
 
-							<i class="bi bi-file-earmark-text"></i>
-							Marksheet
-
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="marksheetDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MARKSHEET_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.MARKSHEET_CTL%>"> <i
+									class="bi bi-plus-circle me-2"></i> Add Marksheet
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Marksheet
+							</a></li>
 
-								</a>
-							</li>
+							<li><a class="dropdown-item"
+								href="<%=ORSView.MARKSHEET_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Marksheet List
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MARKSHEET_LIST_CTL%>">
+							</a></li>
 
-									<i class="bi bi-list-ul me-2"></i>
-									Marksheet List
+							<li><a class="dropdown-item"
+								href="<%=ORSView.GET_MARKSHEET_CTL%>"> <i
+									class="bi bi-card-text"></i></i> Get Marksheet
 
-								</a>
-							</li>
-							
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.GET_MARKSHEET_CTL%>">
+							</a></li>
 
-									<i class="bi bi-card-text"></i></i>
-									Get Marksheet
+							<li><a class="dropdown-item"
+								href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"> <i
+									class="bi bi-card-text"></i> Merit Marksheet
 
-								</a>
-							</li>
-							
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>">
+							</a></li>
 
-									<i class="bi bi-card-text"></i>
-									Merit Marksheet
-
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= COURSE ================= -->
 
-					<li class="nav-item dropdown">
-
-						<a class="nav-link dropdown-toggle" href="#"
-							id="courseDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="courseDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
 							<i class="bi bi-book"></i> Course
 
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="courseDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.COURSE_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.COURSE_CTL%>">
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Course
+									<i class="bi bi-plus-circle me-2"></i> Add Course
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.COURSE_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.COURSE_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Course List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Course List
+							</a></li>
 
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= SUBJECT ================= -->
 
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="subjectDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-						<a class="nav-link dropdown-toggle" href="#"
-							id="subjectDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-journal-bookmark"></i> Subject
 
-							<i class="bi bi-journal-bookmark"></i>
-							Subject
-
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="subjectDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.SUBJECT_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.SUBJECT_CTL%>">
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Subject
+									<i class="bi bi-plus-circle me-2"></i> Add Subject
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.SUBJECT_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.SUBJECT_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Subject List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Subject List
+							</a></li>
 
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= FACULTY ================= -->
 
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="facultyDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-						<a class="nav-link dropdown-toggle" href="#"
-							id="facultyDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-person-workspace"></i> Faculty
 
-							<i class="bi bi-person-workspace"></i>
-							Faculty
-
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="facultyDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.FACULTY_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.FACULTY_CTL%>">
 
-									<i class="bi bi-person-plus me-2"></i>
-									Add Faculty
+									<i class="bi bi-person-plus me-2"></i> Add Faculty
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.FACULTY_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.FACULTY_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Faculty List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Faculty List
+							</a></li>
 
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
+						</ul></li>
 
 
 					<!-- ================= MODULE ================= -->
 
-					<li class="nav-item dropdown">
-
-						<a class="nav-link dropdown-toggle" href="#"
-							id="moduleDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="moduleDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
 							<i class="bi bi-book"></i> Module
 
-						</a>
+					</a>
 
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="moduleDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.VOTER_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.VOTER_CTL%>">
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Voter
+									<i class="bi bi-plus-circle me-2"></i> Add Voter
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.VOTER_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.VOTER_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Voter List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Voter List
+							</a></li>
 
-								</a>
-							</li>
+							<li><a class="dropdown-item"
+								href="<%=ORSView.FOOD_ORDER_CTL%>"> <i
+									class="bi bi-plus-circle me-2"></i> Add Food Order
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.FOOD_ORDER_CTL%>">
+							</a></li>
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Food Order
+							<li><a class="dropdown-item"
+								href="<%=ORSView.FOOD_ORDER_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Food Order List
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.FOOD_ORDER_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.SMART_PARKING_CTL%>"> <i
+									class="bi bi-plus-circle me-2"></i> Add Parking
 
-									<i class="bi bi-list-ul me-2"></i>
-									Food Order List
+							</a></li>
 
-								</a>
-							</li>
+							<li><a class="dropdown-item"
+								href="<%=ORSView.SMART_PARKING_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Parking List
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.SMART_PARKING_CTL%>">
+							</a></li>
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Parking
+							<li><a class="dropdown-item"
+								href="<%=ORSView.GYM_MEMBER_CTL%>"> <i
+									class="bi bi-plus-circle me-2"></i> Add Gym Member
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.SMART_PARKING_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.GYM_MEMBER_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Gym Member List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Parking List
+							</a></li>
 
-								</a>
-							</li>
+							<li><a class="dropdown-item"
+								href="<%=ORSView.HOSPITAL_CTL%>"> <i
+									class="bi bi-plus-circle me-2"></i> Add Patient
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.GYM_MEMBER_CTL%>">
+							</a></li>
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Gym Member
+							<li><a class="dropdown-item"
+								href="<%=ORSView.HOSPITAL_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Patient List
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.GYM_MEMBER_LIST_CTL%>">
+							<li><a class="dropdown-item" href="<%=ORSView.MOVIE_CTL%>">
 
-									<i class="bi bi-list-ul me-2"></i>
-									Gym Member List
+									<i class="bi bi-plus-circle me-2"></i> Add Movie
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.HOSPITAL_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.MOVIE_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Movie List
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Patient
+							</a></li>
+							<li><a class="dropdown-item" href="<%=ORSView.MOVIE_CTL%>">
 
-								</a>
-							</li>
+									<i class="bi bi-plus-circle me-2"></i> Add Movie
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.HOSPITAL_LIST_CTL%>">
+							</a></li>
 
-									<i class="bi bi-list-ul me-2"></i>
-									Patient List
+							<li><a class="dropdown-item"
+								href="<%=ORSView.MOVIE_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Movie List
 
-								</a>
-							</li>
-							
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MOVIE_CTL%>">
+							</a></li>
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Movie
+							<li><a class="dropdown-item"
+								href="<%=ORSView.RESTAURANT_CTL%>"> <i
+									class="bi bi-plus-circle me-2"></i> Add Restaurant
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MOVIE_LIST_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.RESTAURANT_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Restaurant List
 
-									<i class="bi bi-list-ul me-2"></i>
-									Movie List
+							</a></li>
+							<li><a class="dropdown-item" href="<%=ORSView.EXAM_CTL%>">
 
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MOVIE_CTL%>">
+									<i class="bi bi-plus-circle me-2"></i> Add Exam
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Movie
+							</a></li>
 
-								</a>
-							</li>
+							<li><a class="dropdown-item"
+								href="<%=ORSView.EXAM_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Exam List
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MOVIE_LIST_CTL%>">
+							</a></li>
 
-									<i class="bi bi-list-ul me-2"></i>
-									Movie List
+							<li><a class="dropdown-item" href="<%=ORSView.EVENT_CTL%>">
 
-								</a>
-							</li>
-							
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.RESTAURANT_CTL%>">
+									<i class="bi bi-plus-circle me-2"></i> Add Event
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Restaurant
+							</a></li>
 
-								</a>
-							</li>
+							<li><a class="dropdown-item"
+								href="<%=ORSView.EVENT_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Event List
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.RESTAURANT_LIST_CTL%>">
+							</a></li>
 
-									<i class="bi bi-list-ul me-2"></i>
-									Restaurant List
+							<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_CTL%>">
 
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.EXAM_CTL%>">
+									<i class="bi bi-plus-circle me-2"></i> Add Product
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Exam
+							</a></li>
 
-								</a>
-							</li>
+							<li><a class="dropdown-item"
+								href="<%=ORSView.PRODUCT_LIST_CTL%>"> <i
+									class="bi bi-list-ul me-2"></i> Product List
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.EXAM_LIST_CTL%>">
+							</a></li>
 
-									<i class="bi bi-list-ul me-2"></i>
-									Exam List
+						</ul></li>
 
-								</a>
-							</li>
-							
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.EVENT_CTL%>">
 
-									<i class="bi bi-plus-circle me-2"></i>
-									Add Event
 
-								</a>
-							</li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.EVENT_LIST_CTL%>">
 
-									<i class="bi bi-list-ul me-2"></i>
-									Event List
-
-								</a>
-							</li>
-
-						</ul>
-
-					</li>
-							
-
-					
-						
-					
 
 					<!-- ================= TIMETABLE ================= -->
 
@@ -717,15 +538,11 @@
 						<select name="lang" onchange="this.form.submit()"
 							class="form-select form-select-sm">
 
-							<option value="en"
-								<%=("en".equals(locale)) ? "selected" : ""%>>
-								English
-							</option>
+							<option value="en" <%=("en".equals(locale)) ? "selected" : ""%>>
+								English</option>
 
-							<option value="hi"
-								<%=("hi".equals(locale)) ? "selected" : ""%>>
-								Hindi
-							</option>
+							<option value="hi" <%=("hi".equals(locale)) ? "selected" : ""%>>
+								Hindi</option>
 
 						</select>
 
@@ -735,10 +552,8 @@
 					<!-- ================= JAVADOC ================= -->
 
 					<a class="btn btn-outline-light btn-sm px-3"
-						href="<%=ORSView.JAVA_DOC_VIEW%>" target="_blank">
-
-						<i class="bi bi-file-earmark-code me-1"></i>
-						JavaDoc
+						href="<%=ORSView.JAVA_DOC_VIEW%>" target="_blank"> <i
+						class="bi bi-file-earmark-code me-1"></i> JavaDoc
 
 					</a>
 
@@ -749,19 +564,13 @@
 
 						<a class="btn btn-outline-light btn-sm px-3 dropdown-toggle"
 							href="#" id="profileDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-
-							<i class="bi bi-person-circle me-1"></i>
-							Hi, <%=userBean.getFirstName()%>
+							data-bs-toggle="dropdown" aria-expanded="false"> <i
+							class="bi bi-person-circle me-1"></i> Hi, <%=userBean.getFirstName()%>
 
 							<%
-								if (roleName != null && !roleName.isEmpty()) {
-							%>
-
-							(<%=roleName%>)
-
-							<%
-								}
+							if (roleName != null && !roleName.isEmpty()) {
+							%> (<%=roleName%>) <%
+							}
 							%>
 
 						</a>
@@ -770,25 +579,18 @@
 						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
 							aria-labelledby="profileDropdown">
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.MY_PROFILE_CTL + "?id=" + userBean.getId()%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.MY_PROFILE_CTL + "?id=" + userBean.getId()%>">
 
-									<i class="bi bi-person-circle me-2"></i>
-									My Profile
+									<i class="bi bi-person-circle me-2"></i> My Profile
 
-								</a>
-							</li>
+							</a></li>
 
-							<li>
-								<a class="dropdown-item"
-									href="<%=ORSView.CHANGE_PASSWORD_CTL%>">
+							<li><a class="dropdown-item"
+								href="<%=ORSView.CHANGE_PASSWORD_CTL%>"> <i
+									class="bi bi-key-fill me-2"></i> Change Password
 
-									<i class="bi bi-key-fill me-2"></i>
-									Change Password
-
-								</a>
-							</li>
+							</a></li>
 
 						</ul>
 
@@ -798,10 +600,8 @@
 					<!-- ================= LOGOUT BUTTON ================= -->
 
 					<a class="btn btn-outline-danger btn-sm"
-						href="<%=ORSView.LOGIN_CTL%>?operation=logout">
-
-						<i class="bi bi-box-arrow-right me-1"></i>
-						Logout
+						href="<%=ORSView.LOGIN_CTL%>?operation=logout"> <i
+						class="bi bi-box-arrow-right me-1"></i> Logout
 
 					</a>
 
@@ -809,7 +609,7 @@
 
 
 				<%
-					} else {
+				} else {
 				%>
 
 
@@ -820,53 +620,38 @@
 
 					<!-- Welcome Button -->
 
-					<li class="nav-item">
+					<li class="nav-item"><a
+						class="btn btn-outline-light btn-sm me-2 px-3"
+						href="<%=ORSView.WELCOME_CTL%>"> <i
+							class="bi bi-house-door me-1"></i> Welcome
 
-						<a class="btn btn-outline-light btn-sm me-2 px-3"
-							href="<%=ORSView.WELCOME_CTL%>">
-
-							<i class="bi bi-house-door me-1"></i>
-							Welcome
-
-						</a>
-
-					</li>
+					</a></li>
 
 
 					<!-- Login Button -->
 
-					<li class="nav-item">
+					<li class="nav-item"><a
+						class="btn btn-outline-light btn-sm me-2 px-3"
+						href="<%=ORSView.LOGIN_CTL%>"> <i
+							class="bi bi-box-arrow-in-right me-1"></i> Login
 
-						<a class="btn btn-outline-light btn-sm me-2 px-3"
-							href="<%=ORSView.LOGIN_CTL%>">
-
-							<i class="bi bi-box-arrow-in-right me-1"></i>
-							Login
-
-						</a>
-
-					</li>
+					</a></li>
 
 
 					<!-- SignUp Button -->
 
-					<li class="nav-item">
+					<li class="nav-item"><a
+						class="btn btn-outline-light btn-sm me-2 px-3"
+						href="<%=ORSView.USER_REGISTRATION_CTL%>"> <i
+							class="bi bi-person-plus me-1"></i> SignUp
 
-						<a class="btn btn-outline-light btn-sm me-2 px-3"
-							href="<%=ORSView.USER_REGISTRATION_CTL%>">
-
-							<i class="bi bi-person-plus me-1"></i>
-							SignUp
-
-						</a>
-
-					</li>
+					</a></li>
 
 				</ul>
 
 
 				<%
-					}
+				}
 				%>
 
 			</div>
@@ -880,6 +665,7 @@
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+		
 	</script>
 
 </body>
