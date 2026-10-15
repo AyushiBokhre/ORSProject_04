@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Product Report - Jaspersoft Studio 6.12.2 -->
+
+<jasperReport
+    xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="ProductReport"
+    pageWidth="595"
+    pageHeight="842"
+    columnWidth="555"
+    leftMargin="20"
+    rightMargin="20"
+    topMargin="20"
+    bottomMargin="20">
+
+    <!-- Report Fields: ProductBean properties -->
+    <field name="productName" class="java.lang.String"/>
+    <field name="category" class="java.lang.String"/>
+    <field name="price" class="java.lang.Double"/>
+    <field name="quantity" class="java.lang.Integer"/>
+    <field name="discount" class="java.lang.Double"/>
+
+    <!-- Title -->
+    <title>
+        <band height="60">
+            <staticText>
+                <reportElement
+                    x="150" y="10"
+                    width="255" height="35"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Product Report]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <!-- Column Headers -->
+    <columnHeader>
+        <band height="30">
+
+            <staticText>
+                <reportElement x="0" y="0"
+                    width="111" height="30"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Product Name]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="111" y="0"
+                    width="111" height="30"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Category]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="222" y="0"
+                    width="111" height="30"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Price]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="333" y="0"
+                    width="111" height="30"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Quantity]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="444" y="0"
+                    width="111" height="30"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Discount]]></text>
+            </staticText>
+
+        </band>
+    </columnHeader>
+
+    <!-- Product Data -->
+    <detail>
+        <band height="25">
+
+            <textField>
+                <reportElement x="0" y="0"
+                    width="111" height="25"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[
+                    $F{productName}
+                ]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="111" y="0"
+                    width="111" height="25"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[
+                    $F{category}
+                ]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="222" y="0"
+                    width="111" height="25"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[
+                    $F{price}
+                ]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="333" y="0"
+                    width="111" height="25"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[
+                    $F{quantity}
+                ]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="444" y="0"
+                    width="111" height="25"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[
+                    $F{discount}
+                ]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+    <!-- Page Footer -->
+    <pageFooter>
+        <band height="25">
+            <textField>
+                <reportElement x="450" y="0"
+                    width="105" height="20"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[
+                    "Page " + $V{PAGE_NUMBER}
+                ]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+
+</jasperReport>
